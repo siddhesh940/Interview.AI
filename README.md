@@ -28,14 +28,16 @@
   - [1. AI-Powered Interviews](#1-ai-powered-interviews-)
   - [2. AI Interviewers](#2-ai-interviewers-)
   - [3. Soft Skills Training](#3-soft-skills-training-)
-  - [4. Interview Resource Hub](#4-interview-resource-hub-)
-  - [5. Interactive Games](#5-interactive-games-)
-  - [6. Aptitude Arena](#6-aptitude-arena-)
-  - [7. Dream Company Station](#7-dream-company-station-)
-  - [8. Placement Drives](#8-placement-drives-)
-  - [9. Resume Builder](#9-resume-builder-)
-  - [10. Skill Autofill](#10-skill-autofill-)
-  - [11. Time Machine](#11-time-machine-)
+  - [4. HR Interview Coach](#4-hr-interview-coach-)
+  - [5. Interview Resource Hub](#5-interview-resource-hub-)
+  - [6. Interactive Games](#6-interactive-games-)
+  - [7. Aptitude Arena](#7-aptitude-arena-)
+  - [8. Dream Company Station](#8-dream-company-station-)
+  - [9. Placement Drives](#9-placement-drives-)
+  - [10. Resume Builder](#10-resume-builder-)
+  - [11. Skill Autofill](#11-skill-autofill-)
+  - [12. Time Machine](#12-time-machine-)
+  - [13. Technical Practice Engine](#13-technical-practice-engine-)
 - [📊 Database Schema](#-database-schema)
 - [🔌 API Reference](#-api-reference)
 - [🚀 Getting Started](#-getting-started)
@@ -72,6 +74,7 @@ Interview.ai is designed to be the **ultimate interview preparation companion** 
 - **30+ PDF Resources** for in-depth learning
 - **6 Company Profiles** with company-specific preparation
 - **Multiple AI Interviewers** with unique personalities
+- **HR Interview Coach** for HR round mastery
 
 ---
 
@@ -81,7 +84,7 @@ Interview.ai is designed to be the **ultimate interview preparation companion** 
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    INTERVIEW PREPARATION                         │
+│                    INTERVIEW PREPARATION                        │
 ├─────────────────────────────────────────────────────────────────┤
 │  🎙️ AI Mock Interviews    │  Real-time voice interviews         │
 │  👥 Multiple Interviewers │  Different personalities & styles   │
@@ -94,7 +97,7 @@ Interview.ai is designed to be the **ultimate interview preparation companion** 
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    SKILL DEVELOPMENT                             │
+│                    SKILL DEVELOPMENT                            │
 ├─────────────────────────────────────────────────────────────────┤
 │  🧮 Aptitude Arena        │  600+ quantitative & logical Qs     │
 │  🗣️ Soft Skills Training  │  Communication, confidence, etc.    │
@@ -107,7 +110,7 @@ Interview.ai is designed to be the **ultimate interview preparation companion** 
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    CAREER TOOLS                                  │
+│                    CAREER TOOLS                                 │
 ├─────────────────────────────────────────────────────────────────┤
 │  🏢 Dream Company Station │  Company-specific preparation       │
 │  📋 Placement Drives      │  Live job opportunities             │
@@ -128,10 +131,10 @@ Interview.ai Architecture
 ┌──────────────────────────────────────────────────────────────────┐
 │                         FRONTEND (Next.js 14)                    │
 ├──────────────────────────────────────────────────────────────────┤
-│  ┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐    │
-│  │   Pages    │ │ Components │ │  Contexts  │ │   Hooks    │    │
-│  │  (App Dir) │ │ (Shadcn)   │ │  (State)   │ │  (Custom)  │    │
-│  └────────────┘ └────────────┘ └────────────┘ └────────────┘    │
+│  ┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐     │
+│  │   Pages    │ │ Components │ │  Contexts  │ │   Hooks    │     │
+│  │  (App Dir) │ │ (Shadcn)   │ │  (State)   │ │  (Custom)  │     │
+│  └────────────┘ └────────────┘ └────────────┘ └────────────┘     │
 │                           │                                      │
 │                     ┌─────┴─────┐                                │
 │                     │ API Routes│                                │
@@ -142,10 +145,10 @@ Interview.ai Architecture
 ┌──────────────────────────────────────────────────────────────────┐
 │                        BACKEND SERVICES                          │
 ├──────────────────────────────────────────────────────────────────┤
-│  ┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐    │
-│  │  Supabase  │ │  Retell AI │ │   OpenAI   │ │  LangChain │    │
-│  │ (Database) │ │  (Voice)   │ │  (GPT-4)   │ │ (RAG/NLP)  │    │
-│  └────────────┘ └────────────┘ └────────────┘ └────────────┘    │
+│  ┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐     │
+│  │  Supabase  │ │  Retell AI │ │   OpenAI   │ │  LangChain │     │
+│  │ (Database) │ │  (Voice)   │ │  (GPT-4)   │ │ (RAG/NLP)  │     │
+│  └────────────┘ └────────────┘ └────────────┘ └────────────┘     │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -372,6 +375,72 @@ Interview.ai/
 
 ---
 
+## 📸 Screenshots
+
+### Dashboard
+![Dashboard](Demo_Images/Dashboard.png)
+*Main dashboard showing interview statistics, progress tracking, and quick access to all features*
+
+### AI Mock Interview
+![Create Interview](Demo_Images/Create%20Interview.png)
+*Interview creation interface with customizable settings*
+
+![Interview Call](Demo_Images/Call.png)
+*Live AI interview session with real-time transcription*
+
+![Software Interview](Demo_Images/Software%20Start%20Interview.png)
+*Technical interview in progress*
+
+### Aptitude Arena
+![Aptitude Arena](Demo_Images/Aptitude%20Arena.png)
+*Comprehensive aptitude practice with 1000+ questions*
+
+### Interactive Games
+![Games](Demo_Images/Games.png)
+*Six gamified learning experiences for skill development*
+
+### HR Interview Coach
+![HR Interview Coach](Demo_Images/HR_Interview_Coach.png)
+*AI-powered HR interview preparation with answer evaluation*
+
+### Soft Skills Training
+![Soft Skills](Demo_Images/Soft_Skill.png)
+*Comprehensive soft skills development module*
+
+### Technical Practice Engine
+![TechPrep](Demo_Images/TechPrep.png)
+*Code practice with Monaco editor and multiple domains*
+
+### Dream Company Station
+![Dream Company](Demo_Images/Dream%20Company%20Station.png)
+*Company-specific preparation for top recruiters*
+
+### Placement Drives
+![Placement Drive](Demo_Images/Placement%20Drive.png)
+*Live placement opportunities with automated tracking*
+
+### Resume Builder
+![Resume Builder](Demo_Images/Resume%20Builder.png)
+*Professional ATS-friendly resume creation*
+
+### Skill Autofill
+![Skill Autofill](Demo_Images/Skill%20Autofill.png)
+*AI-powered skill extraction from resumes*
+
+### Interview Resource Hub
+![Interview Resources](Demo_Images/Interview%20Resource%20Hub.png)
+*30+ PDF resources for comprehensive preparation*
+
+### Time Machine Analytics
+![Time Machine](Demo_Images/Time%20Machine.png%20.png)
+*Predictive analytics and progress tracking*
+
+### AI Question Generation
+![Question Generation](Demo_Images/Question%20Generation.png)
+*Dynamic question generation using GPT-4*
+
+---
+
 ## 🎯 Feature Details
 
 ### 1. AI-Powered Interviews 🎙️
@@ -546,7 +615,88 @@ const PROGRESS_WEIGHTS = {
 
 ---
 
-### 4. Interview Resource Hub 📚
+### 4. HR Interview Coach 👔
+
+Dedicated module for HR round preparation with AI-powered answer evaluation and red flag detection.
+
+#### Features
+
+- **50+ HR Questions** across 6 categories
+- **4 Practice Modes** (Quick, Standard, Full, Stress)
+- **Answer Builder** to craft and save perfect answers
+- **Real-time AI Evaluation** with NLP-based scoring
+- **Red Flag Detection** for problematic responses
+- **Video Tutorials** with expert guidance
+- **HR Readiness Score** tracking overall preparation
+
+#### Question Categories
+
+```typescript
+type HRQuestionCategory = 
+  | 'personal'               // Introduction, goals, background
+  | 'strengths_weaknesses'   // Abilities, improvement areas
+  | 'behavioral'             // STAR method scenarios
+  | 'policy'                 // Salary, notice period, relocation
+  | 'situational'            // Hypothetical workplace scenarios
+  | 'company_specific';      // Company culture, why us
+```
+
+#### Interview Modes
+
+| Mode | Questions | Best For |
+|------|-----------|----------|
+| Quick | 3 | Confidence boost |
+| Standard | 8 | Balanced practice |
+| Full | 12 | Complete simulation |
+| Stress | 6 | Pressure handling |
+
+#### AI Evaluation Criteria
+
+```typescript
+const evaluationParameters = {
+  confidence: 20,          // Self-assurance in responses
+  communication: 25,       // Clarity and articulation
+  professionalTone: 15,    // Appropriate language
+  attitude: 20,            // Positive mindset
+  authenticity: 10,        // Genuine responses
+  redFlagCheck: 10         // Avoiding problematic patterns
+};
+```
+
+#### Red Flags Detected
+
+| Red Flag | Description |
+|----------|-------------|
+| Negativity | Badmouthing employers, negative language |
+| Rigidity | "Never", "impossible", inflexibility |
+| Arrogance | Over-confidence, "I'm the best" |
+| Unrealistic | Extreme salary expectations |
+| Vagueness | "Maybe", "I guess", uncertainty |
+
+#### Answer Scoring Logic
+
+```typescript
+// Base score starts at 50%
+baseScore += idealPointsMatched * 0.25;  // Ideal points contribution
+baseScore += specificityBonus;            // +10 for specific examples
+baseScore += structureBonus;              // +10 for good structure
+baseScore += starBonus;                   // +15 for STAR method
+baseScore -= redFlagPenalty;              // -15 per red flag
+baseScore -= vaguePenalty;                // -25 for vague answers
+baseScore -= tooShortPenalty;             // -30 if < 20 words
+```
+
+#### Video Learning Sections
+
+| Section | Videos | Content |
+|---------|--------|---------|
+| HR Round Basics | 3 | Introduction, mindset, expectations |
+| Common Questions | 3 | Tell me about yourself, salary, etc. |
+| Confidence Tips | 3 | Body language, tone, delivery |
+
+---
+
+### 5. Interview Resource Hub 📚
 
 Comprehensive library of interview preparation materials.
 
@@ -612,7 +762,7 @@ interface PDFResource {
 
 ---
 
-### 5. Interactive Games 🎮
+### 6. Interactive Games 🎮
 
 Six gamified learning experiences for interview skill development.
 
@@ -732,7 +882,7 @@ Identify correct/incorrect statements.
 
 ---
 
-### 6. Aptitude Arena 🧮
+### 7. Aptitude Arena 🧮
 
 Comprehensive aptitude training with 1000+ questions.
 
@@ -840,7 +990,7 @@ interface TopicInfo {
 
 ---
 
-### 7. Dream Company Station 🏢
+### 8. Dream Company Station 🏢
 
 Company-specific preparation for major IT companies.
 
@@ -926,7 +1076,7 @@ National Qualifier Test (NQT):
 
 ---
 
-### 8. Placement Drives 💼
+### 9. Placement Drives 💼
 
 Live job opportunities with automated scraping.
 
@@ -986,7 +1136,7 @@ interface PlacementDrive {
 
 ---
 
-### 9. Resume Builder 📄
+### 10. Resume Builder 📄
 
 Professional resume creation with ATS optimization.
 
@@ -1093,7 +1243,7 @@ Multiple professional templates available:
 
 ---
 
-### 10. Skill Autofill 🤖
+### 11. Skill Autofill 🤖
 
 Automatic skill extraction from various sources.
 
@@ -1140,7 +1290,7 @@ const skillCategories = {
 
 ---
 
-### 11. Time Machine ⏰
+### 12. Time Machine ⏰
 
 Predictive analytics for interview success.
 
@@ -1217,6 +1367,121 @@ Success Rate = (Technical × 0.30) +
                (Confidence × 0.15) + 
                (Aptitude × 0.20) + 
                (Experience × 0.10)
+```
+
+---
+
+### 13. Technical Practice Engine �
+
+Comprehensive technical interview preparation with multiple practice modes.
+
+#### Features
+
+- **5 Practice Modes** for different learning styles
+- **Multiple Domains** (DSA, DBMS, OS, OOP, CN, Programming)
+- **Difficulty Levels** (Easy, Medium, Hard)
+- **Real-time Code Execution** with Monaco Editor
+- **AI-Powered Explanations** using GPT-4
+- **Progress Tracking** across all domains
+
+#### Practice Modes
+
+| Mode | Description | Best For |
+|------|-------------|----------|
+| **Coding Practice** | Write and execute code | Hands-on practice |
+| **Concept Explanation** | Learn theory with AI | Understanding concepts |
+| **Debugging Mode** | Fix buggy code | Error handling skills |
+| **Follow-Up Questions** | Deep dive into topics | Interview simulation |
+| **Mixed Mode** | Combination of all | Complete preparation |
+
+#### Supported Domains
+
+```typescript
+const DOMAINS = {
+  'dsa': 'Data Structures & Algorithms',
+  'dbms': 'Database Management Systems',
+  'os': 'Operating Systems',
+  'oop': 'Object-Oriented Programming',
+  'cn': 'Computer Networks',
+  'programming': 'Programming Languages'
+};
+```
+
+#### Coding Practice Mode
+
+Features:
+- **Monaco Editor** (VS Code editor)
+- **Multiple Languages** (JavaScript, Python, Java, C++)
+- **Test Cases** with expected output
+- **Code Execution** in browser
+- **Syntax Highlighting**
+- **Auto-completion**
+
+```typescript
+interface CodingQuestion {
+  id: string;
+  domain: Domain;
+  difficulty: Difficulty;
+  title: string;
+  description: string;
+  starterCode: {
+    javascript: string;
+    python: string;
+    java: string;
+    cpp: string;
+  };
+  testCases: TestCase[];
+  hints: string[];
+  solution: string;
+  timeComplexity: string;
+  spaceComplexity: string;
+}
+```
+
+#### Concept Explanation Mode
+
+AI-powered explanations with:
+- **Interactive Q&A** with GPT-4
+- **Visual Diagrams** for complex topics
+- **Real-world Examples**
+- **Related Concepts** linking
+- **Practice Questions** after explanation
+
+#### Debugging Mode
+
+Fix buggy code with:
+- **Pre-written Buggy Code**
+- **Error Descriptions**
+- **Hints System**
+- **Step-by-step Debugging**
+- **Explanation of Bugs**
+
+#### Progress Tracking
+
+```typescript
+interface TechPrepProgress {
+  userId: string;
+  domain: Domain;
+  questionsAttempted: number;
+  questionsCorrect: number;
+  averageTime: number;
+  difficultyBreakdown: {
+    easy: { attempted: number; correct: number };
+    medium: { attempted: number; correct: number };
+    hard: { attempted: number; correct: number };
+  };
+  lastPracticed: Date;
+  streak: number;
+}
+```
+
+#### Scoring System
+
+```
+Score = (Correctness × 0.50) + 
+        (Efficiency × 0.25) + 
+        (Code Quality × 0.15) + 
+        (Time Taken × 0.10)
 ```
 
 ---
@@ -1729,6 +1994,43 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+
+## 🙏 Acknowledgments
+
+### Technologies & Services
+
+- **[Next.js](https://nextjs.org/)** - The React Framework for Production
+- **[Supabase](https://supabase.com/)** - Open Source Firebase Alternative
+- **[Clerk](https://clerk.dev/)** - User Management & Authentication
+- **[OpenAI](https://openai.com/)** - GPT-4 AI Models
+- **[Retell AI](https://retellai.com/)** - Voice AI Platform
+- **[Vercel](https://vercel.com/)** - Deployment Platform
+- **[Shadcn/UI](https://ui.shadcn.com/)** - Beautiful UI Components
+- **[TailwindCSS](https://tailwindcss.com/)** - Utility-First CSS Framework
+
+### Inspiration
+
+This project was built to address the challenges faced by students and job seekers in interview preparation, combining the power of AI with comprehensive learning resources.
+
+---
+
+## 📞 Contact & Support
+
+- **Issues**: [GitHub Issues](https://github.com/yourusername/interview-ai/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/interview-ai/discussions)
+- **Email**: support@interviewai.com
+
+---
+
+## 🌟 Star History
+
+If you find this project helpful, please consider giving it a ⭐ on GitHub!
+
+---
+
+**Made with ❤️ for aspiring professionals worldwide**
+
+
 
 ## 🙏 Acknowledgments
 
