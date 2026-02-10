@@ -8,6 +8,20 @@ const nextConfig = {
     // Disable TypeScript errors during production builds
     ignoreBuildErrors: true,
   },
+  // Exclude large public folder files from serverless function bundles (250MB limit)
+  outputFileTracingExcludes: {
+    '*': [
+      './public/InterviewPrep/**',
+      './public/WIPRO/**',
+      './public/TCS/**',
+      './public/CAPGEMINI/**',
+      './public/COGNIZANT/**',
+      './public/INFOSYS/**',
+      './public/ACCENTURE/**',
+      './public/pdfs/**',
+      './public/images/**',
+    ],
+  },
   async redirects() {
     return [
       {
