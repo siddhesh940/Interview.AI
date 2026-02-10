@@ -1,32 +1,31 @@
 "use client";
 
-import { Interview, Question } from "@/types/interview";
-import React, { useEffect, useRef, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { Plus, SaveIcon, TrashIcon } from "lucide-react";
-import { useInterviewers } from "@/contexts/interviewers.context";
 import QuestionCard from "@/components/dashboard/interview/create-popup/questionCard";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Switch } from "@/components/ui/switch";
+import { useInterviewers } from "@/contexts/interviewers.context";
 import { useInterviews } from "@/contexts/interviews.context";
 import { InterviewService } from "@/services/interviews.service";
-import { CardTitle } from "../../ui/card";
+import { Interview, Question } from "@/types/interview";
+import { ArrowLeft, Plus, SaveIcon, TrashIcon } from "lucide-react";
 import Image from "next/image";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
+import { v4 as uuidv4 } from "uuid";
+import { CardTitle } from "../../ui/card";
 
 type EditInterviewProps = {
   interview: Interview | undefined;
@@ -34,7 +33,7 @@ type EditInterviewProps = {
 
 function EditInterview({ interview }: EditInterviewProps) {
   const { interviewers } = useInterviewers();
-  const { fetchInterviews } = useInterviews();
+  const { fetchInterviews, deleteInterview: deleteInterviewFromContext } = useInterviews();
 
   const [description, setDescription] = useState<string>(
     interview?.description || "",
@@ -137,7 +136,12 @@ function EditInterview({ interview }: EditInterviewProps) {
     }
 
     try {
-      await InterviewService.deleteInterview(interview.id);
+      // Use context method to delete and update local state
+      await deleteInterviewFromContext(interview.id);
+      toast.success("Interview deleted successfully!", {
+        position: "bottom-right",
+        duration: 3000,
+      });
       router.push("/dashboard");
     } catch (error) {
       console.error("Error deleting interview:", error);

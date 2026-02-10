@@ -1,0 +1,26 @@
+flowchart TD
+    A[AI Interview Simulation Started] --> B[System Selects Questions Based on Target Role]
+    B --> C[User's Preparation Level Analysis]
+    C --> D[Interview Questions Generated]
+    D --> E[User Responds to Questions]
+    E --> F[Response Recording & Analysis]
+    F --> G[Content Relevance Check]
+    G --> H[Clarity & Confidence Assessment]
+    H --> I[Structured Feedback Generation]
+    I --> J[Strengths & Areas for Improvement Highlighted]
+    J --> K{User Decision}
+    K -->|Retry Interview| L[New Interview Session]
+    K -->|Practice Topics| M[Suggested Topic Practice]
+    K -->|Advanced Preparation| N[Move to Advanced Stages]
+    L --> D
+    M --> O[Topic-Specific Learning Resources]
+    O --> P[Practice Exercises Completed]
+    P --> Q[Performance Improvement Tracking]
+    N --> Q
+    Q --> R[Updated Skill Assessment]
+    R --> S[Interview Performance Enhanced]
+    
+    style A fill:#e8f5e8
+    style S fill:#c8e6c9
+    style I fill:#fff3e0
+    style K fill:#e1f5fe

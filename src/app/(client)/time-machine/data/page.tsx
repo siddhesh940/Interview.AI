@@ -1,15 +1,16 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
+import { ResumeUploadGuidelines } from "@/components/time-machine/ResumeParsingUI";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import { useTimeMachine } from "@/hooks/useTimeMachine";
 import { useTimeMachineStore } from "@/stores/timeMachineStore";
 import { TARGET_ROLES, TargetRole, TimeMachineData } from "@/types/time-machine";
-import { AlertTriangle, ArrowLeft, ArrowRight, Brain, CheckCircle, FileText, Loader2, Sparkles, Target, Upload, Users, Zap } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle, FileText, Loader2, Sparkles, Target, Upload, Users, Zap } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -388,8 +389,7 @@ return;
 
   const steps = [
     { id: 1, title: "Upload Resume", icon: Upload },
-    { id: 2, title: "Select Goals", icon: Users },
-    { id: 3, title: "Review & Analyze", icon: Brain },
+    { id: 2, title: "Select Goals & Analyze", icon: Target },
   ];
 
   return (
@@ -461,6 +461,9 @@ return;
               </CardDescription>
             </CardHeader>
             <CardContent>
+              {/* Pre-upload Guidelines - Show when no resume uploaded */}
+              {!resumeData && <ResumeUploadGuidelines />}
+              
               <div
                 className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
                   dragActive
@@ -478,221 +481,33 @@ return;
                   <div>
                     <Loader2 className="h-12 w-12 text-purple-600 mx-auto mb-4 animate-spin" />
                     <p className="text-lg font-medium text-gray-900 mb-2">Uploading and parsing...</p>
-                    <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
-                      <div
-                        className="bg-purple-600 h-2 rounded-full transition-all duration-300"
-                        style={{ width: `${uploadProgress}%` }}
-                       />
-                    </div>
+                    <Progress value={uploadProgress} className="h-2 mb-4" />
                     <p className="text-sm text-gray-600">{uploadProgress}% complete</p>
                   </div>
                 ) : resumeData ? (
-                  <div>
-                    <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-4" />
-                    <p className="text-lg font-medium text-gray-900 mb-2">Resume uploaded successfully!</p>
-                    <p className="text-sm text-gray-600 mb-4">
-                      File: {resumeData.file.name} ({resumeData.file.size ? (resumeData.file.size / 1024 / 1024).toFixed(2) : '0.00'} MB)
+                  <div className="py-6">
+                    <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+                    <p className="text-xl font-semibold text-gray-900 mb-2">Resume Uploaded Successfully!</p>
+                    <p className="text-sm text-gray-600 mb-6">
+                      <span className="font-medium">{resumeData.file.name}</span>
+                      <span className="text-gray-400 ml-2">({resumeData.file.size ? (resumeData.file.size / 1024 / 1024).toFixed(2) : '0.00'} MB)</span>
                     </p>
                     
-                    {/* EXTRACTED DATA SUMMARY - Show immediately after upload */}
-                    <div className="bg-white border rounded-lg p-4 text-left max-w-2xl mx-auto mb-4">
-                      <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2 border-b pb-2">
-                        <FileText className="h-4 w-4 text-purple-600" />
-                        Extracted Resume Data
-                      </h4>
-                      
-                      <div className="space-y-4">
-                        {/* Skills Section */}
-                        <div>
-                          <h5 className="text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-                            <span className="w-2 h-2 bg-blue-500 rounded-full" />
-                            Skills ({resumeData.extractedData?.skills?.length || 0} found)
-                          </h5>
-                          {resumeData.extractedData?.skills && resumeData.extractedData.skills.length > 0 ? (
-                            <div className="flex flex-wrap gap-1.5">
-                              {resumeData.extractedData.skills.slice(0, 15).map((skill, idx) => (
-                                // eslint-disable-next-line react/no-array-index-key
-                                <Badge key={`skill-${skill}-${idx}`} variant="secondary" className="text-xs bg-blue-50 text-blue-700 border border-blue-200">
-                                  {skill}
-                                </Badge>
-                              ))}
-                              {resumeData.extractedData.skills.length > 15 && (
-                                <Badge variant="outline" className="text-xs">
-                                  +{resumeData.extractedData.skills.length - 15} more
-                                </Badge>
-                              )}
-                            </div>
-                          ) : (
-                            <p className="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded">⚠️ No skills detected</p>
-                          )}
-                        </div>
-
-                        {/* Experience Section */}
-                        <div>
-                          <h5 className="text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-                            <span className="w-2 h-2 bg-green-500 rounded-full" />
-                            Experience ({resumeData.extractedData?.experience?.length || 0} positions)
-                          </h5>
-                          {resumeData.extractedData?.experience && resumeData.extractedData.experience.length > 0 ? (
-                            <div className="space-y-1">
-                              {resumeData.extractedData.experience.slice(0, 3).map((exp, idx) => (
-                                // eslint-disable-next-line react/no-array-index-key
-                                <div key={`exp-${idx}`} className="text-xs text-gray-600 bg-green-50 px-2 py-1 rounded border border-green-100">
-                                  {exp}
-                                </div>
-                              ))}
-                              {resumeData.extractedData.experience.length > 3 && (
-                                <p className="text-xs text-gray-500">+{resumeData.extractedData.experience.length - 3} more positions</p>
-                              )}
-                            </div>
-                          ) : (
-                            <p className="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded">⚠️ No experience detected</p>
-                          )}
-                        </div>
-
-                        {/* Projects Section */}
-                        <div>
-                          <h5 className="text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-                            <span className="w-2 h-2 bg-purple-500 rounded-full" />
-                            Projects ({resumeData.extractedData?.projects?.filter(p => {
-                              // Only count valid projects (not contact info or summaries)
-                              const projText = typeof p === 'string' ? p : String(p);
-                              
-return !/@|gmail|linkedin|github\.com|phone|summary|objective/i.test(projText.split(':')[0] || '');
-                            }).length || 0} found)
-                          </h5>
-                          {resumeData.extractedData?.projects && resumeData.extractedData.projects.length > 0 ? (
-                            <div className="space-y-1">
-                              {resumeData.extractedData.projects.slice(0, 3).map((proj, idx) => {
-                                const projText = typeof proj === 'string' ? proj : String(proj);
-                                const projTitle = projText.split(':')[0] || projText;
-                                
-                                // Skip if it looks like contact info or summary (not a real project)
-                                if (/@|gmail|linkedin|github\.com\/(?!.*\/)|phone|\+\d{2}|summary|objective/i.test(projTitle)) {
-                                  return null;
-                                }
-                                
-                                // Skip if too long (probably raw text dump)
-                                if (projTitle.length > 100) {
-                                  return null;
-                                }
-                                
-                                return (
-                                  // eslint-disable-next-line react/no-array-index-key
-                                  <div key={`proj-${idx}`} className="text-xs text-gray-600 bg-purple-50 px-2 py-1 rounded border border-purple-100">
-                                    {projTitle.length > 80 ? projTitle.slice(0, 80) + '...' : projTitle}
-                                  </div>
-                                );
-                              }).filter(Boolean)}
-                              {resumeData.extractedData.projects.filter(p => {
-                                const projText = typeof p === 'string' ? p : String(p);
-                                
-return !/@|gmail|linkedin|github\.com\/(?!.*\/)|phone|\+\d{2}|summary|objective/i.test(projText.split(':')[0] || '');
-                              }).length > 3 && (
-                                <p className="text-xs text-gray-500">+{resumeData.extractedData.projects.length - 3} more projects</p>
-                              )}
-                              {resumeData.extractedData.projects.every(p => {
-                                const projText = typeof p === 'string' ? p : String(p);
-                                
-return /@|gmail|linkedin|github\.com\/(?!.*\/)|phone|\+\d{2}|summary|objective/i.test(projText.split(':')[0] || '');
-                              }) && (
-                                <p className="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded">⚠️ No valid projects detected</p>
-                              )}
-                            </div>
-                          ) : (
-                            <p className="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded">⚠️ No projects detected</p>
-                          )}
-                        </div>
-
-                        {/* Education Section */}
-                        <div>
-                          <h5 className="text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-                            <span className="w-2 h-2 bg-yellow-500 rounded-full" />
-                            Education ({resumeData.extractedData?.education?.length || 0} entries)
-                          </h5>
-                          {resumeData.extractedData?.education && resumeData.extractedData.education.length > 0 ? (
-                            <div className="space-y-1">
-                              {resumeData.extractedData.education.slice(0, 2).map((edu, idx) => {
-                                // Truncate long education strings (prevent raw text dump)
-                                const eduText = typeof edu === 'string' ? edu : String(edu);
-                                const truncated = eduText.length > 100 ? eduText.slice(0, 100) + '...' : eduText;
-                                
-                                // Skip if it looks like raw text dump (too long, contains multiple sections)
-                                if (eduText.length > 300 || /\b(experience|skills|projects)\b/i.test(eduText)) {
-                                  return null;
-                                }
-                                
-                                return (
-                                  // eslint-disable-next-line react/no-array-index-key
-                                  <div key={`edu-${idx}`} className="text-xs text-gray-600 bg-yellow-50 px-2 py-1 rounded border border-yellow-100">
-                                    {truncated}
-                                  </div>
-                                );
-                              }).filter(Boolean)}
-                              {resumeData.extractedData.education.length === 0 || 
-                               (resumeData.extractedData.education[0] && resumeData.extractedData.education[0].length > 300) ? (
-                                <p className="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded">⚠️ Education could not be properly parsed</p>
-                              ) : null}
-                            </div>
-                          ) : (
-                            <p className="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded">⚠️ No education detected</p>
-                          )}
-                        </div>
-
-                        {/* Achievements */}
-                        {resumeData.extractedData?.achievements && resumeData.extractedData.achievements.length > 0 && (
-                          <div>
-                            <h5 className="text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-                              <span className="w-2 h-2 bg-orange-500 rounded-full" />
-                              Achievements ({resumeData.extractedData.achievements.length} found)
-                            </h5>
-                            <div className="flex flex-wrap gap-1.5">
-                              {resumeData.extractedData.achievements.slice(0, 4).map((ach, idx) => (
-                                // eslint-disable-next-line react/no-array-index-key
-                                <Badge key={`ach-${idx}`} variant="secondary" className="text-xs bg-orange-50 text-orange-700 border border-orange-200">
-                                  {ach}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                      
-                      {/* Parsing Confidence */}
-                      {resumeData.confidence?.overall !== undefined && (
-                        <div className="mt-3 pt-3 border-t flex items-center justify-between">
-                          <span className="text-xs text-gray-500">Parsing confidence:</span>
-                          <div className="flex items-center gap-2">
-                            <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
-                              <div 
-                                className={`h-full rounded-full ${
-                                  resumeData.confidence.overall >= 0.7 ? 'bg-green-500' : 
-                                  resumeData.confidence.overall >= 0.4 ? 'bg-yellow-500' : 'bg-red-500'
-                                }`}
-                                style={{ width: `${Math.round(resumeData.confidence.overall * 100)}%` }}
-                              />
-                            </div>
-                            <span className={`text-xs font-medium ${
-                              resumeData.confidence.overall >= 0.7 ? 'text-green-600' : 
-                              resumeData.confidence.overall >= 0.4 ? 'text-yellow-600' : 'text-red-600'
-                            }`}>
-                              {Math.round(resumeData.confidence.overall * 100)}%
-                            </span>
-                          </div>
-                        </div>
-                      )}
+                    {/* Simple confirmation - no parsing details */}
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4 max-w-md mx-auto mb-6">
+                      <p className="text-green-700 text-sm">
+                        ✓ Your resume has been processed and is ready for AI analysis
+                      </p>
                     </div>
                     
                     {/* Clear & Upload New Resume Button */}
-                    <div className="mt-4">
-                      <Button
-                        variant="outline"
-                        className="text-purple-600 border-purple-600 hover:bg-purple-50"
-                        onClick={resetResumeUpload}
-                      >
-                        Clear & Upload New Resume
-                      </Button>
-                    </div>
+                    <Button
+                      variant="outline"
+                      className="text-purple-600 border-purple-600 hover:bg-purple-50"
+                      onClick={resetResumeUpload}
+                    >
+                      Upload Different Resume
+                    </Button>
                   </div>
                 ) : (
                   <div>
@@ -800,279 +615,14 @@ return /@|gmail|linkedin|github\.com\/(?!.*\/)|phone|\+\d{2}|summary|objective/i
                     Back
                   </Button>
                   <Button
-                    disabled={!targetRole}
+                    disabled={!targetRole || isAnalyzing || isLoading}
                     className="bg-purple-600 hover:bg-purple-700"
-                    onClick={() => setCurrentStep(3)}
-                  >
-                    Next: Review & Analyze
-                    <ArrowRight className="h-4 w-4 ml-2" />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        )}
-
-        {/* Step 3: Review & Analysis */}
-        {currentStep === 3 && (
-          <div className="space-y-8">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Brain className="h-6 w-6 text-purple-600" />
-                  Review & Start Analysis
-                </CardTitle>
-                <CardDescription>
-                  Review your information and start the AI analysis to predict your future career path.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {/* Essential Summary - Clean and Simple */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-400">
-                    <h4 className="font-medium text-gray-900 mb-3 flex items-center gap-2">
-                      <FileText className="h-4 w-4 text-blue-600" />
-                      Resume File
-                    </h4>
-                    <div className="space-y-2 text-sm text-gray-600">
-                      <div className="flex justify-between">
-                        <span>• File:</span>
-                        <span className="font-medium">{resumeData?.file.name}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>• Size:</span>
-                        <span className="font-medium">{resumeData?.file.size ? (resumeData.file.size / 1024 / 1024).toFixed(2) : '0.00'} MB</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span>• Status:</span>
-                        <Badge className="bg-green-100 text-green-800 text-xs">Ready</Badge>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-purple-400">
-                    <h4 className="font-medium text-gray-900 mb-3 flex items-center gap-2">
-                      <Target className="h-4 w-4 text-purple-600" />
-                      Analysis Goals
-                    </h4>
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <div className="flex justify-between">
-                        <span>• Target Role:</span>
-                        <span className="font-medium text-purple-600">{targetRole}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>• Time Frame:</span>
-                        <span className="font-medium">{timeGoal} days</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>• Interview Data:</span>
-                        <span className="text-orange-600 text-xs">Auto-fetched</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>• Platform Activity:</span>
-                        <span className="text-blue-600 text-xs">Analyzed</span>
-                      </div>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* DETAILED EXTRACTED DATA - Step 3 Review */}
-                {resumeData && (
-                  <div className="bg-white border-2 border-gray-200 rounded-lg p-5 mb-6">
-                    <h4 className="font-semibold text-gray-800 mb-4 flex items-center gap-2 text-base">
-                      <FileText className="h-5 w-5 text-purple-600" />
-                      Extracted Resume Data Summary
-                    </h4>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {/* Skills */}
-                      <div className="bg-blue-50 p-3 rounded-lg border border-blue-100">
-                        <h5 className="text-sm font-semibold text-blue-800 mb-2 flex items-center justify-between">
-                          <span>🛠️ Skills</span>
-                          <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-                            {resumeData.extractedData?.skills?.length || 0} found
-                          </Badge>
-                        </h5>
-                        {resumeData.extractedData?.skills && resumeData.extractedData.skills.length > 0 ? (
-                          <div className="flex flex-wrap gap-1">
-                            {resumeData.extractedData.skills.slice(0, 8).map((skill, idx) => (
-                              // eslint-disable-next-line react/no-array-index-key
-                              <span key={`review-skill-${skill}-${idx}`} className="text-xs bg-white px-2 py-0.5 rounded border text-blue-700">
-                                {skill}
-                              </span>
-                            ))}
-                            {resumeData.extractedData.skills.length > 8 && (
-                              <span className="text-xs text-blue-600">+{resumeData.extractedData.skills.length - 8} more</span>
-                            )}
-                          </div>
-                        ) : (
-                          <p className="text-xs text-red-600">❌ No skills detected in resume</p>
-                        )}
-                      </div>
-
-                      {/* Experience */}
-                      <div className="bg-green-50 p-3 rounded-lg border border-green-100">
-                        <h5 className="text-sm font-semibold text-green-800 mb-2 flex items-center justify-between">
-                          <span>💼 Experience</span>
-                          <Badge variant="secondary" className="bg-green-100 text-green-700">
-                            {resumeData.extractedData?.experience?.length || 0} positions
-                          </Badge>
-                        </h5>
-                        {resumeData.extractedData?.experience && resumeData.extractedData.experience.length > 0 ? (
-                          <div className="space-y-1">
-                            {resumeData.extractedData.experience.slice(0, 2).map((exp, idx) => (
-                              // eslint-disable-next-line react/no-array-index-key
-                              <p key={`review-exp-${idx}`} className="text-xs text-green-700 truncate">
-                                • {exp}
-                              </p>
-                            ))}
-                          </div>
-                        ) : (
-                          <p className="text-xs text-red-600">❌ No experience detected</p>
-                        )}
-                      </div>
-
-                      {/* Projects */}
-                      <div className="bg-purple-50 p-3 rounded-lg border border-purple-100">
-                        <h5 className="text-sm font-semibold text-purple-800 mb-2 flex items-center justify-between">
-                          <span>🚀 Projects</span>
-                          <Badge variant="secondary" className="bg-purple-100 text-purple-700">
-                            {resumeData.extractedData?.projects?.length || 0} found
-                          </Badge>
-                        </h5>
-                        {resumeData.extractedData?.projects && resumeData.extractedData.projects.length > 0 ? (
-                          <div className="space-y-1">
-                            {resumeData.extractedData.projects.slice(0, 2).map((proj, idx) => (
-                              // eslint-disable-next-line react/no-array-index-key
-                              <p key={`review-proj-${idx}`} className="text-xs text-purple-700 truncate">
-                                • {proj.split(':')[0]}
-                              </p>
-                            ))}
-                          </div>
-                        ) : (
-                          <p className="text-xs text-red-600">❌ No projects detected</p>
-                        )}
-                      </div>
-
-                      {/* Education */}
-                      <div className="bg-yellow-50 p-3 rounded-lg border border-yellow-100">
-                        <h5 className="text-sm font-semibold text-yellow-800 mb-2 flex items-center justify-between">
-                          <span>🎓 Education</span>
-                          <Badge variant="secondary" className="bg-yellow-100 text-yellow-700">
-                            {resumeData.extractedData?.education?.length || 0} entries
-                          </Badge>
-                        </h5>
-                        {resumeData.extractedData?.education && resumeData.extractedData.education.length > 0 ? (
-                          <div className="space-y-1">
-                            {resumeData.extractedData.education.slice(0, 2).map((edu, idx) => (
-                              // eslint-disable-next-line react/no-array-index-key
-                              <p key={`review-edu-${idx}`} className="text-xs text-yellow-700 truncate">
-                                • {edu}
-                              </p>
-                            ))}
-                          </div>
-                        ) : (
-                          <p className="text-xs text-red-600">❌ No education detected</p>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Parsing Confidence Bar */}
-                    {resumeData.confidence?.overall !== undefined && (
-                      <div className="mt-4 pt-3 border-t flex items-center gap-3">
-                        <span className="text-sm text-gray-600">Parsing Accuracy:</span>
-                        <div className="flex-1 h-3 bg-gray-200 rounded-full overflow-hidden">
-                          <div 
-                            className={`h-full rounded-full transition-all ${
-                              resumeData.confidence.overall >= 0.7 ? 'bg-green-500' : 
-                              resumeData.confidence.overall >= 0.4 ? 'bg-yellow-500' : 'bg-red-500'
-                            }`}
-                            style={{ width: `${Math.round(resumeData.confidence.overall * 100)}%` }}
-                          />
-                        </div>
-                        <span className={`text-sm font-bold ${
-                          resumeData.confidence.overall >= 0.7 ? 'text-green-600' : 
-                          resumeData.confidence.overall >= 0.4 ? 'text-yellow-600' : 'text-red-600'
-                        }`}>
-                          {Math.round(resumeData.confidence.overall * 100)}%
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Warning for low data */}
-                {resumeData && (
-                  (resumeData.extractedData?.skills?.length === 0 || 
-                   resumeData.extractedData?.experience?.length === 0) && (
-                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-                      <div className="flex items-start gap-3">
-                        <AlertTriangle className="h-5 w-5 text-yellow-600 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <h4 className="font-medium text-yellow-800 mb-1">Limited Data Warning</h4>
-                          <p className="text-sm text-yellow-700">
-                            Some sections could not be extracted from your resume. The AI analysis will still work but may be less accurate. For best results, ensure your resume has clear Skills and Experience sections.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                )}
-
-                {/* Analysis Preview - Clean and Simple */}
-                <div className="bg-blue-50 p-6 rounded-lg mb-8">
-                  <h4 className="font-medium text-blue-900 mb-4 flex items-center gap-2">
-                    <Sparkles className="h-5 w-5" />
-                    What AI Will Analyze
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <h5 className="text-sm font-medium text-blue-800 mb-2">Analysis Includes</h5>
-                      <div className="space-y-2 text-sm text-blue-700">
-                        <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 bg-green-500 rounded-full" />
-                          <span>Your resume content and skills</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 bg-blue-500 rounded-full" />
-                          <span>Market trends for {targetRole}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 bg-purple-500 rounded-full" />
-                          <span>Personalized {timeGoal}-day growth roadmap</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <h5 className="text-sm font-medium text-blue-800 mb-2">You&#39;ll Get</h5>
-                      <div className="space-y-1 text-sm text-blue-700">
-                        <div>📈 Future skills progression</div>
-                        <div>🚀 Project recommendations</div>
-                        <div>💰 Salary projection range</div>
-                        <div>🗺️ Learning roadmap</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex justify-between">
-                  <Button
-                    variant="outline"
-                    disabled={isAnalyzing}
-                    onClick={() => setCurrentStep(2)}
-                  >
-                    <ArrowLeft className="h-4 w-4 mr-2" />
-                    Back
-                  </Button>
-                  <Button
-                    disabled={isAnalyzing || isLoading}
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-8"
                     onClick={handleSubmit}
                   >
-                    {isAnalyzing ? (
+                    {isAnalyzing || isLoading ? (
                       <>
                         <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                        Analyzing Future...
+                        Analyzing...
                       </>
                     ) : (
                       <>

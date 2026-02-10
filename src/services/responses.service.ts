@@ -10,8 +10,25 @@ const createResponse = async (payload: any) => {
 
   if (error) {
     console.log(error);
-
     return [];
+  }
+
+  // Update response_count in interview table
+  if (data[0]?.id && payload.interview_id) {
+    try {
+      const { count } = await supabase
+        .from("response")
+        .select("*", { count: 'exact', head: true })
+        .eq("interview_id", payload.interview_id)
+        .eq("is_ended", true);
+      
+      await supabase
+        .from("interview")
+        .update({ response_count: count || 0 })
+        .eq("id", payload.interview_id);
+    } catch (updateError) {
+      console.log("Error updating response count:", updateError);
+    }
   }
 
   return data[0]?.id;
@@ -24,8 +41,34 @@ const saveResponse = async (payload: any, call_id: string) => {
     .eq("call_id", call_id);
   if (error) {
     console.log(error);
-
     return [];
+  }
+
+  // If response is being marked as ended, update response_count in interview table
+  if (payload.is_ended) {
+    try {
+      // Get interview_id from the response
+      const { data: responseData } = await supabase
+        .from("response")
+        .select("interview_id")
+        .eq("call_id", call_id)
+        .single();
+      
+      if (responseData?.interview_id) {
+        const { count } = await supabase
+          .from("response")
+          .select("*", { count: 'exact', head: true })
+          .eq("interview_id", responseData.interview_id)
+          .eq("is_ended", true);
+        
+        await supabase
+          .from("interview")
+          .update({ response_count: count || 0 })
+          .eq("id", responseData.interview_id);
+      }
+    } catch (updateError) {
+      console.log("Error updating response count:", updateError);
+    }
   }
 
   return data;
@@ -53,15 +96,27 @@ const getResponseCountByOrganizationId = async (
   organizationId: string,
 ): Promise<number> => {
   try {
-    const { count, error } = await supabase
+    // Get all interviews for this organization
+    const { data: interviews, error: interviewError } = await supabase
       .from("interview")
-      .select("response(id)", { count: "exact", head: true }) // join + count
+      .select("id")
       .eq("organization_id", organizationId);
+
+    if (interviewError || !interviews) {
+      console.log("Error fetching interviews:", interviewError);
+      return 0;
+    }
+
+    // Count all ended responses for these interviews
+    const { count, error } = await supabase
+      .from("response")
+      .select("*", { count: "exact", head: true })
+      .in("interview_id", interviews.map(interview => interview.id))
+      .eq("is_ended", true);
 
     return count ?? 0;
   } catch (error) {
     console.log(error);
-
     return 0;
   }
 };
@@ -97,14 +152,38 @@ const getResponseByCallId = async (id: string) => {
 };
 
 const deleteResponse = async (id: string) => {
+  // Get interview_id before deleting
+  const { data: responseData } = await supabase
+    .from("response")
+    .select("interview_id")
+    .eq("call_id", id)
+    .single();
+
   const { error, data } = await supabase
     .from("response")
     .delete()
     .eq("call_id", id);
   if (error) {
     console.log(error);
-
     return [];
+  }
+
+  // Update response_count in interview table after deletion
+  if (responseData?.interview_id) {
+    try {
+      const { count } = await supabase
+        .from("response")
+        .select("*", { count: 'exact', head: true })
+        .eq("interview_id", responseData.interview_id)
+        .eq("is_ended", true);
+      
+      await supabase
+        .from("interview")
+        .update({ response_count: count || 0 })
+        .eq("id", responseData.interview_id);
+    } catch (updateError) {
+      console.log("Error updating response count after deletion:", updateError);
+    }
   }
 
   return data;
@@ -124,6 +203,26 @@ const updateResponse = async (payload: any, call_id: string) => {
   return data;
 };
 
+const syncResponseCount = async (interviewId: string) => {
+  try {
+    const { count } = await supabase
+      .from("response")
+      .select("*", { count: 'exact', head: true })
+      .eq("interview_id", interviewId)
+      .eq("is_ended", true);
+    
+    await supabase
+      .from("interview")
+      .update({ response_count: count || 0 })
+      .eq("id", interviewId);
+    
+    return count || 0;
+  } catch (error) {
+    console.log("Error syncing response count:", error);
+    return 0;
+  }
+};
+
 export const ResponseService = {
   createResponse,
   saveResponse,
@@ -133,4 +232,5 @@ export const ResponseService = {
   deleteResponse,
   getResponseCountByOrganizationId,
   getAllEmails: getAllEmailAddressesForInterview,
+  syncResponseCount,
 };

@@ -21,6 +21,16 @@ const DESCRIPTIONS = {
   'WIPRO': 'Indian multinational corporation providing IT, consulting and business process services.'
 };
 
+// Map company slugs to actual logo filenames in /public/company-logos/
+const COMPANY_LOGO_MAP: Record<string, string> = {
+  'accenture': 'ACN_BIG.png',
+  'capgemini': 'CAP.PA_BIG.png', 
+  'cognizant': 'CTSH_BIG.png',
+  'infosys': 'INFY_BIG.png',
+  'tcs': 'TCS.NS_BIG.png',
+  'wipro': 'WIT.png',
+};
+
 export async function GET(
   request: Request
 ) {
@@ -73,11 +83,14 @@ export async function GET(
     }
 
     // Return company data
+    const logoFile = COMPANY_LOGO_MAP[normalizedSlug];
+    const logoPath = logoFile ? `/company-logos/${logoFile}` : `/company-logos/${normalizedSlug}.png`;
+    
     const companyData = {
       name: folderName,
       slug: normalizedSlug,
       description: DESCRIPTIONS[folderName as keyof typeof DESCRIPTIONS],
-      logoPath: `/company-logos/${normalizedSlug}.png`,
+      logoPath: logoPath,
       pdfs: pdfFiles,
       totalResources: pdfFiles.length
     };

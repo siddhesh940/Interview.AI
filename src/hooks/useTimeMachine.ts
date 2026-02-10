@@ -61,15 +61,26 @@ export const useTimeMachine = () => {
               overall: data.confidence.overall || 0,
               skills: data.confidence.skills || 0,
               experience: data.confidence.experience || 0,
-              projects: data.confidence.projects || 0
+              projects: data.confidence.projects || 0,
+              education: data.confidence.education || 0
             }
           : {
               overall: typeof data.confidence === 'number' ? data.confidence : 0,
               skills: 0,
               experience: 0,
-              projects: 0
+              projects: 0,
+              education: 0
             },
-        structuredData: data.structuredData || undefined
+        structuredData: data.structuredData || undefined,
+        // V3 Enhanced Parsing Data
+        v3ParsingData: data.v3ParsingData ? {
+          qualityCheck: data.v3ParsingData.qualityCheck,
+          sectionConfidence: data.v3ParsingData.sectionConfidence,
+          overallConfidence: data.v3ParsingData.overallConfidence,
+          confidenceMessages: data.v3ParsingData.confidenceMessages,
+          suggestions: data.v3ParsingData.suggestions,
+          warnings: data.v3ParsingData.qualityCheck?.issues || []
+        } : undefined
       };
 
       setResumeUpload(resumeData);

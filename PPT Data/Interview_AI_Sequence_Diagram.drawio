@@ -1,0 +1,397 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.6">
+  <diagram id="interview-sequence" name="Interview.ai Sequence Diagram">
+    <mxGraphModel dx="786" dy="451" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user_box" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=11;fontStyle=0;verticalAlign=middle;strokeWidth=1.5;" value=": User" vertex="1">
+          <mxGeometry height="40" width="80" x="80" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend_box" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=11;fontStyle=0;verticalAlign=middle;strokeWidth=1.5;" value=": Frontend" vertex="1">
+          <mxGeometry height="40" width="80" x="220" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="api_box" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=11;fontStyle=0;verticalAlign=middle;strokeWidth=1.5;" value=": API Routes" vertex="1">
+          <mxGeometry height="40" width="80" x="360" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ai_box" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=11;fontStyle=0;verticalAlign=middle;strokeWidth=1.5;" value=": AI Engine" vertex="1">
+          <mxGeometry height="40" width="80" x="500" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="analysis_box" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=11;fontStyle=0;verticalAlign=middle;strokeWidth=1.5;" value=": Analysis&#xa;Service" vertex="1">
+          <mxGeometry height="40" width="80" x="640" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="db_box" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=11;fontStyle=0;verticalAlign=middle;strokeWidth=1.5;" value=": Database" vertex="1">
+          <mxGeometry height="40" width="80" x="780" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="user_line" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=5 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="70" as="sourcePoint" />
+            <mxPoint x="120" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="frontend_line" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=5 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="70" as="sourcePoint" />
+            <mxPoint x="260" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="api_line" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=5 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="70" as="sourcePoint" />
+            <mxPoint x="400" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ai_line" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=5 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="70" as="sourcePoint" />
+            <mxPoint x="540" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="analysis_line" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=5 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="680" y="70" as="sourcePoint" />
+            <mxPoint x="680" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="db_line" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=5 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="70" as="sourcePoint" />
+            <mxPoint x="820" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reg_act" edge="1" parent="1" style="endArrow=classic;html=1;strokeColor=#000000;strokeWidth=1;rounded=0;exitX=1;exitY=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="90" />
+              <mxPoint x="150" y="108" />
+            </Array>
+            <mxPoint x="120" y="90" as="sourcePoint" />
+            <mxPoint x="120" y="108" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reg_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Register ()" vertex="1">
+          <mxGeometry height="20" width="60" x="60" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_reg_db" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="122" y="113" as="sourcePoint" />
+            <mxPoint x="820" y="113" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_reg_db_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="insertUser ()" vertex="1">
+          <mxGeometry height="20" width="80" x="420" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="reg_db_note" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#000000;" value="Store user&#xa;details" vertex="1">
+          <mxGeometry height="30" width="60" x="825" y="101" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_reg_ret" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="129" as="sourcePoint" />
+            <mxPoint x="124" y="129" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_reg_ret_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Return ()" vertex="1">
+          <mxGeometry height="20" width="60" x="430" y="111" as="geometry" />
+        </mxCell>
+        <mxCell id="login_act" edge="1" parent="1" style="endArrow=classic;html=1;strokeColor=#000000;strokeWidth=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="145" />
+              <mxPoint x="150" y="165" />
+            </Array>
+            <mxPoint x="120" y="145" as="sourcePoint" />
+            <mxPoint x="120" y="165" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="login_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="login" vertex="1">
+          <mxGeometry height="20" width="40" x="75" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_login_api" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="172" as="sourcePoint" />
+            <mxPoint x="400" y="172" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_login_api_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="validateUser ()" vertex="1">
+          <mxGeometry height="20" width="90" x="215" y="148" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_login_db" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="406" y="181" as="sourcePoint" />
+            <mxPoint x="820" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_login_db_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="checkCredentials ()" vertex="1">
+          <mxGeometry height="20" width="110" x="550" y="162" as="geometry" />
+        </mxCell>
+        <mxCell id="login_db_note" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#000000;" value="Is valid" vertex="1">
+          <mxGeometry height="20" width="50" x="830" y="181" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_login_ret" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="206" as="sourcePoint" />
+            <mxPoint x="123" y="206" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_login_ret_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Return ()" vertex="1">
+          <mxGeometry height="20" width="60" x="430" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_select_ai" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="225" as="sourcePoint" />
+            <mxPoint x="254" y="225" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_select_ai_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Select AI Interviewer ()" vertex="1">
+          <mxGeometry height="20" width="130" x="125" y="208" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_get_int" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="266" y="245" as="sourcePoint" />
+            <mxPoint x="394" y="245" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_get_int_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="getInterviewers ()" vertex="1">
+          <mxGeometry height="20" width="100" x="280" y="228" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_fetch_int" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="406" y="265" as="sourcePoint" />
+            <mxPoint x="814" y="265" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_fetch_int_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="fetchInterviewers ()" vertex="1">
+          <mxGeometry height="20" width="110" x="550" y="248" as="geometry" />
+        </mxCell>
+        <mxCell id="fetch_int_note" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#000000;" value="Get all&#xa;interviewers" vertex="1">
+          <mxGeometry height="30" width="70" x="828" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_ret_int" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="814" y="290" as="sourcePoint" />
+            <mxPoint x="266" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_ret_int_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Return list of interviewers ()" vertex="1">
+          <mxGeometry height="20" width="160" x="440" y="273" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_start_int" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="320" as="sourcePoint" />
+            <mxPoint x="254" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_start_int_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Start Interview ()" vertex="1">
+          <mxGeometry height="20" width="100" x="135" y="303" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_init_call" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="266" y="340" as="sourcePoint" />
+            <mxPoint x="534" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_init_call_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="initiateCall ()" vertex="1">
+          <mxGeometry height="20" width="80" x="360" y="323" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_gen_q" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="546" y="360" as="sourcePoint" />
+            <mxPoint x="406" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_gen_q_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="generateQuestions ()" vertex="1">
+          <mxGeometry height="20" width="120" x="415" y="343" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_ret_q" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="406" y="380" as="sourcePoint" />
+            <mxPoint x="534" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_ret_q_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Return questions" vertex="1">
+          <mxGeometry height="20" width="100" x="420" y="363" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_start_rec" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="534" y="400" as="sourcePoint" />
+            <mxPoint x="266" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_start_rec_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Start video/audio recording" vertex="1">
+          <mxGeometry height="20" width="150" x="330" y="383" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_answer" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="430" as="sourcePoint" />
+            <mxPoint x="534" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_answer_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Answer questions with video/audio ()" vertex="1">
+          <mxGeometry height="20" width="200" x="230" y="413" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_act" edge="1" parent="1" style="endArrow=classic;html=1;strokeColor=#000000;strokeWidth=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="445" />
+              <mxPoint x="580" y="470" />
+            </Array>
+            <mxPoint x="540" y="445" as="sourcePoint" />
+            <mxPoint x="540" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="proc_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#000000;" value="Process&#xa;response ()" vertex="1">
+          <mxGeometry height="30" width="55" x="585" y="448" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_facial" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="552" y="485" as="sourcePoint" />
+            <mxPoint x="674" y="485" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_facial_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="analyzeFacial ()" vertex="1">
+          <mxGeometry height="20" width="90" x="570" y="468" as="geometry" />
+        </mxCell>
+        <mxCell id="facial_act" edge="1" parent="1" style="endArrow=classic;html=1;strokeColor=#000000;strokeWidth=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="500" />
+              <mxPoint x="720" y="525" />
+            </Array>
+            <mxPoint x="680" y="500" as="sourcePoint" />
+            <mxPoint x="680" y="525" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="facial_note" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#000000;" value="Detect emotions,&#xa;confidence, eye contact" vertex="1">
+          <mxGeometry height="30" width="115" x="725" y="503" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_ret_facial" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="674" y="540" as="sourcePoint" />
+            <mxPoint x="552" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_ret_facial_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Return facial analysis" vertex="1">
+          <mxGeometry height="20" width="110" x="565" y="523" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_eval" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="552" y="565" as="sourcePoint" />
+            <mxPoint x="674" y="565" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_eval_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="evaluateResponse ()" vertex="1">
+          <mxGeometry height="20" width="110" x="565" y="548" as="geometry" />
+        </mxCell>
+        <mxCell id="score_act" edge="1" parent="1" style="endArrow=classic;html=1;strokeColor=#000000;strokeWidth=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="580" />
+              <mxPoint x="720" y="605" />
+            </Array>
+            <mxPoint x="680" y="580" as="sourcePoint" />
+            <mxPoint x="680" y="605" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="score_note" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#000000;" value="AI scoring&#xa;algorithm" vertex="1">
+          <mxGeometry height="30" width="60" x="725" y="583" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_ret_score" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="674" y="620" as="sourcePoint" />
+            <mxPoint x="552" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_ret_score_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Return score and feedback" vertex="1">
+          <mxGeometry height="20" width="140" x="560" y="603" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_store" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="546" y="650" as="sourcePoint" />
+            <mxPoint x="814" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_store_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="storeResponse ()" vertex="1">
+          <mxGeometry height="20" width="100" x="635" y="633" as="geometry" />
+        </mxCell>
+        <mxCell id="store_note" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#000000;" value="Save response,&#xa;analytics, transcript" vertex="1">
+          <mxGeometry height="30" width="95" x="830" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_ret_store" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="814" y="680" as="sourcePoint" />
+            <mxPoint x="546" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_ret_store_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Return ()" vertex="1">
+          <mxGeometry height="20" width="60" x="640" y="663" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_gen_fb" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="710" as="sourcePoint" />
+            <mxPoint x="406" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_gen_fb_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="generateFeedback ()" vertex="1">
+          <mxGeometry height="20" width="120" x="415" y="693" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_ret_fb" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="406" y="735" as="sourcePoint" />
+            <mxPoint x="534" y="735" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_ret_fb_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Return structured feedback" vertex="1">
+          <mxGeometry height="20" width="145" x="415" y="718" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_ret_front" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="534" y="760" as="sourcePoint" />
+            <mxPoint x="266" y="760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_ret_front_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Return ()" vertex="1">
+          <mxGeometry height="20" width="60" x="370" y="743" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_update_an" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="266" y="790" as="sourcePoint" />
+            <mxPoint x="814" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_update_an_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="updateAnalytics ()" vertex="1">
+          <mxGeometry height="20" width="110" x="480" y="773" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_ret_an" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="814" y="815" as="sourcePoint" />
+            <mxPoint x="266" y="815" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_ret_an_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Return ()" vertex="1">
+          <mxGeometry height="20" width="60" x="500" y="798" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_display" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="254" y="845" as="sourcePoint" />
+            <mxPoint x="126" y="845" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_display_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" value="Display results and feedback" vertex="1">
+          <mxGeometry height="20" width="155" x="115" y="822" as="geometry" />
+        </mxCell>
+        <mxCell id="view_act" edge="1" parent="1" style="endArrow=classic;html=1;strokeColor=#000000;strokeWidth=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="155" y="865" />
+              <mxPoint x="155" y="890" />
+            </Array>
+            <mxPoint x="120" y="865" as="sourcePoint" />
+            <mxPoint x="120" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="view_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#000000;" value="View performance&#xa;analytics" vertex="1">
+          <mxGeometry height="30" width="90" x="30" y="865" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

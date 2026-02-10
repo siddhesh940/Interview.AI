@@ -1,0 +1,166 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" version="22.1.0">
+  <diagram name="Interview.ai Flowchart" id="flowchart-main">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- START - Rounded Rectangle (Stadium Shape) -->
+        <mxCell id="start" value="START" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="30" width="160" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from START to DISPLAY PAGE -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="start" target="displayPage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- DISPLAY PAGE - Rounded Rectangle -->
+        <mxCell id="displayPage" value="DISPLAY PAGE" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="110" width="160" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from DISPLAY PAGE to LOGIN -->
+        <mxCell id="arrow2a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="displayPage" target="login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from DISPLAY PAGE to SIGNUP -->
+        <mxCell id="arrow2b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="displayPage" target="signup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- LOGIN - Rectangle -->
+        <mxCell id="login" value="LOGIN" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="50" y="190" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- SIGNUP - Rectangle -->
+        <mxCell id="signup" value="SIGNUP" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="390" y="190" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from LOGIN to CHECK DATABASE -->
+        <mxCell id="arrow3a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="login" target="checkDb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from SIGNUP to CHECK DATABASE -->
+        <mxCell id="arrow3b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="signup" target="checkDb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- CHECK DATABASE - Parallelogram style (using rounded rect) -->
+        <mxCell id="checkDb" value="CHECK&#xa;DATABASE" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="190" y="280" width="180" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from CHECK DATABASE to DASHBOARD -->
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="checkDb" target="dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- DASHBOARD / SELECT FEATURE - Rounded Rectangle -->
+        <mxCell id="dashboard" value="SELECT FEATURE" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="195" y="380" width="170" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from DASHBOARD to AI INTERVIEW -->
+        <mxCell id="arrow5a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="dashboard" target="aiInterview">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from DASHBOARD to PRACTICE -->
+        <mxCell id="arrow5b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="dashboard" target="practice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from DASHBOARD to RESUME -->
+        <mxCell id="arrow5c" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="dashboard" target="resume">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- AI INTERVIEW - Rectangle -->
+        <mxCell id="aiInterview" value="AI INTERVIEW" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="30" y="470" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- PRACTICE MODULE - Rectangle -->
+        <mxCell id="practice" value="PRACTICE&#xa;MODULE" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="210" y="470" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- RESUME BUILDER - Rectangle -->
+        <mxCell id="resume" value="RESUME&#xa;BUILDER" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="390" y="470" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- HR INTERVIEW COACH - Rectangle -->
+        <mxCell id="hrCoach" value="HR INTERVIEW&#xa;COACH" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#E1BEE7;strokeColor=#9C27B0;" vertex="1" parent="1">
+          <mxGeometry x="530" y="380" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from DASHBOARD to HR COACH -->
+        <mxCell id="arrow5d" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="dashboard" target="hrCoach">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from HR COACH to GENERATE RESULT -->
+        <mxCell id="arrow6d" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="hrCoach" target="generateResult">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="550" />
+              <mxPoint x="400" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow from AI INTERVIEW to GENERATE RESULT -->
+        <mxCell id="arrow6a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="aiInterview" target="generateResult">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from PRACTICE to GENERATE RESULT -->
+        <mxCell id="arrow6b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="practice" target="generateResult">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from RESUME to GENERATE RESULT -->
+        <mxCell id="arrow6c" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="resume" target="generateResult">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- GENERATE RESULT / FEEDBACK - Parallelogram -->
+        <mxCell id="generateResult" value="GENERATE&#xa;RESULT / FEEDBACK" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="170" y="570" width="220" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from GENERATE RESULT to DISPLAY REPORT -->
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="generateResult" target="displayReport">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- DISPLAY REPORT - Rectangle -->
+        <mxCell id="displayReport" value="DISPLAY&#xa;REPORT" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="670" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow from DISPLAY REPORT to STOP -->
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="displayReport" target="stop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- STOP - Rounded Rectangle (Stadium Shape) -->
+        <mxCell id="stop" value="STOP" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;strokeWidth=2;fontSize=14;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="770" width="160" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Figure Caption -->
+        <mxCell id="caption" value="&lt;i&gt;Figure 6.2: Flow Chart&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="840" width="160" height="30" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -39,6 +39,14 @@ function InterviewCard({ name, interviewerId, id, url, readableSlug }: Props) {
     try {
       const responses = await ResponseService.getAllResponses(id);
       setResponseCount(responses.length);
+      
+      // Sync the response_count in interview table to match actual count
+      try {
+        await ResponseService.syncResponseCount(id);
+      } catch (syncError) {
+        console.log('Error syncing response count:', syncError);
+      }
+      
       if (responses.length > 0) {
         setIsFetching(true);
         for (const response of responses) {

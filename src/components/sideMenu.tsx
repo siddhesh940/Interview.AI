@@ -1,12 +1,13 @@
 "use client";
 
 import { useSidebar } from "@/contexts/SidebarContext";
-import { Bell, Brain, Briefcase, FileCheck, FileText, Gamepad2, MapPin, Mic, PlayCircle, Sparkles, Speech, Zap } from "lucide-react";
+import { Bell, Brain, Briefcase, Code, FileCheck, FileText, Gamepad2, MapPin, Mic, PlayCircle, Sparkles, Speech, UserCheck, Zap } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 function SideMenu() {
-  const pathname = usePathname();
+  const rawPathname = usePathname();
+  const pathname = rawPathname || '';
   const router = useRouter();
   const [unreadNotifications, setUnreadNotifications] = useState(0);
   const { isCollapsed } = useSidebar();
@@ -79,6 +80,22 @@ function SideMenu() {
           >
             <Mic className="font-thin mr-2" />
             <p className="font-medium">Soft Skills</p>
+          </div>
+
+          {/* ---- HR Interview Coach ---- */}
+          <div
+            className={`flex flex-row px-6 py-3 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer transition-colors ${
+              pathname.includes("/hr-interview-coach")
+                ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
+                : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
+            }`}
+            onClick={() => router.push("/hr-interview-coach")}
+          >
+            <UserCheck className="font-thin mr-2" />
+            <div className="flex flex-col">
+              <p className="font-medium">HR Interview Coach</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">HR Round Preparation</p>
+            </div>
           </div>
 
           {/* ---- Interview Resource Hub ---- */}
@@ -196,6 +213,22 @@ function SideMenu() {
             <div className="flex flex-col">
               <p className="font-medium">🕒 Time Machine</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">Future Self Predictor</p>
+            </div>
+          </div>
+
+          {/* ---- TechPrep Engine ---- */}
+          <div
+            className={`flex flex-row px-6 py-3 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer transition-colors ${
+              pathname.includes("/technical-practice")
+                ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
+                : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
+            }`}
+            onClick={() => router.push("/technical-practice")}
+          >
+            <Code className="font-thin mr-2" />
+            <div className="flex flex-col">
+              <p className="font-medium">💻 TechPrep Engine</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">Technical Interview Preparation</p>
             </div>
           </div>
 

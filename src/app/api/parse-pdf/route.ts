@@ -1,4 +1,6 @@
 import { convertToLegacyFormat, deterministicParser } from '@/lib/pdf-parser-deterministic';
+import { convertStrictToLegacyFormat, parseResumeStrict } from '@/lib/resume-parser-strict';
+import { convertToLegacyFormat as convertV3ToLegacy, parseResumeV3 } from '@/lib/resume-parser-v3';
 import { NextRequest, NextResponse } from 'next/server';
 import Tesseract from 'tesseract.js';
 
@@ -451,7 +453,6 @@ export async function POST(request: NextRequest) {
     const contentType = request.headers.get('content-type') || '';
     
     let extractionResult: ExtractionResult;
-    let fileName = 'unknown';
     
     // Handle JSON body (manual text input)
     if (contentType.includes('application/json')) {
@@ -469,7 +470,6 @@ export async function POST(request: NextRequest) {
       
       console.log(`🔍 Processing manual text input (${body.text.length} characters)`);
       const cleanedText = cleanExtractedText(body.text);
-      fileName = 'Manual Text Input';
       
       extractionResult = {
         text: cleanedText,
@@ -521,7 +521,6 @@ export async function POST(request: NextRequest) {
       }
 
       console.log(`🔍 Starting PDF extraction for: ${file.name} (${file.type})`);
-      fileName = file.name;
       
       // Multi-layer extraction pipeline
       extractionResult = await extractTextFromFile(file);
@@ -539,43 +538,155 @@ return createNonExtractableResponse(extractionResult.extractedChars, extractionR
     console.log(`📄 Extracted text: ${extractionResult.extractedChars} characters`);
     console.log(`📊 Extraction confidence: ${(extractionResult.extractionConfidence * 100).toFixed(1)}%`);
     
-    // Parse with DETERMINISTIC parser - same input = same output ALWAYS
+    // =========================================================================
+    // STRICT PARSER v4.0 - Section-based with FULL extraction
+    // Resume structure = truth. If section exists, extract ALL content.
+    // =========================================================================
+    console.log('🚀 Using STRICT Resume Parser v4.0...');
+    const strictResult = parseResumeStrict(extractionResult.text);
+    const strictParsed = convertStrictToLegacyFormat(strictResult);
+    
+    // Also run V3 parser for additional data extraction
+    console.log('🚀 Running Enhanced Resume Parser v3 for additional extraction...');
+    const v3Result = parseResumeV3(extractionResult.text);
+    const parsedResumeV3 = convertV3ToLegacy(v3Result);
+    
+    // Also run legacy parser for comparison (can be removed later)
     const rawResult = deterministicParser.parse(extractionResult.text);
     const parsedResume = convertToLegacyFormat(rawResult);
     
-    // Calculate combined confidence (extraction + parsing)
-    const parsingConfidence = parsedResume.confidence.overall;
+    console.log(`📊 STRICT Initial Results: ${strictResult.accuracy}% accuracy`);
+    console.log(`📊 Initial Sections Found: Skills(${strictResult.sections.skills.sectionExists}), Experience(${strictResult.sections.experience.sectionExists}), Education(${strictResult.sections.education.sectionExists}), Projects(${strictResult.sections.projects.sectionExists})`);
+    console.log(`🔑 Parse ID: ${strictResult.parseId}`);
+
+    // USE STRICT PARSER DATA (with V3 as fallback for empty sections)
+    // Also UPDATE strictResult section status when V3 finds data that strict parser missed
+    
+    // CONTACT INFO FILTER - Don't let contact info leak into other sections
+    // ENHANCED: More aggressive patterns to catch all contact info variants
+    const isContactInfoLine = (text: string): boolean => {
+      if (!text || text.trim().length < 3) {return false;}
+      
+      const trimmed = text.trim();
+      const digitsOnly = trimmed.replace(/[^\d]/g, '');
+      
+      const patterns = [
+        /@[\w.-]+\.\w+/i,                          // Email
+        /\+\s*\d{1,4}/,                            // Country code like +91, +1
+        /linkedin\.com/i,
+        /github\.com(?!\/[\w-]+\/[\w-]+)/i,        // GitHub profile (not repo)
+        /\b(phone|mobile|email|contact|address)\s*[:]/i,
+        /^[A-Z][a-z]+\s+[A-Z][a-z]+\s*$/,          // Just a name (First Last)
+        /^[A-Z][a-z]+\s+[A-Z]?\s*(at|@)\s*/i,      // Name at Something (garbled)
+        /\bII\s*\+?\d/i,                           // Garbled "II +91" pattern
+        /\bat\s+II\b/i,                            // "at II" pattern
+        /\b(Mumbai|Delhi|Bangalore|Bengaluru|Hyderabad|Chennai|Kolkata|Pune|India|USA|UK|Dubai|Singapore)\b/i,
+      ];
+      
+      // Check patterns
+      if (patterns.some(p => p.test(trimmed))) {
+        return true;
+      }
+      
+      // Check if 10+ digits (phone number)
+      if (digitsOnly.length >= 10 && digitsOnly.length <= 15) {
+        return true;
+      }
+      
+      return false;
+    };
+
+    // Skills: Use strict parser, fallback to V3 if empty
+    let finalSkills = strictParsed.skills;
+    if (finalSkills.length === 0 && parsedResumeV3.extractedData.skills.length > 0) {
+      finalSkills = parsedResumeV3.extractedData.skills;
+      strictResult.sections.skills.sectionExists = true; // V3 found it!
+      console.log('📋 Using V3 skills as fallback - marking section as found');
+    }
+    
+    // Experience: Use strict parser, FILTER contact info from V3
+    let experienceStrings = strictParsed.experience;
+    if (experienceStrings.length === 0 && v3Result.experience.length > 0) {
+      const filteredExp = v3Result.experience.filter(exp => 
+        !isContactInfoLine(exp.title || '') && !isContactInfoLine(exp.company || '')
+      );
+      if (filteredExp.length > 0) {
+        experienceStrings = filteredExp.map(exp => 
+          `${exp.title}${exp.company ? ` at ${exp.company}` : ''}${exp.duration ? ` (${exp.duration})` : ''}`
+        );
+        strictResult.sections.experience.sectionExists = true;
+        console.log('📋 Using V3 experience as fallback - marking section as found');
+      }
+    }
+    // Also filter contact info from strict parser results AND the final strings
+    experienceStrings = experienceStrings.filter(e => !isContactInfoLine(e));
+    
+    // Projects: Use strict parser, FILTER contact info from V3
+    let projectStrings = strictParsed.projects;
+    if (projectStrings.length === 0 && v3Result.projects.length > 0) {
+      const filteredProj = v3Result.projects.filter(proj => 
+        !isContactInfoLine(proj.name || '') && !isContactInfoLine(proj.description || '')
+      );
+      if (filteredProj.length > 0) {
+        projectStrings = filteredProj.map(proj => 
+          `${proj.name}: ${proj.description || ''}`
+        );
+        strictResult.sections.projects.sectionExists = true;
+        console.log('📋 Using V3 projects as fallback - marking section as found');
+      }
+    }
+    // Also filter contact info from strict parser results
+    projectStrings = projectStrings.filter(p => !isContactInfoLine(p));
+    
+    // Education: Use strict parser, FILTER contact info from V3
+    let educationStrings = strictParsed.education;
+    if (educationStrings.length === 0 && v3Result.education.length > 0) {
+      const filteredEdu = v3Result.education.filter(edu => 
+        !isContactInfoLine(edu.degree || '') && !isContactInfoLine(edu.institution || '')
+      );
+      if (filteredEdu.length > 0) {
+        educationStrings = filteredEdu.map(edu => 
+          `${edu.degree}${edu.institution ? ` from ${edu.institution}` : ''}${edu.year ? ` (${edu.year})` : ''}`
+        );
+        strictResult.sections.education.sectionExists = true;
+        console.log('📋 Using V3 education as fallback - marking section as found');
+      }
+    }
+    // Also filter contact info from strict parser results
+    educationStrings = educationStrings.filter(e => !isContactInfoLine(e));
+    
+    // UPDATE section exists based on filtered results
+    if (experienceStrings.length === 0) {
+      strictResult.sections.experience.sectionExists = false;
+    }
+    if (projectStrings.length === 0) {
+      strictResult.sections.projects.sectionExists = false;
+    }
+    if (educationStrings.length === 0) {
+      strictResult.sections.education.sectionExists = false;
+    }
+    
+    // RECALCULATE accuracy after V3 fallback updates
+    const updatedAccuracy = 
+      (strictResult.sections.skills.sectionExists ? 30 : 0) +
+      (strictResult.sections.experience.sectionExists ? 30 : 0) +
+      (strictResult.sections.education.sectionExists ? 20 : 0) +
+      (strictResult.sections.projects.sectionExists ? 20 : 0);
+    strictResult.accuracy = updatedAccuracy;
+    
+    // USE UPDATED ACCURACY (based on sections found, not content length)
+    const parsingConfidence = strictResult.accuracy / 100;
     const combinedConfidence = Math.min(extractionResult.extractionConfidence, parsingConfidence);
     
-    console.log(`📊 Parsing Results: ${(parsingConfidence * 100).toFixed(1)}% confidence`);
-    console.log(`📊 Combined Confidence: ${(combinedConfidence * 100).toFixed(1)}%`);
-    console.log(`🔑 Parse ID: ${rawResult.parseId}`);
-
-    // Transform extracted data to match expected format
-    const experienceStrings = parsedResume.extractedData.experience.map(exp => 
-      `${exp.jobTitle} at ${exp.companyName} (${exp.startDate} - ${exp.endDate})`
-    );
-    
-    const projectStrings = parsedResume.extractedData.projects.map(proj => 
-      `${proj.name}: ${proj.description}`
-    );
-    
-    const educationStrings = parsedResume.extractedData.education.map(edu => 
-      `${edu.degree} from ${edu.institution} (${edu.year})`
-    );
+    console.log(`📊 UPDATED Parsing Results: ${strictResult.accuracy}% accuracy`);
+    console.log(`📊 Final Sections Found: Skills(${strictResult.sections.skills.sectionExists}), Experience(${strictResult.sections.experience.sectionExists}), Education(${strictResult.sections.education.sectionExists}), Projects(${strictResult.sections.projects.sectionExists})`);
 
     // Flatten skills for backward compatibility - DEDUPLICATED
-    const allSkillsRaw = [
-      ...parsedResume.extractedData.skills.technical,
-      ...parsedResume.extractedData.skills.languages,
-      ...parsedResume.extractedData.skills.frameworks,
-      ...parsedResume.extractedData.skills.databases,
-      ...parsedResume.extractedData.skills.tools
-    ];
+    const allSkillsRaw = finalSkills;
     
     // Remove duplicates case-insensitively, keeping the first occurrence
     const seenSkills = new Set<string>();
-    const allSkills = allSkillsRaw.filter(skill => {
+    const allSkills = allSkillsRaw.filter((skill: string) => {
       const normalizedSkill = skill.toLowerCase().trim();
       if (seenSkills.has(normalizedSkill)) {
         return false;
@@ -596,14 +707,25 @@ return createNonExtractableResponse(extractionResult.extractedChars, extractionR
       extractionMethod: extractionResult.extractionMethod || parsedResume.parseMethod,
       contact: parsedResume.extractedData.personalInfo,
       summary: parsedResume.extractedData.summary,
-      // Return confidence as OBJECT with overall, skills, experience, projects
+      // ADD extractedData OBJECT for frontend compatibility
+      extractedData: {
+        skills: allSkills,
+        experience: experienceStrings,
+        education: educationStrings,
+        projects: projectStrings,
+        achievements: parsedResume.extractedData.achievements.map(a => a.title),
+        contact: parsedResume.extractedData.personalInfo,
+        summary: parsedResume.extractedData.summary
+      },
+      // Return confidence as OBJECT - USE STRICT PARSER (1 if section exists, 0 if not)
       confidence: {
         overall: combinedConfidence,
         extraction: extractionResult.extractionConfidence,
         parsing: parsingConfidence,
-        skills: parsedResume.confidence.sections?.skills || 0,
-        experience: parsedResume.confidence.sections?.experience || 0,
-        projects: parsedResume.confidence.sections?.projects || 0
+        skills: strictResult.sections.skills.sectionExists ? 1 : 0,
+        experience: strictResult.sections.experience.sectionExists ? 1 : 0,
+        projects: strictResult.sections.projects.sectionExists ? 1 : 0,
+        education: strictResult.sections.education.sectionExists ? 1 : 0
       },
       warnings: parsedResume.warnings,
       // Extraction metadata for debugging
@@ -613,25 +735,87 @@ return createNonExtractableResponse(extractionResult.extractedChars, extractionR
         method: extractionResult.extractionMethod,
         isLikelyVectorized: extractionResult.isLikelyVectorized
       },
-      // Enhanced structured data with categorized skills
+      // Enhanced structured data with categorized skills - USE V3 DATA
       structuredData: {
-        experience: parsedResume.extractedData.experience,
-        projects: parsedResume.extractedData.projects,
-        education: parsedResume.extractedData.education,
-        skills: parsedResume.extractedData.skills,
+        experience: v3Result.experience.map(e => ({
+          jobTitle: e.title,
+          companyName: e.company || '',
+          startDate: e.startDate || '',
+          endDate: e.endDate || 'Present',
+          description: e.responsibilities?.join('; ') || '',
+          achievements: [],
+          technologies: []
+        })),
+        projects: v3Result.projects.map(p => ({
+          name: p.name,
+          description: p.description || '',
+          technologies: p.techStack || [],
+          link: p.link,
+          duration: ''
+        })),
+        education: v3Result.education.map(e => ({
+          degree: e.degree,
+          institution: e.institution || '',
+          year: e.year || '',
+          score: '',
+          field: e.field || ''
+        })),
+        skills: {
+          technical: parsedResumeV3.extractedData.skills,
+          languages: [],
+          frameworks: [],
+          databases: [],
+          tools: []
+        },
         personalInfo: parsedResume.extractedData.personalInfo,
         achievements: parsedResume.extractedData.achievements,
         certifications: parsedResume.extractedData.certifications
       },
-      // Parsing metadata with determinism info
+      // V3 Enhanced Parsing Metadata - USE STRICT PARSER CONFIDENCE MESSAGES
+      v3ParsingData: {
+        qualityCheck: v3Result.qualityCheck,
+        detectedSections: v3Result.detectedSections,
+        // USE STRICT PARSER SECTION CONFIDENCE (1 if exists, 0 if not)
+        sectionConfidence: {
+          skills: strictResult.sections.skills.sectionExists ? 1 : 0,
+          experience: strictResult.sections.experience.sectionExists ? 1 : 0,
+          education: strictResult.sections.education.sectionExists ? 1 : 0,
+          projects: strictResult.sections.projects.sectionExists ? 1 : 0
+        },
+        overallConfidence: strictResult.accuracy / 100,
+        // USE STRICT PARSER CONFIDENCE MESSAGES (no false warnings!)
+        confidenceMessages: strictParsed.v4ParsingData.confidenceMessages,
+        suggestions: strictResult.suggestions,
+        // Sections found status from strict parser
+        sectionsFound: strictParsed.v4ParsingData.sectionsFound,
+        sectionHeaders: strictParsed.v4ParsingData.sectionHeaders,
+        // Extracted data with confidence scores
+        skills: v3Result.skills,
+        experience: v3Result.experience,
+        education: v3Result.education,
+        projects: v3Result.projects
+      },
+      // STRICT PARSER v4.0 data
+      v4ParsingData: strictParsed.v4ParsingData,
+      // Legacy parsing metadata with determinism info
       parseMetadata: {
-        parseId: rawResult.parseId, // Same resume = same parseId
-        confidence: parsedResume.confidence,
-        sectionsDetected: parsedResume.sections.map(s => s.type),
-        missingSections: rawResult.missingSections,
-        sectionConfidence: parsedResume.sectionConfidence,
-        parseMethod: parsedResume.parseMethod,
-        warnings: parsedResume.warnings
+        parseId: strictResult.parseId, // Strict parser ID
+        confidence: {
+          overall: strictResult.accuracy / 100,
+          skills: strictResult.sections.skills.sectionExists ? 1 : 0,
+          experience: strictResult.sections.experience.sectionExists ? 1 : 0,
+          education: strictResult.sections.education.sectionExists ? 1 : 0,
+          projects: strictResult.sections.projects.sectionExists ? 1 : 0
+        },
+        sectionsDetected: Object.entries(strictResult.sections)
+          .filter(([_, s]) => s.sectionExists)
+          .map(([type, _]) => type),
+        missingSections: Object.entries(strictResult.sections)
+          .filter(([_, s]) => !s.sectionExists)
+          .map(([type, _]) => type),
+        accuracy: strictResult.accuracy,
+        parseMethod: 'strict-v4',
+        warnings: strictResult.warnings
       }
     });
 

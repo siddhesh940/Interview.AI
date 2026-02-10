@@ -1,0 +1,84 @@
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    subgraph USER_LAYER["USER LAYER"]
+        USER[Candidates / Students]
+    end
+
+    subgraph AUTH_LAYER["AUTHENTICATION"]
+        AUTH[Sign Up | Sign In | Session Management]
+    end
+
+    subgraph UI_LAYER["FRONTEND LAYER"]
+        direction LR
+        subgraph SIDEBAR["Sidebar Features"]
+            SF1[Interviews]
+            SF2[Interviewers]
+            SF3[Soft Skills]
+            SF4[Resource Hub]
+            SF5[Games]
+            SF6[Aptitude Arena]
+            SF7[Dream Company]
+            SF8[Placement Drives]
+            SF9[Resume Builder]
+            SF10[Skill Autofill]
+            SF11[Time Machine]
+        end
+        UI[Dashboard | Interview UI | Practice UI | Resume UI | Reports UI]
+    end
+
+    subgraph API_LAYER["API LAYER"]
+        API[REST APIs | WebSocket | Auth APIs | Interview APIs]
+    end
+
+    subgraph BACKEND_LAYER["BACKEND LAYER"]
+        B1[User Mgmt]
+        B2[Interview Mgmt]
+        B3[Interviewer Service]
+        B4[Resume Service]
+        B5[Aptitude Service]
+        B6[Soft Skills Service]
+        B7[Placement Service]
+        B8[Dream Company Service]
+        B9[Time Machine Service]
+        B10[Feedback Service]
+        B11[Analytics Service]
+        B12[Notification Service]
+    end
+
+    subgraph AI_LAYER["AI ENGINE"]
+        AI1[Resume Parsing]
+        AI2[Question Generation]
+        AI3[Answer Evaluation]
+        AI4[Confidence Scoring]
+        AI5[Performance Scoring]
+        AI6[Recommendation Engine]
+        AI7[NLP | Voice | Embedding]
+    end
+
+    subgraph DATA_LAYER["DATABASE LAYER"]
+        DB1[(User Profiles)]
+        DB2[(Resume Data)]
+        DB3[(Skills Map)]
+        DB4[(Questions Bank)]
+        DB5[(Responses)]
+        DB6[(Scores)]
+        DB7[(Progress)]
+        DB8[(Company Data)]
+    end
+
+    subgraph EXTERNAL["EXTERNAL SERVICES"]
+        EXT[Cloud Hosting | Supabase | AI APIs]
+    end
+
+    USER --> AUTH
+    AUTH --> UI_LAYER
+    SIDEBAR --> UI
+    UI --> API_LAYER
+    API_LAYER --> BACKEND_LAYER
+    BACKEND_LAYER --> AI_LAYER
+    AI_LAYER --> DATA_LAYER
+    DATA_LAYER -.->|Feedback Loop| AI_LAYER
+    AI_LAYER -.->|Recommendations| UI_LAYER
+    EXTERNAL -.-> UI_LAYER
+    EXTERNAL -.-> DATA_LAYER
+    EXTERNAL -.-> AI_LAYER

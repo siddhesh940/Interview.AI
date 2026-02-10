@@ -1,0 +1,310 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0" version="29.3.8">
+  <diagram name="Activity Diagram - Interview.ai" id="activity-diagram">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- LANE 1: LOGIN - Blue -->
+        <mxCell id="lane1" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0288D1;fontColor=#000000;fontSize=16;fontStyle=1;startSize=40;" value="Login" vertex="1">
+          <mxGeometry x="30" y="30" width="1800" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="lane1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;aspect=fixed;" value="" vertex="1">
+          <mxGeometry x="60" y="50" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="L1-reg" parent="lane1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#26C6DA;strokeColor=#00ACC1;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="User&#xa;Registration" vertex="1">
+          <mxGeometry x="140" y="35" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1-auth" parent="lane1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0288D1;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="User&#xa;Authentication" vertex="1">
+          <mxGeometry x="300" y="35" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1-profile" parent="lane1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0288D1;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Profile&#xa;Setup" vertex="1">
+          <mxGeometry x="460" y="35" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="lane1" source="start" target="L1-reg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="lane1" source="L1-reg" target="L1-auth" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="lane1" source="L1-auth" target="L1-profile" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- LANE 2: USER/CANDIDATE - Orange -->
+        <mxCell id="lane2" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=16;fontStyle=1;startSize=40;" value="User / Candidate" vertex="1">
+          <mxGeometry x="30" y="170" width="1800" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-resume" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Resume&#xa;Upload" vertex="1">
+          <mxGeometry x="60" y="80" width="120" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-select" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Select&#xa;Preparation Module" vertex="1">
+          <mxGeometry x="220" y="80" width="130" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-decision" parent="lane2" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFCC80;strokeColor=#F57C00;fontColor=#000000;fontSize=12;fontStyle=1;" value="Module&#xa;Type?" vertex="1">
+          <mxGeometry x="390" y="70" width="90" height="80" as="geometry" />
+        </mxCell>
+        <!-- Top Row Activities -->
+        <mxCell id="L2-aptitude" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Aptitude Arena" vertex="1">
+          <mxGeometry x="520" y="20" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-softskill" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Soft Skill Section" vertex="1">
+          <mxGeometry x="670" y="20" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-games" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Games" vertex="1">
+          <mxGeometry x="830" y="20" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-dreamco" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=11;arcSize=40;fontStyle=1;" value="Dream Company&#xa;Station" vertex="1">
+          <mxGeometry x="960" y="15" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-placement" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Placement Drives" vertex="1">
+          <mxGeometry x="1110" y="20" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-builder" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Resume Builder" vertex="1">
+          <mxGeometry x="1270" y="20" width="120" height="50" as="geometry" />
+        </mxCell>
+        <!-- Bottom Row Activities -->
+        <mxCell id="L2-aiinterview" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Start AI Interview" vertex="1">
+          <mxGeometry x="520" y="140" width="130" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-hic" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="HR Interview&#xa;Coach" vertex="1">
+          <mxGeometry x="690" y="140" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-tpe" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=11;arcSize=40;fontStyle=1;" value="Technical Practice&#xa;Engine" vertex="1">
+          <mxGeometry x="850" y="140" width="130" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-autofill" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Skill Autofill" vertex="1">
+          <mxGeometry x="1020" y="140" width="110" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-resource" parent="lane2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Interview&#xa;Resource Hub" vertex="1">
+          <mxGeometry x="1170" y="137" width="120" height="60" as="geometry" />
+        </mxCell>
+        <!-- Lane 2 Edges -->
+        <mxCell id="a5" edge="1" parent="lane2" source="L2-resume" target="L2-select" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" edge="1" parent="lane2" source="L2-select" target="L2-decision" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" edge="1" parent="lane2" source="L2-decision" target="L2-aptitude" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" edge="1" parent="lane2" source="L2-decision" target="L2-aiinterview" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" edge="1" parent="lane2" source="L2-aptitude" target="L2-softskill" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" edge="1" parent="lane2" source="L2-softskill" target="L2-games" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a11" edge="1" parent="lane2" source="L2-games" target="L2-dreamco" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a12" edge="1" parent="lane2" source="L2-dreamco" target="L2-placement" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a13" edge="1" parent="lane2" source="L2-placement" target="L2-builder" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a14" edge="1" parent="lane2" source="L2-aiinterview" target="L2-hic" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a15" edge="1" parent="lane2" source="L2-hic" target="L2-tpe" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a16" edge="1" parent="lane2" source="L2-tpe" target="L2-autofill" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a17" edge="1" parent="lane2" source="L2-autofill" target="L2-resource" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a18" edge="1" parent="lane2" source="L2-builder" target="L2-resource" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;entryX=1;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1330" y="167" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- LANE 3: AI INTERVIEWER - Cyan -->
+        <mxCell id="lane3" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#4DD0E1;strokeColor=#00ACC1;fontColor=#000000;fontSize=16;fontStyle=1;startSize=40;" value="AI Interviewer" vertex="1">
+          <mxGeometry x="30" y="390" width="1800" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="L3-generate" parent="lane3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4DD0E1;strokeColor=#00ACC1;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Generate&#xa;Questions" vertex="1">
+          <mxGeometry x="520" y="70" width="120" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="L3-conduct" parent="lane3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4DD0E1;strokeColor=#00ACC1;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Conduct&#xa;Interview" vertex="1">
+          <mxGeometry x="690" y="70" width="120" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="L3-response" parent="lane3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4DD0E1;strokeColor=#00ACC1;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Response&#xa;Analysis" vertex="1">
+          <mxGeometry x="860" y="70" width="120" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="L3-quality" parent="lane3" style="rhombus;whiteSpace=wrap;html=1;fillColor=#B2EBF2;strokeColor=#00ACC1;fontColor=#000000;fontSize=12;fontStyle=1;" value="Quality&#xa;Check?" vertex="1">
+          <mxGeometry x="1020" y="60" width="90" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="L3-positive" parent="lane3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#388E3C;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Positive&#xa;Feedback" vertex="1">
+          <mxGeometry x="1160" y="25" width="110" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="L3-improve" parent="lane3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCC80;strokeColor=#F57C00;fontColor=#000000;fontSize=12;arcSize=40;fontStyle=1;" value="Improvement&#xa;Suggestions" vertex="1">
+          <mxGeometry x="1160" y="120" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="L3-hic-eval" parent="lane3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4DD0E1;strokeColor=#00ACC1;fontColor=#000000;fontSize=11;arcSize=40;fontStyle=1;" value="HIC Soft Skills&#xa;Evaluation" vertex="1">
+          <mxGeometry x="1320" y="25" width="110" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="L3-tpe-eval" parent="lane3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4DD0E1;strokeColor=#00ACC1;fontColor=#000000;fontSize=11;arcSize=40;fontStyle=1;" value="TPE Code&#xa;Evaluation" vertex="1">
+          <mxGeometry x="1320" y="120" width="110" height="55" as="geometry" />
+        </mxCell>
+        <!-- Lane 3 Edges -->
+        <mxCell id="a20" edge="1" parent="lane3" source="L3-generate" target="L3-conduct" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a21" edge="1" parent="lane3" source="L3-conduct" target="L3-response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a22" edge="1" parent="lane3" source="L3-response" target="L3-quality" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a23" edge="1" parent="lane3" source="L3-quality" target="L3-positive" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#388E3C;strokeWidth=3;" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a24" edge="1" parent="lane3" source="L3-quality" target="L3-improve" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F57C00;strokeWidth=3;" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a25" edge="1" parent="lane3" source="L3-positive" target="L3-hic-eval" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a26" edge="1" parent="lane3" source="L3-improve" target="L3-tpe-eval" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- LANE 4: SYSTEM - Green -->
+        <mxCell id="lane4" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#388E3C;fontColor=#000000;fontSize=16;fontStyle=1;startSize=40;" value="System" vertex="1">
+          <mxGeometry x="30" y="590" width="1800" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="L4-resume-analysis" parent="lane4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Resume&#xa;Analysis" vertex="1">
+          <mxGeometry x="60" y="80" width="120" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="L4-skill" parent="lane4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Skill&#xa;Extraction" vertex="1">
+          <mxGeometry x="220" y="80" width="120" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="L4-hic-analysis" parent="lane4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;fontColor=#000000;fontSize=11;arcSize=40;fontStyle=1;" value="HIC STAR&#xa;Analysis" vertex="1">
+          <mxGeometry x="390" y="35" width="110" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="L4-tpe-analysis" parent="lane4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;fontColor=#000000;fontSize=11;arcSize=40;fontStyle=1;" value="TPE Code&#xa;Analysis" vertex="1">
+          <mxGeometry x="390" y="130" width="110" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="L4-perf" parent="lane4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Performance&#xa;Evaluation" vertex="1">
+          <mxGeometry x="560" y="80" width="130" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="L4-score" parent="lane4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Score&#xa;Calculation" vertex="1">
+          <mxGeometry x="740" y="80" width="120" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="L4-ready" parent="lane4" style="rhombus;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontColor=#000000;fontSize=12;fontStyle=1;" value="Interview&#xa;Ready?" vertex="1">
+          <mxGeometry x="910" y="70" width="95" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="L4-report" parent="lane4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#2E7D32;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Generate&#xa;Report" vertex="1">
+          <mxGeometry x="1060" y="35" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="L4-continue" parent="lane4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCC80;strokeColor=#F57C00;fontColor=#000000;fontSize=13;arcSize=40;fontStyle=1;" value="Continue&#xa;Practice" vertex="1">
+          <mxGeometry x="1060" y="130" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="lane4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4DD0E1;strokeColor=#00ACC1;fontColor=#000000;fontSize=14;arcSize=40;fontStyle=1;" value="End" vertex="1">
+          <mxGeometry x="1230" y="40" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="end-box" parent="lane4" style="shape=note;whiteSpace=wrap;html=1;fillColor=#EF9A9A;strokeColor=#C62828;fontColor=#000000;fontSize=12;size=12;fontStyle=1;" value="Interview&#xa;Preparation&#xa;Complete" vertex="1">
+          <mxGeometry x="1220" y="130" width="120" height="70" as="geometry" />
+        </mxCell>
+        <!-- Lane 4 Edges -->
+        <mxCell id="a30" edge="1" parent="lane4" source="L4-resume-analysis" target="L4-skill" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a31" edge="1" parent="lane4" source="L4-skill" target="L4-hic-analysis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a32" edge="1" parent="lane4" source="L4-skill" target="L4-tpe-analysis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a33a" edge="1" parent="lane4" source="L4-hic-analysis" target="L4-perf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a33b" edge="1" parent="lane4" source="L4-tpe-analysis" target="L4-perf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a33" edge="1" parent="lane4" source="L4-perf" target="L4-score" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a34" edge="1" parent="lane4" source="L4-score" target="L4-ready" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a35" edge="1" parent="lane4" source="L4-ready" target="L4-report" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#388E3C;strokeWidth=3;" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a36" edge="1" parent="lane4" source="L4-ready" target="L4-continue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F57C00;strokeWidth=3;" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a37" edge="1" parent="lane4" source="L4-report" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a38" edge="1" parent="lane4" source="end" target="end-box" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1280" y="100" />
+              <mxPoint x="1280" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a39" edge="1" parent="lane4" source="L4-continue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F57C00;strokeWidth=3;dashed=1;" value="Retry">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="200" />
+              <mxPoint x="50" y="200" />
+              <mxPoint x="50" y="-500" />
+            </Array>
+            <mxPoint x="100" y="-500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- CROSS-LANE CONNECTIONS -->
+        <mxCell id="cross1" edge="1" parent="1" source="L1-profile" target="L2-resume" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="155" />
+              <mxPoint x="120" y="155" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cross2" edge="1" parent="1" source="L2-resume" target="L4-resume-analysis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cross3" edge="1" parent="1" source="L2-aiinterview" target="L3-generate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cross4" edge="1" parent="1" source="L3-response" target="L4-perf" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="920" y="570" />
+              <mxPoint x="625" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cross5" edge="1" parent="1" source="L2-hic" target="L4-hic-analysis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="570" />
+              <mxPoint x="445" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cross6" edge="1" parent="1" source="L2-tpe" target="L4-tpe-analysis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#37474F;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="915" y="570" />
+              <mxPoint x="445" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

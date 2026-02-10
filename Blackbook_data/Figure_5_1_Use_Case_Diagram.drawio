@@ -1,0 +1,142 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.6">
+  <diagram name="Use Case Diagram" id="use-case-diagram">
+    <mxGraphModel dx="1209" dy="694" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system-box" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;locked=1;connectable=0;" value="" vertex="1">
+          <mxGeometry height="720" width="550" x="150" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="user-actor" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=12;fontStyle=0;" value="USER" vertex="1">
+          <mxGeometry height="80" width="40" x="50" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-actor" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=12;fontStyle=0;" value="AI Interviewer" vertex="1">
+          <mxGeometry height="80" width="40" x="760" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-registration" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Registration" vertex="1">
+          <mxGeometry height="45" width="100" x="200" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-login" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Login" vertex="1">
+          <mxGeometry height="45" width="100" x="200" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-upload-resume" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Upload&#xa;Resume" vertex="1">
+          <mxGeometry height="50" width="100" x="200" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-resume-analysis" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Resume&#xa;Analysis" vertex="1">
+          <mxGeometry height="50" width="100" x="450" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-ai-questions" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="AI Generated&#xa;Interview&#xa;Question" vertex="1">
+          <mxGeometry height="60" width="110" x="570" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-conduct-interview" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Conduct&#xa;Interview" vertex="1">
+          <mxGeometry height="50" width="100" x="450" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-view-result" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="View Interview&#xa;Result" vertex="1">
+          <mxGeometry height="50" width="100" x="200" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-analyze-answer" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Analyze Answer" vertex="1">
+          <mxGeometry height="45" width="110" x="570" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-view-feedback" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="View Feedback&#xa;&amp; Score" vertex="1">
+          <mxGeometry height="50" width="100" x="200" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-evaluate" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Evaluative&#xa;Confidence &amp;&#xa;Communication" vertex="1">
+          <mxGeometry height="60" width="110" x="570" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-practice-aptitude" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Practice&#xa;Aptitude" vertex="1">
+          <mxGeometry height="50" width="100" x="200" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-generate-feedback" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Generate&#xa;Feedback" vertex="1">
+          <mxGeometry height="50" width="110" x="570" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-ai-feedback" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="AI Generated&#xa;Feedback" vertex="1">
+          <mxGeometry height="50" width="110" x="400" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-practice-softskill" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Practice&#xa;Softskill" vertex="1">
+          <mxGeometry height="50" width="100" x="200" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-practice-games" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Practice&#xa;Motivated&#xa;Games" vertex="1">
+          <mxGeometry height="55" width="100" x="200" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="uc-logout" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="Logout" vertex="1">
+          <mxGeometry height="45" width="100" x="190" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-reg" edge="1" parent="1" source="user-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-registration">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-login" edge="1" parent="1" source="user-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-upload" edge="1" parent="1" source="user-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-upload-resume">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-result" edge="1" parent="1" source="user-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-view-result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-feedback" edge="1" parent="1" source="user-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-view-feedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-aptitude" edge="1" parent="1" source="user-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-practice-aptitude">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-softskill" edge="1" parent="1" source="user-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-practice-softskill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-games" edge="1" parent="1" source="user-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-practice-games">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-logout" edge="1" parent="1" source="user-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-logout">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-upload-analysis" edge="1" parent="1" source="uc-upload-resume" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-resume-analysis">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-upload-conduct" edge="1" parent="1" source="uc-upload-resume" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-conduct-interview">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-analysis-questions" edge="1" parent="1" source="uc-resume-analysis" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-ai-questions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-conduct-questions" edge="1" parent="1" source="uc-conduct-interview" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-ai-questions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-conduct-analyze" edge="1" parent="1" source="uc-conduct-interview" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-analyze-answer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-analyze-evaluate" edge="1" parent="1" source="uc-analyze-answer" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-evaluate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-evaluate-generate" edge="1" parent="1" source="uc-evaluate" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-generate-feedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-aptitude-aifeedback" edge="1" parent="1" source="uc-practice-aptitude" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-ai-feedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-softskill-aifeedback" edge="1" parent="1" source="uc-practice-softskill" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-ai-feedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-games-aifeedback" edge="1" parent="1" source="uc-practice-games" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-ai-feedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ai-questions" edge="1" parent="1" source="ai-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-ai-questions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ai-conduct" edge="1" parent="1" source="ai-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-conduct-interview">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ai-analyze" edge="1" parent="1" source="ai-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-analyze-answer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ai-evaluate" edge="1" parent="1" source="ai-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-evaluate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ai-generate" edge="1" parent="1" source="ai-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-generate-feedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ai-aifeedback" edge="1" parent="1" source="ai-actor" style="edgeStyle=none;html=1;endArrow=none;strokeWidth=1;strokeColor=#000000;" target="uc-ai-feedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

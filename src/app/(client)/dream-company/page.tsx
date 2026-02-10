@@ -115,10 +115,14 @@ export default function DreamCompanyStationPage() {
 
   const getLogoPath = (slug: string): string | null => {
     const logoFile = COMPANY_LOGO_MAP[slug.toLowerCase()];
-    return logoFile ? `/company-logos/${logoFile}` : null;
+    if (logoFile) {
+      return `/company-logos/${logoFile}`;
+    }
+    return null;
   };
 
   const handleLogoError = (slug: string) => {
+    console.warn(`Failed to load logo for ${slug}`);
     setLogoErrors(prev => new Set(prev).add(slug));
   };
 

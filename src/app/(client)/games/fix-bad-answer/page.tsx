@@ -5,28 +5,29 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
+import { VoiceInputButton } from "@/components/ui/VoiceInputButton";
 import { DifficultyLevel, useGames } from "@/contexts/GamesContext";
 import {
-    badAnswerQuestions,
-    difficultyColors,
-    difficultyLabels,
-    getFilteredQuestions,
-    getRandomQuestion
+  badAnswerQuestions,
+  difficultyColors,
+  difficultyLabels,
+  getFilteredQuestions,
+  getRandomQuestion
 } from "@/data/games-data";
 import {
-    ArrowRight,
-    Award,
-    Brain,
-    ChevronRight,
-    Edit3,
-    FileText,
-    Home,
-    Lightbulb,
-    RotateCcw,
-    Sparkles,
-    Target,
-    TrendingUp,
-    Zap
+  ArrowRight,
+  Award,
+  Brain,
+  ChevronRight,
+  Edit3,
+  FileText,
+  Home,
+  Lightbulb,
+  RotateCcw,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Zap
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -94,9 +95,10 @@ export default function FixBadAnswerGame() {
     setShowCompletion(false);
   }, [selectedDifficulty, usedQuestionIds]);
 
-  // Initialize with a question
+  // Initialize with a question on mount only
   useEffect(() => {
     getNextQuestion();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Handle difficulty change
@@ -114,6 +116,7 @@ export default function FixBadAnswerGame() {
   const evaluateAnswer = async () => {
     if (!userAnswer.trim() || !currentQuestion) {
       toast.error("Please write your corrected answer before submitting.");
+
       return;
     }
 
@@ -146,10 +149,9 @@ export default function FixBadAnswerGame() {
       }
 
       // Apply difficulty modifier to scoring strictness
-      const multiplier = getDifficultyMultiplier(selectedDifficulty);
       
       // Add enhanced feedback
-      result.recruiterPerspective = generateRecruiterPerspective(result.finalScore, result.strengths);
+      result.recruiterPerspective = generateRecruiterPerspective(result.finalScore);
       result.improvementFromLast = previousAttempt 
         ? generateImprovementFeedback(previousAttempt.score, result.finalScore)
         : "First attempt - keep practicing to track improvement!";
@@ -187,7 +189,7 @@ export default function FixBadAnswerGame() {
     }
   };
 
-  const generateRecruiterPerspective = (score: number, strengths: string[]): string => {
+  const generateRecruiterPerspective = (score: number): string => {
     if (score >= 8) {
       return "A recruiter would view this response favorably. It demonstrates professional communication, clear structure, and confidence.";
     } else if (score >= 6) {
@@ -195,6 +197,7 @@ export default function FixBadAnswerGame() {
     } else if (score >= 4) {
       return "This response needs more development to impress recruiters. Focus on being specific, using professional language, and highlighting your unique value.";
     }
+
     return "This response may raise concerns with recruiters. Consider restructuring using the STAR method and focusing on concrete accomplishments.";
   };
 
@@ -207,29 +210,49 @@ export default function FixBadAnswerGame() {
     } else if (diff === 0) {
       return "📋 Consistent performance. Try incorporating new techniques for further improvement.";
     }
+
     return `📉 This score is ${Math.abs(diff).toFixed(1)} points lower. Review the feedback and try again!`;
   };
 
-  const generateSTARSuggestion = (badAnswer: string, score: number): string => {
+  const generateSTARSuggestion = (_badAnswer: string, score: number): string => {
     if (score >= 7) {
       return "✨ Good structure! To enhance further, ensure each part of your answer follows STAR: Situation → Task → Action → Result with specific examples.";
     }
+
     return "💡 Try using the STAR method:\n• Situation: Set the context\n• Task: Describe your responsibility\n• Action: Explain what YOU did specifically\n• Result: Share the measurable outcome";
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 8) return "text-green-600 bg-green-50";
-    if (score >= 6) return "text-blue-600 bg-blue-50";
-    if (score >= 4) return "text-amber-600 bg-amber-50";
+    if (score >= 8) {
+      return "text-green-600 bg-green-50";
+    }
+    if (score >= 6) {
+      return "text-blue-600 bg-blue-50";
+    }
+    if (score >= 4) {
+      return "text-amber-600 bg-amber-50";
+    }
+
     return "text-red-600 bg-red-50";
   };
 
   const getScoreLabel = (score: number) => {
-    if (score >= 9) return "Outstanding";
-    if (score >= 8) return "Excellent";
-    if (score >= 7) return "Good";
-    if (score >= 6) return "Fair";
-    if (score >= 4) return "Needs Work";
+    if (score >= 9) {
+      return "Outstanding";
+    }
+    if (score >= 8) {
+      return "Excellent";
+    }
+    if (score >= 7) {
+      return "Good";
+    }
+    if (score >= 6) {
+      return "Fair";
+    }
+    if (score >= 4) {
+      return "Needs Work";
+    }
+
     return "Poor";
   };
 
@@ -243,8 +266,8 @@ export default function FixBadAnswerGame() {
             <Button 
               variant="ghost" 
               size="sm" 
-              onClick={() => router.push('/games')}
               className="text-gray-500"
+              onClick={() => router.push('/games')}
             >
               <Home className="h-4 w-4 mr-1" />
               Back to Games
@@ -321,12 +344,12 @@ export default function FixBadAnswerGame() {
                 {(['beginner', 'intermediate', 'advanced'] as const).map((diff) => (
                   <button
                     key={diff}
-                    onClick={() => handleDifficultyChange(diff)}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                       selectedDifficulty === diff
                         ? `${difficultyColors[diff].bg} ${difficultyColors[diff].text} border-2 ${difficultyColors[diff].border}`
                         : 'bg-gray-50 text-gray-600 border-2 border-transparent hover:bg-gray-100'
                     }`}
+                    onClick={() => handleDifficultyChange(diff)}
                   >
                     {difficultyLabels[diff]}
                   </button>
@@ -390,13 +413,23 @@ export default function FixBadAnswerGame() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <Textarea
-                  value={userAnswer}
-                  placeholder="Rewrite the bad answer in a more professional, clear, and structured way using the STAR method..."
-                  className="min-h-[180px] border-2 focus:border-green-400 resize-none"
-                  disabled={isLoading}
-                  onChange={(e) => setUserAnswer(e.target.value)}
-                />
+                {/* Answer input with voice support */}
+                <div className="relative">
+                  <Textarea
+                    value={userAnswer}
+                    placeholder="Rewrite the bad answer... or use 🎤 voice input. Use the STAR method for structure."
+                    className="min-h-[180px] border-2 focus:border-green-400 resize-none pr-12"
+                    disabled={isLoading}
+                    onChange={(e) => setUserAnswer(e.target.value)}
+                  />
+                  <div className="absolute top-2 right-2">
+                    <VoiceInputButton
+                      currentValue={userAnswer}
+                      disabled={isLoading}
+                      onValueChange={setUserAnswer}
+                    />
+                  </div>
+                </div>
                 <div className="flex gap-2 mt-4">
                   <Button
                     disabled={isLoading || !userAnswer.trim()}
@@ -521,8 +554,8 @@ export default function FixBadAnswerGame() {
                   <div>
                     <p className="text-sm font-medium text-green-600 mb-2">✓ Strengths</p>
                     <ul className="space-y-1">
-                      {gameScore?.strengths.map((s, i) => (
-                        <li key={i} className="text-sm text-gray-700">• {s}</li>
+                      {gameScore?.strengths.map((s) => (
+                        <li key={`strength-${s}`} className="text-sm text-gray-700">• {s}</li>
                       ))}
                     </ul>
                   </div>
@@ -531,8 +564,8 @@ export default function FixBadAnswerGame() {
                   <div>
                     <p className="text-sm font-medium text-red-600 mb-2">△ Areas for Improvement</p>
                     <ul className="space-y-1">
-                      {gameScore?.weaknesses.map((w, i) => (
-                        <li key={i} className="text-sm text-gray-700">• {w}</li>
+                      {gameScore?.weaknesses.map((w) => (
+                        <li key={`weakness-${w}`} className="text-sm text-gray-700">• {w}</li>
                       ))}
                     </ul>
                   </div>

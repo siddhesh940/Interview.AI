@@ -219,6 +219,7 @@ export interface ResumeUpload {
     skills: number;
     experience: number;
     projects: number;
+    education?: number;
   };
   structuredData?: {
     experience: Array<{
@@ -239,6 +240,31 @@ export interface ResumeUpload {
       year: string;
       cgpa?: string;
     }>;
+  };
+  // V3 Enhanced Parsing Data
+  v3ParsingData?: {
+    qualityCheck?: {
+      isGoodQuality: boolean;
+      qualityScore: number;
+      issues: string[];
+      suggestions: string[];
+    };
+    sectionConfidence?: {
+      skills: number;
+      experience: number;
+      education: number;
+      projects: number;
+    };
+    overallConfidence?: number;
+    confidenceMessages?: {
+      skills: string;
+      experience: string;
+      education: string;
+      projects: string;
+      overall: string;
+    };
+    suggestions?: string[];
+    warnings?: string[];
   };
 }
 

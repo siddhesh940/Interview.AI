@@ -142,7 +142,7 @@ export default function CompanyResourcePage() {
     // Mark as viewed
     const newViewed = new Set(viewedPdfs).add(filename);
     setViewedPdfs(newViewed);
-    localStorage.setItem(`viewed-pdfs-${companySlug}`, JSON.stringify([...newViewed]));
+    localStorage.setItem(`viewed-pdfs-${companySlug}`, JSON.stringify(Array.from(newViewed)));
     window.open(pdfPath, '_blank');
   };
 
@@ -155,7 +155,7 @@ export default function CompanyResourcePage() {
       newImportant.add(filename);
     }
     setImportantPdfs(newImportant);
-    localStorage.setItem(`important-pdfs-${companySlug}`, JSON.stringify([...newImportant]));
+    localStorage.setItem(`important-pdfs-${companySlug}`, JSON.stringify(Array.from(newImportant)));
   };
 
   const handleDownload = (filename: string) => {

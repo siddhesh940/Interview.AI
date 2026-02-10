@@ -30,7 +30,8 @@ export default function ClientLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
+  const rawPathname = usePathname();
+  const pathname = rawPathname || '';
   const isAuthPage = pathname.includes("/sign-in") || pathname.includes("/sign-up");
 
   return (

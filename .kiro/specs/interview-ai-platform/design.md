@@ -6,14 +6,9 @@ Interview.ai follows a modern full-stack architecture with clear separation of c
 
 ### 1.1 Architecture Diagram
 
-![System Architecture](../../Blackbook_data/Chapter4_Diagrams/README.md)
+![System Architecture](Demo_Images/Figure_4_3_1_System_Architecture_Latest.drawio.png)
 
 **Figure 1.1**: High-Level System Architecture of Interview.ai Platform
-
-For detailed architecture diagrams, refer to:
-- System Architecture (HD): `Blackbook_data/Figure_4_3_1_System_Architecture_HD.drawio`
-- System Architecture (New): `Blackbook_data/Figure_4_3_1_System_Architecture_New.drawio`
-- System Architecture (Simple): `Blackbook_data/Figure_4_3_System_Architecture_Simple.mmd`
 
 ### 1.2 High-Level Component Architecture
 

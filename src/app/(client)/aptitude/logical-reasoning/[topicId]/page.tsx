@@ -88,10 +88,8 @@ export default function LogicalReasoningTopicPage() {
     localStorage.setItem("aptitude-progress", JSON.stringify(progress));
     console.log("Logical Progress saved:", progress);
   };
-  };
 
   // Save weak question
-  const saveWeakQuestion = (questionId: number) => {
   const saveWeakQuestion = (questionId: number) => {
     if (!weakQuestionIds.includes(questionId)) {
       const updated = [...weakQuestionIds, questionId];
@@ -110,7 +108,7 @@ export default function LogicalReasoningTopicPage() {
 
   // Filter questions based on settings
   const getFilteredQuestions = () => {
-    if (!questions || questions.length === 0) return [];
+    if (!questions || questions.length === 0) {return [];}
     
     let filtered = [...questions];
     
@@ -617,7 +615,6 @@ export default function LogicalReasoningTopicPage() {
                     {(['all', 'easy', 'medium', 'hard'] as const).map((level) => (
                       <button
                         key={level}
-                        onClick={() => setDifficulty(level)}
                         className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all capitalize ${
                           difficulty === level
                             ? level === 'easy' ? 'bg-green-500 text-white' :
@@ -626,6 +623,7 @@ export default function LogicalReasoningTopicPage() {
                               'bg-purple-500 text-white'
                             : 'bg-white border border-gray-300 text-gray-600 hover:bg-gray-50'
                         }`}
+                        onClick={() => setDifficulty(level)}
                       >
                         {level === 'all' ? 'Mix' : level}
                       </button>
@@ -639,12 +637,12 @@ export default function LogicalReasoningTopicPage() {
                     Focus Mode
                   </label>
                   <button
-                    onClick={() => setRepeatWeak(!repeatWeak)}
                     className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
                       repeatWeak
                         ? 'bg-orange-500 text-white'
                         : 'bg-white border border-gray-300 text-gray-600 hover:bg-gray-50'
                     }`}
+                    onClick={() => setRepeatWeak(!repeatWeak)}
                   >
                     <RefreshCw className={`h-4 w-4 ${repeatWeak ? 'animate-spin' : ''}`} />
                     Repeat Weak Questions

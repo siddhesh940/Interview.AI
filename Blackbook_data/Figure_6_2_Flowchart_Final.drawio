@@ -1,0 +1,239 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.8">
+  <diagram name="Interview.ai Flowchart" id="flowchart-final">
+    <mxGraphModel dx="1965" dy="1128" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="start" parent="1" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="START" vertex="1">
+          <mxGeometry height="50" width="130" x="385" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="start" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="registration">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="registration" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="User Registration / Login" vertex="1">
+          <mxGeometry height="50" width="220" x="340" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="registration" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="authentication">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="authentication" parent="1" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="User&#xa;Authentication" vertex="1">
+          <mxGeometry height="110" width="180" x="360" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="e3fail" edge="1" parent="1" source="authentication" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;fontSize=13;fontStyle=1;" target="registration" value="Fail">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="215" />
+              <mxPoint x="290" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="authentication" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontSize=13;fontStyle=1;" target="dashboard" value="Success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#E6E6E6;strokeColor=#000000;" value="DASHBOARD" vertex="1">
+          <mxGeometry height="50" width="170" x="365" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="dashboard" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="selectFeature">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="selectFeature" parent="1" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Select Preparation&#xa;Feature" vertex="1">
+          <mxGeometry height="110" width="200" x="350" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="e5a" edge="1" parent="1" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;entryX=0.5;entryY=0;" target="aiInterview">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="125" y="445" />
+            </Array>
+            <mxPoint x="350" y="445" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5b" edge="1" parent="1" source="selectFeature" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0;exitY=1;entryX=0.5;entryY=0;exitDx=0;exitDy=0;" target="practiceModule">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="473" />
+            </Array>
+            <mxPoint x="451.6666666666665" y="481.6666666666665" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5c" edge="1" parent="1" source="selectFeature" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=1;exitY=1;entryX=0.447;entryY=0.046;exitDx=0;exitDy=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="resumeBuilder">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="473" />
+            </Array>
+            <mxPoint x="518.333333333333" y="481.6666666666665" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5d" edge="1" parent="1" source="selectFeature" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=1;exitY=0.5;entryX=0.5;entryY=0;exitDx=0;exitDy=0;" target="careerTools">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="854" y="445" />
+            </Array>
+            <mxPoint x="585" y="445" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aiInterview" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#DAE8FC;strokeColor=#000000;" value="AI INTERVIEW&#xa;MODULE" vertex="1">
+          <mxGeometry height="55" width="170" x="40" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="aiInterview" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="selectRole">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="selectRole" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Select Interview Role" vertex="1">
+          <mxGeometry height="45" width="210" x="20" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="selectRole" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="generateQ">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="generateQ" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Generate AI Questions" vertex="1">
+          <mxGeometry height="45" width="200" x="25" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="generateQ" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="conductInt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conductInt" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Conduct Interview" vertex="1">
+          <mxGeometry height="45" width="180" x="35" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="conductInt" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="analyzeResp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="analyzeResp" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Analyze Responses" vertex="1">
+          <mxGeometry height="45" width="180" x="35" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="analyzeResp" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="genIntFeedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="genIntFeedback" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Generate Interview&#xa;Feedback" vertex="1">
+          <mxGeometry height="55" width="200" x="25" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="practiceModule" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#D5E8D4;strokeColor=#000000;" value="PRACTICE&#xa;MODULE" vertex="1">
+          <mxGeometry height="55" width="170" x="265" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="practiceModule" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="selectPractice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="selectPractice" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Select Practice Type&#xa;(Aptitude / Soft Skills /&#xa;HR / Technical / Games)" vertex="1">
+          <mxGeometry height="75" width="230" x="235" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="selectPractice" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="attemptPractice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="attemptPractice" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Attempt Practice" vertex="1">
+          <mxGeometry height="45" width="180" x="260" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="attemptPractice" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="evalPerf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="evalPerf" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Evaluate Performance" vertex="1">
+          <mxGeometry height="45" width="200" x="250" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="evalPerf" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="genPractFeedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="genPractFeedback" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Generate Practice&#xa;Feedback" vertex="1">
+          <mxGeometry height="55" width="200" x="250" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="resumeBuilder" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#FFE6CC;strokeColor=#000000;" value="RESUME&#xa;BUILDER" vertex="1">
+          <mxGeometry height="55" width="170" x="524" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="resumeBuilder" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="enterResume">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="enterResume" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Enter Resume Details" vertex="1">
+          <mxGeometry height="45" width="210" x="504" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="enterResume" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="generateATS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="generateATS" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Generate ATS Resume" vertex="1">
+          <mxGeometry height="45" width="200" x="509" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="generateATS" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="exportResume">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="exportResume" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Download / Export&#xa;Resume" vertex="1">
+          <mxGeometry height="55" width="210" x="504" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="careerTools" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#E1D5E7;strokeColor=#000000;" value="CAREER TOOLS&#xa;MODULE" vertex="1">
+          <mxGeometry height="55" width="180" x="764" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" source="careerTools" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="careerFeatures">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="careerFeatures" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Select Career Tool&#xa;(Dream Company /&#xa;Placement / Resources /&#xa;Skill Autofill / Time Machine)" vertex="1">
+          <mxGeometry height="95" width="250" x="729" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" edge="1" parent="1" source="careerFeatures" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="accessTool">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="accessTool" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Access Selected Tool" vertex="1">
+          <mxGeometry height="45" width="200" x="754" y="735" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" edge="1" parent="1" source="accessTool" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="viewCareerData">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="viewCareerData" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="View Career Data /&#xa;Recommendations" vertex="1">
+          <mxGeometry height="55" width="210" x="749" y="815" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" edge="1" parent="1" source="genIntFeedback" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" target="generateReport">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="125" y="1050" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e22" edge="1" parent="1" source="genPractFeedback" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="generateReport">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="990" />
+              <mxPoint x="428" y="990" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e23" edge="1" parent="1" source="exportResume" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="generateReport">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="990" />
+              <mxPoint x="543" y="990" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e24" edge="1" parent="1" source="viewCareerData" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" target="generateReport">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="854" y="1050" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="generateReport" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Generate Overall&#xa;Performance Report" vertex="1">
+          <mxGeometry height="60" width="230" x="370" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="e25" edge="1" parent="1" source="generateReport" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="viewAnalytics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="viewAnalytics" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="View Analytics /&#xa;Suggestions" vertex="1">
+          <mxGeometry height="55" width="200" x="385" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="e26" edge="1" parent="1" source="viewAnalytics" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="continueDecision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="continueDecision" parent="1" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="Continue&#xa;Preparation?" vertex="1">
+          <mxGeometry height="110" width="180" x="395" y="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="e27" edge="1" parent="1" source="continueDecision" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;fontSize=13;fontStyle=1;" target="dashboard" value="Yes">
+          <mxGeometry relative="1" x="-0.9" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="10" y="1255" />
+              <mxPoint x="10" y="335" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e28" edge="1" parent="1" source="continueDecision" style="endArrow=block;html=1;rounded=0;strokeWidth=1.5;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontSize=13;fontStyle=1;" target="end" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="1" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=15;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" value="END" vertex="1">
+          <mxGeometry height="50" width="130" x="420" y="1360" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

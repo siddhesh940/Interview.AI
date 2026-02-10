@@ -1,0 +1,274 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#87CEEB', 'primaryTextColor': '#000', 'primaryBorderColor': '#000', 'lineColor': '#000', 'secondaryColor': '#87CEEB', 'tertiaryColor': '#87CEEB'}}}%%
+
+classDiagram
+    direction TB
+
+    %% ==========================================
+    %% CORE DATABASE ENTITIES
+    %% ==========================================
+
+    class USER {
+        +id
+        +created_at
+        +email
+        +organization_id
+        +registerUser()
+        +updateUserInfo()
+        +login()
+        +logout()
+    }
+
+    class ORGANIZATION {
+        +id
+        +created_at
+        +name
+        +image_url
+        +allowed_responses_count
+        +plan
+        +createOrganization()
+        +updateOrganization()
+        +getPlan()
+    }
+
+    class INTERVIEWER {
+        +id
+        +created_at
+        +agent_id
+        +name
+        +description
+        +image
+        +audio
+        +empathy
+        +exploration
+        +rapport
+        +speed
+        +conductInterview()
+        +generateQuestions()
+        +evaluateResponse()
+        +provideFeedback()
+    }
+
+    class INTERVIEW {
+        +id
+        +created_at
+        +name
+        +description
+        +objective
+        +organization_id
+        +user_id
+        +interviewer_id
+        +is_active
+        +is_anonymous
+        +logo_url
+        +theme_color
+        +questions
+        +question_count
+        +response_count
+        +time_duration
+        +createInterview()
+        +startInterview()
+        +endInterview()
+        +getInterviewDetails()
+    }
+
+    class RESPONSE {
+        +id
+        +created_at
+        +interview_id
+        +name
+        +email
+        +call_id
+        +candidate_status
+        +duration
+        +details
+        +analytics
+        +is_analysed
+        +is_ended
+        +tab_switch_count
+        +saveResponse()
+        +analyzeResponse()
+        +getTranscript()
+        +calculateScore()
+    }
+
+    class FEEDBACK {
+        +id
+        +created_at
+        +interview_id
+        +email
+        +feedback
+        +satisfaction
+        +submitFeedback()
+        +getFeedback()
+    }
+
+    class RESUME {
+        +id
+        +created_at
+        +updated_at
+        +user_id
+        +title
+        +target_role
+        +template
+        +resume_data
+        +createResume()
+        +updateResume()
+        +downloadResume()
+        +parseResume()
+    }
+
+    %% ==========================================
+    %% PLACEMENT DRIVE COMPONENTS
+    %% ==========================================
+
+    class COMPANY {
+        +id
+        +created_at
+        +name
+        +official_careers_url
+        +logo_url
+        +is_active
+        +getCompanyDetails()
+        +getInterviewPatterns()
+        +getPreviousQuestions()
+    }
+
+    class DRIVE {
+        +id
+        +created_at
+        +company_id
+        +role
+        +drive_type
+        +batch
+        +min_cgpa
+        +branches
+        +deadline
+        +registration_link
+        +is_active
+        +createDrive()
+        +registerCandidate()
+        +updateDriveStatus()
+        +getEligibleCandidates()
+    }
+
+    class USER_PROFILE {
+        +id
+        +clerk_user_id
+        +email
+        +batch
+        +branch
+        +cgpa
+        +college_name
+        +updateProfile()
+        +checkEligibility()
+    }
+
+    class NOTIFICATION {
+        +id
+        +created_at
+        +clerk_user_id
+        +drive_id
+        +title
+        +message
+        +is_read
+        +notification_type
+        +sendNotification()
+        +markAsRead()
+        +getNotifications()
+    }
+
+    %% ==========================================
+    %% FEATURE MODULES
+    %% ==========================================
+
+    class FACIAL_ANALYSIS {
+        +confidence_index
+        +engagement_score
+        +stress_indicator
+        +eye_contact_percentage
+        +emotion_summary
+        +analyzeFrame()
+        +detectEmotions()
+        +generateReport()
+        +calculateConfidenceIndex()
+    }
+
+    class TIME_MACHINE {
+        +resume_text
+        +target_role
+        +time_goal
+        +interview_scores
+        +strengths
+        +weaknesses
+        +generatePrediction()
+        +analyzeTrends()
+        +createRoadmap()
+        +getFutureSalary()
+    }
+
+    class APTITUDE_TEST {
+        +category
+        +difficulty
+        +time_limit
+        +questions
+        +score
+        +startTest()
+        +submitTest()
+        +calculateScore()
+        +getResults()
+    }
+
+    class SOFT_SKILLS {
+        +skill_id
+        +skill_type
+        +content
+        +exercises
+        +progress
+        +startModule()
+        +trackProgress()
+        +completeExercise()
+    }
+
+    class GAMES {
+        +game_type
+        +score
+        +attempts
+        +startGame()
+        +evaluateAnswer()
+        +getLeaderboard()
+    }
+
+    class DREAM_COMPANY {
+        +company_slug
+        +interview_patterns
+        +previous_questions
+        +preparation_tips
+        +getCompanyInfo()
+        +getInterviewProcess()
+        +getPracticeQuestions()
+    }
+
+    %% ==========================================
+    %% RELATIONSHIPS
+    %% ==========================================
+
+    %% Core Database Relationships
+    ORGANIZATION "1" --o "*" USER : contains
+    USER "1" --o "*" INTERVIEW : creates
+    INTERVIEWER "1" --o "*" INTERVIEW : conducts
+    INTERVIEW "1" --o "*" RESPONSE : generates
+    INTERVIEW "1" --o "*" FEEDBACK : receives
+    USER "1" --o "*" RESUME : owns
+
+    %% Placement Drive Relationships
+    COMPANY "1" --o "*" DRIVE : organizes
+    USER_PROFILE "1" --o "*" NOTIFICATION : receives
+    DRIVE "1" --o "*" NOTIFICATION : triggers
+
+    %% Feature Module Relationships
+    RESPONSE "1" *-- "0..1" FACIAL_ANALYSIS : includes
+    USER "1" --o "1" TIME_MACHINE : uses
+    USER "1" --o "*" APTITUDE_TEST : takes
+    USER "1" --o "*" SOFT_SKILLS : learns
+    USER "1" --o "*" GAMES : plays
+    COMPANY "1" --o "1" DREAM_COMPANY : provides

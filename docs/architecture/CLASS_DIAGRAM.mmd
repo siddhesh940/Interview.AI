@@ -1,0 +1,317 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#87CEEB', 'primaryTextColor': '#000', 'primaryBorderColor': '#000', 'lineColor': '#000', 'secondaryColor': '#87CEEB', 'tertiaryColor': '#87CEEB'}}}%%
+
+classDiagram
+    direction TB
+
+    %% ==========================================
+    %% CORE DATABASE TABLES (from supabase_schema.sql)
+    %% ==========================================
+
+    class USER {
+        +id : TEXT
+        +created_at : TIMESTAMP
+        +email : TEXT
+        +organization_id : TEXT
+        +registerUser()
+        +updateUserInfo()
+        +login()
+        +logout()
+    }
+
+    class ORGANIZATION {
+        +id : TEXT
+        +created_at : TIMESTAMP
+        +name : TEXT
+        +image_url : TEXT
+        +allowed_responses_count : INTEGER
+        +plan : ENUM
+        +createOrganization()
+        +updateOrganization()
+        +getPlan()
+    }
+
+    class INTERVIEWER {
+        +id : SERIAL
+        +created_at : TIMESTAMP
+        +agent_id : TEXT
+        +name : TEXT
+        +description : TEXT
+        +image : TEXT
+        +audio : TEXT
+        +empathy : INTEGER
+        +exploration : INTEGER
+        +rapport : INTEGER
+        +speed : INTEGER
+        +conductInterview()
+        +generateQuestions()
+        +evaluateResponse()
+        +provideFeedback()
+    }
+
+    class INTERVIEW {
+        +id : TEXT
+        +created_at : TIMESTAMP
+        +name : TEXT
+        +description : TEXT
+        +objective : TEXT
+        +organization_id : TEXT
+        +user_id : TEXT
+        +interviewer_id : INTEGER
+        +is_active : BOOLEAN
+        +is_anonymous : BOOLEAN
+        +logo_url : TEXT
+        +theme_color : TEXT
+        +questions : JSONB
+        +question_count : INTEGER
+        +response_count : INTEGER
+        +time_duration : TEXT
+        +createInterview()
+        +startInterview()
+        +endInterview()
+        +getInterviewDetails()
+    }
+
+    class RESPONSE {
+        +id : SERIAL
+        +created_at : TIMESTAMP
+        +interview_id : TEXT
+        +name : TEXT
+        +email : TEXT
+        +call_id : TEXT
+        +candidate_status : TEXT
+        +duration : INTEGER
+        +details : JSONB
+        +analytics : JSONB
+        +is_analysed : BOOLEAN
+        +is_ended : BOOLEAN
+        +tab_switch_count : INTEGER
+        +saveResponse()
+        +analyzeResponse()
+        +getTranscript()
+        +calculateScore()
+    }
+
+    class FEEDBACK {
+        +id : SERIAL
+        +created_at : TIMESTAMP
+        +interview_id : TEXT
+        +email : TEXT
+        +feedback : TEXT
+        +satisfaction : INTEGER
+        +submitFeedback()
+        +getFeedback()
+    }
+
+    class RESUME {
+        +id : TEXT
+        +created_at : TIMESTAMP
+        +updated_at : TIMESTAMP
+        +user_id : TEXT
+        +title : TEXT
+        +target_role : TEXT
+        +template : TEXT
+        +resume_data : JSONB
+        +createResume()
+        +updateResume()
+        +downloadResume()
+        +parseResume()
+    }
+
+    %% ==========================================
+    %% PLACEMENT DRIVES (from placement_drives_schema.sql)
+    %% ==========================================
+
+    class COMPANY {
+        +id : SERIAL
+        +created_at : TIMESTAMP
+        +name : TEXT
+        +official_careers_url : TEXT
+        +logo_url : TEXT
+        +is_active : BOOLEAN
+        +getCompanyDetails()
+        +getInterviewPatterns()
+        +getPreviousQuestions()
+    }
+
+    class DRIVE {
+        +id : SERIAL
+        +created_at : TIMESTAMP
+        +company_id : INTEGER
+        +role : TEXT
+        +drive_type : ENUM
+        +batch : TEXT
+        +min_cgpa : DECIMAL
+        +branches : TEXT[]
+        +deadline : TIMESTAMP
+        +registration_link : TEXT
+        +is_active : BOOLEAN
+        +createDrive()
+        +registerCandidate()
+        +updateDriveStatus()
+        +getEligibleCandidates()
+    }
+
+    class USER_PROFILE {
+        +id : SERIAL
+        +clerk_user_id : TEXT
+        +email : TEXT
+        +batch : TEXT
+        +branch : TEXT
+        +cgpa : DECIMAL
+        +college_name : TEXT
+        +updateProfile()
+        +checkEligibility()
+    }
+
+    class NOTIFICATION {
+        +id : SERIAL
+        +created_at : TIMESTAMP
+        +clerk_user_id : TEXT
+        +drive_id : INTEGER
+        +title : TEXT
+        +message : TEXT
+        +is_read : BOOLEAN
+        +notification_type : TEXT
+        +sendNotification()
+        +markAsRead()
+        +getNotifications()
+    }
+
+    %% ==========================================
+    %% FEATURE MODULES (from src/app folders)
+    %% ==========================================
+
+    class FACIAL_ANALYSIS {
+        +confidence_index : NUMBER
+        +engagement_score : NUMBER
+        +stress_indicator : NUMBER
+        +eye_contact_percentage : NUMBER
+        +emotion_summary : OBJECT
+        +analyzeFrame()
+        +detectEmotions()
+        +generateReport()
+        +calculateConfidenceIndex()
+    }
+
+    class TIME_MACHINE {
+        +resume_text : TEXT
+        +target_role : TEXT
+        +time_goal : NUMBER
+        +interview_scores : OBJECT
+        +strengths : ARRAY
+        +weaknesses : ARRAY
+        +generatePrediction()
+        +analyzeTrends()
+        +createRoadmap()
+        +getFutureSalary()
+    }
+
+    class APTITUDE_TEST {
+        +category : TEXT
+        +difficulty : TEXT
+        +time_limit : NUMBER
+        +questions : ARRAY
+        +score : NUMBER
+        +startTest()
+        +submitTest()
+        +calculateScore()
+        +getResults()
+    }
+
+    class SOFT_SKILLS {
+        +skill_id : TEXT
+        +skill_type : TEXT
+        +content : TEXT
+        +exercises : ARRAY
+        +progress : NUMBER
+        +startModule()
+        +trackProgress()
+        +completeExercise()
+    }
+
+    class GAMES {
+        +game_type : TEXT
+        +score : NUMBER
+        +attempts : NUMBER
+        +startGame()
+        +evaluateAnswer()
+        +getLeaderboard()
+    }
+
+    class DREAM_COMPANY {
+        +company_slug : TEXT
+        +interview_patterns : ARRAY
+        +previous_questions : ARRAY
+        +preparation_tips : ARRAY
+        +getCompanyInfo()
+        +getInterviewProcess()
+        +getPracticeQuestions()
+    }
+
+    %% ==========================================
+    %% SERVICES (from src/services)
+    %% ==========================================
+
+    class InterviewService {
+        +getAllInterviews()
+        +getInterviewById()
+        +createInterview()
+        +updateInterview()
+    }
+
+    class ResponseService {
+        +createResponse()
+        +saveResponse()
+        +getAllResponses()
+        +updateResponseAnalytics()
+    }
+
+    class InterviewerService {
+        +getAllInterviewers()
+        +createInterviewer()
+        +getInterviewerById()
+    }
+
+    class FacialAnalysisService {
+        +analyzeFrame()
+        +generateFacialReport()
+        +calculateConfidenceIndex()
+    }
+
+    class SentimentAnalysisService {
+        +analyzeText()
+        +analyzeTranscript()
+        +detectEmotions()
+    }
+
+    %% ==========================================
+    %% RELATIONSHIPS
+    %% ==========================================
+
+    %% Core Relationships
+    ORGANIZATION "1" --o "*" USER : contains
+    USER "1" --o "*" INTERVIEW : creates
+    INTERVIEWER "1" --o "*" INTERVIEW : conducts
+    INTERVIEW "1" --o "*" RESPONSE : generates
+    INTERVIEW "1" --o "*" FEEDBACK : receives
+    USER "1" --o "*" RESUME : owns
+
+    %% Placement Drive Relationships
+    COMPANY "1" --o "*" DRIVE : organizes
+    USER_PROFILE "1" --o "*" NOTIFICATION : receives
+    DRIVE "1" --o "*" NOTIFICATION : triggers
+
+    %% Feature Relationships
+    RESPONSE "1" *-- "0..1" FACIAL_ANALYSIS : includes
+    USER "1" --o "1" TIME_MACHINE : uses
+    USER "1" --o "*" APTITUDE_TEST : takes
+    USER "1" --o "*" SOFT_SKILLS : learns
+    USER "1" --o "*" GAMES : plays
+    COMPANY "1" --o "1" DREAM_COMPANY : provides
+
+    %% Service Relationships
+    InterviewService ..> INTERVIEW : manages
+    ResponseService ..> RESPONSE : manages
+    InterviewerService ..> INTERVIEWER : manages
+    FacialAnalysisService ..> FACIAL_ANALYSIS : produces
+    SentimentAnalysisService ..> RESPONSE : analyzes

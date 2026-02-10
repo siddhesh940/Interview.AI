@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useContext, ReactNode, useEffect } from "react";
-import { Interview } from "@/types/interview";
 import { InterviewService } from "@/services/interviews.service";
+import { Interview } from "@/types/interview";
 import { useClerk, useOrganization } from "@clerk/nextjs";
+import React, { ReactNode, useContext, useEffect, useState } from "react";
 
 interface InterviewContextProps {
   interviews: Interview[];
@@ -12,6 +12,7 @@ interface InterviewContextProps {
   interviewsLoading: boolean;
   setInterviewsLoading: (interviewsLoading: boolean) => void;
   fetchInterviews: () => void;
+  deleteInterview: (interviewId: string) => Promise<void>;
 }
 
 export const InterviewContext = React.createContext<InterviewContextProps>({
@@ -21,6 +22,7 @@ export const InterviewContext = React.createContext<InterviewContextProps>({
   setInterviewsLoading: () => undefined,
   interviewsLoading: false,
   fetchInterviews: () => {},
+  deleteInterview: async () => {},
 });
 
 interface InterviewProviderProps {
@@ -49,9 +51,28 @@ export function InterviewProvider({ children }: InterviewProviderProps) {
   };
 
   const getInterviewById = async (interviewId: string) => {
-    const response = await InterviewService.getInterviewById(interviewId);
+    console.log('🔍 InterviewContext: getInterviewById called with:', interviewId);
+    try {
+      const response = await InterviewService.getInterviewById(interviewId);
+      console.log('🔍 InterviewContext: Service response:', response);
+      return response;
+    } catch (error) {
+      console.error('🚨 InterviewContext: Error in getInterviewById:', error);
+      throw error;
+    }
+  };
 
-    return response;
+  const deleteInterview = async (interviewId: string) => {
+    try {
+      await InterviewService.deleteInterview(interviewId);
+      // Remove from local state immediately
+      setInterviews((prevInterviews) => 
+        prevInterviews.filter((interview) => interview.id !== interviewId)
+      );
+    } catch (error) {
+      console.error('🚨 InterviewContext: Error deleting interview:', error);
+      throw error;
+    }
   };
 
   useEffect(() => {
@@ -70,6 +91,7 @@ export function InterviewProvider({ children }: InterviewProviderProps) {
         interviewsLoading,
         setInterviewsLoading,
         fetchInterviews,
+        deleteInterview,
       }}
     >
       {children}

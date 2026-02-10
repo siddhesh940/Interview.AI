@@ -1,0 +1,30 @@
+flowchart TD
+    A[Career Readiness Assessment Initiated] --> B[Resume Analysis Data Collection]
+    B --> C[Interview Simulation Results Aggregation]
+    C --> D[Aptitude Assessment Scores Integration]
+    D --> E[Soft Skill Activity Performance]
+    E --> F[Comprehensive Readiness Score Generation]
+    F --> G{Readiness Score Evaluation}
+    G -->|Score >= 80%| H[High Readiness Level]
+    G -->|Score 60-79%| I[Medium Readiness Level]
+    G -->|Score < 60%| J[Low Readiness Level]
+    H --> K[Company-Specific Advanced Preparation]
+    I --> L[Targeted Skill Enhancement]
+    J --> M[Foundation Level Preparation]
+    K --> N[Role-Based Recommendations]
+    L --> N
+    M --> N
+    N --> O[Placement-Related Insights]
+    O --> P[Industry Expectations Alignment]
+    P --> Q[Database Updates - Progress Tracking]
+    Q --> R[Continuous Performance Monitoring]
+    R --> S{Placement Ready?}
+    S -->|Yes| T[Job Application Guidance]
+    S -->|No| U[Additional Preparation Modules]
+    T --> V[Career Success]
+    U --> F
+    
+    style A fill:#e8f5e8
+    style V fill:#c8e6c9
+    style F fill:#fff3e0
+    style Q fill:#f3e5f5

@@ -20,6 +20,7 @@ function Interviews() {
   const [currentPlan, setCurrentPlan] = useState<string>("");
   const [allowedResponsesCount, setAllowedResponsesCount] =
     useState<number>(10);
+  const [totalResponsesCount, setTotalResponsesCount] = useState<number>(0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   function InterviewsLoader() {
@@ -59,7 +60,7 @@ function Interviews() {
 
   useEffect(() => {
     const fetchResponsesCount = async () => {
-      if (!organization || currentPlan !== "free") {
+      if (!organization) {
         return;
       }
 
@@ -69,14 +70,21 @@ function Interviews() {
           await ResponseService.getResponseCountByOrganizationId(
             organization.id,
           );
-        const hasExceededLimit = totalResponses >= allowedResponsesCount;
-        if (hasExceededLimit) {
-          setCurrentPlan("free_trial_over");
-          await InterviewService.deactivateInterviewsByOrgId(organization.id);
-          await ClientService.updateOrganization(
-            { plan: "free_trial_over" },
-            organization.id,
-          );
+        
+        // Set the actual total responses count
+        setTotalResponsesCount(totalResponses);
+        
+        // Check limit only for free plan
+        if (currentPlan === "free") {
+          const hasExceededLimit = totalResponses >= allowedResponsesCount;
+          if (hasExceededLimit) {
+            setCurrentPlan("free_trial_over");
+            await InterviewService.deactivateInterviewsByOrgId(organization.id);
+            await ClientService.updateOrganization(
+              { plan: "free_trial_over" },
+              organization.id,
+            );
+          }
         }
       } catch (error) {
         console.error("Error fetching responses:", error);
@@ -132,7 +140,7 @@ function Interviews() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Responses</p>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">{allowedResponsesCount - (allowedResponsesCount > 0 ? 0 : 0)}</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">{totalResponsesCount}</p>
                 </div>
               </div>
             </CardContent>

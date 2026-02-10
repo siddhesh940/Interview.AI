@@ -3,34 +3,28 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
+import { VoiceInputButton } from "@/components/ui/VoiceInputButton";
 import { DifficultyLevel, useGames } from "@/contexts/GamesContext";
-import { 
-  difficultyColors, 
-  difficultyLabels, 
-  getFilteredQuestions, 
+import {
+  difficultyColors,
+  difficultyLabels,
+  getFilteredQuestions,
   getRandomQuestion,
   keywordTopics
 } from "@/data/games-data";
-import { 
-  ArrowRight, 
-  Award, 
-  BookOpen, 
-  Brain, 
-  CheckCircle, 
-  Clock, 
-  Edit3, 
-  Home, 
-  Lightbulb, 
-  Plus, 
-  Sparkles, 
-  Target, 
-  Timer, 
-  TrendingUp, 
-  Trophy, 
-  XCircle, 
-  Zap 
+import {
+  ArrowRight, BookOpen,
+  Brain,
+  CheckCircle,
+  Clock, Home,
+  Lightbulb, Sparkles,
+  Target,
+  Timer,
+  TrendingUp,
+  Trophy,
+  XCircle,
+  Zap
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from 'react';
@@ -78,9 +72,10 @@ export default function KeywordHuntGame() {
     }
   };
 
-  // Initialize with a topic
+  // Initialize with a topic on mount only
   useEffect(() => {
     selectNewTopic();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const selectNewTopic = useCallback(() => {
@@ -211,6 +206,7 @@ export default function KeywordHuntGame() {
   const handleSubmit = useCallback(async () => {
     if (!userInput.trim() && isActive) {
       toast.error("Please enter some keywords before submitting.");
+
       return;
     }
 
@@ -272,23 +268,44 @@ export default function KeywordHuntGame() {
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 8) return "text-green-600 bg-green-50";
-    if (score >= 6) return "text-blue-600 bg-blue-50";
-    if (score >= 4) return "text-amber-600 bg-amber-50";
+    if (score >= 8) {
+      return "text-green-600 bg-green-50";
+    }
+    if (score >= 6) {
+      return "text-blue-600 bg-blue-50";
+    }
+    if (score >= 4) {
+      return "text-amber-600 bg-amber-50";
+    }
+
     return "text-red-600 bg-red-50";
   };
 
   const getScoreLabel = (score: number) => {
-    if (score >= 9) return "Outstanding";
-    if (score >= 7) return "Great";
-    if (score >= 5) return "Good";
-    if (score >= 3) return "Fair";
+    if (score >= 9) {
+      return "Outstanding";
+    }
+    if (score >= 7) {
+      return "Great";
+    }
+    if (score >= 5) {
+      return "Good";
+    }
+    if (score >= 3) {
+      return "Fair";
+    }
+
     return "Needs Work";
   };
 
   const getTimerColor = () => {
-    if (timeLeft > 20) return "text-green-600";
-    if (timeLeft > 10) return "text-amber-600";
+    if (timeLeft > 20) {
+      return "text-green-600";
+    }
+    if (timeLeft > 10) {
+      return "text-amber-600";
+    }
+
     return "text-red-600";
   };
 
@@ -302,8 +319,8 @@ export default function KeywordHuntGame() {
             <Button 
               variant="ghost" 
               size="sm" 
-              onClick={() => router.push('/games')}
               className="text-gray-500"
+              onClick={() => router.push('/games')}
             >
               <Home className="h-4 w-4 mr-1" />
               Back to Games
@@ -383,13 +400,13 @@ export default function KeywordHuntGame() {
                 {(['beginner', 'intermediate', 'advanced'] as const).map((diff) => (
                   <button
                     key={diff}
-                    onClick={() => handleDifficultyChange(diff)}
                     disabled={isActive}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                       selectedDifficulty === diff
                         ? `${difficultyColors[diff].bg} ${difficultyColors[diff].text} border-2 ${difficultyColors[diff].border}`
                         : 'bg-gray-50 text-gray-600 border-2 border-transparent hover:bg-gray-100'
                     } ${isActive ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    onClick={() => handleDifficultyChange(diff)}
                   >
                     {difficultyLabels[diff]}
                   </button>
@@ -450,21 +467,30 @@ export default function KeywordHuntGame() {
                   </div>
                 ) : (
                   <div>
-                    <Textarea
-                      value={userInput}
-                      placeholder="Type keywords separated by commas... e.g., ACID, transaction, commit, rollback"
-                      className="min-h-[150px] border-2 focus:border-purple-400 resize-none text-lg"
-                      onChange={(e) => setUserInput(e.target.value)}
-                      autoFocus={true}
-                    />
+                    {/* Keyword input with voice support */}
+                    <div className="relative">
+                      <Textarea
+                        value={userInput}
+                        placeholder="Type keywords... or use 🎤 voice input. e.g., ACID, transaction, commit"
+                        className="min-h-[150px] border-2 focus:border-purple-400 resize-none text-lg pr-12"
+                        autoFocus={true}
+                        onChange={(e) => setUserInput(e.target.value)}
+                      />
+                      <div className="absolute top-2 right-2">
+                        <VoiceInputButton
+                          currentValue={userInput}
+                          onValueChange={setUserInput}
+                        />
+                      </div>
+                    </div>
                     <div className="flex justify-between items-center mt-4">
                       <p className="text-sm text-gray-500">
                         {userInput.split(/[,\n]+/).filter(k => k.trim()).length} keywords entered
                       </p>
                       <Button
                         className="bg-purple-600 hover:bg-purple-700"
-                        onClick={handleSubmit}
                         disabled={isLoading}
+                        onClick={handleSubmit}
                       >
                         {isLoading ? 'Evaluating...' : 'Submit'}
                         <ArrowRight className="h-4 w-4 ml-1" />
@@ -514,8 +540,8 @@ export default function KeywordHuntGame() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {evaluation?.correctKeywords.map((kw, i) => (
-                      <Badge key={i} className="bg-green-100 text-green-700 border-green-200">
+                    {evaluation?.correctKeywords.map((kw) => (
+                      <Badge key={`correct-${kw}`} className="bg-green-100 text-green-700 border-green-200">
                         {kw}
                       </Badge>
                     ))}
@@ -536,8 +562,8 @@ export default function KeywordHuntGame() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {evaluation?.missedKeywords.map((kw, i) => (
-                      <Badge key={i} variant="outline" className="text-red-600 border-red-200">
+                    {evaluation?.missedKeywords.map((kw) => (
+                      <Badge key={`missed-${kw}`} variant="outline" className="text-red-600 border-red-200">
                         {kw}
                       </Badge>
                     ))}
@@ -577,8 +603,8 @@ export default function KeywordHuntGame() {
                       ⭐ Bonus Keywords Found
                     </p>
                     <div className="flex flex-wrap gap-1">
-                      {evaluation.bonusKeywords.map((kw, i) => (
-                        <Badge key={i} className="bg-purple-100 text-purple-700">
+                      {evaluation.bonusKeywords.map((kw) => (
+                        <Badge key={`bonus-${kw}`} className="bg-purple-100 text-purple-700">
                           {kw}
                         </Badge>
                       ))}

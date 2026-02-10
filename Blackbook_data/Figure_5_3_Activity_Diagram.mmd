@@ -1,0 +1,157 @@
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#4FC3F7',
+    'primaryTextColor': '#000000',
+    'primaryBorderColor': '#0288D1',
+    'lineColor': '#37474F',
+    'secondaryColor': '#FFB74D',
+    'tertiaryColor': '#81C784',
+    'errorColor': '#E57373'
+  }
+}}%%
+
+flowchart TB
+    %% ================================================================
+    %% FIGURE 5.3: ACTIVITY DIAGRAM - Interview.ai System
+    %% ================================================================
+
+    subgraph Login["🔐 LOGIN"]
+        direction LR
+        START((●)) --> A1[User Registration]
+        A1 --> A2[User Authentication]
+        A2 --> A3[Profile Setup]
+    end
+
+    subgraph UserActions["👤 USER / CANDIDATE"]
+        direction LR
+        B1[Resume Upload] --> B2[Select Preparation Module]
+        B2 --> B3{Module Selection}
+        B3 -->|Mock Interview| C1[Start AI Interview]
+        B3 -->|Aptitude| C2[Start Aptitude Test]
+        B3 -->|Soft Skills| C3[Soft Skills Training]
+        B3 -->|Games| C4[Play Interview Games]
+        B3 -->|Dream Company| C5[Company Preparation]
+        B3 -->|HR Coach| C6[HR Interview Practice]
+    end
+
+    subgraph AIInterviewer["🤖 AI INTERVIEWER"]
+        direction LR
+        D1[Generate Questions] --> D2[Conduct Interview]
+        D2 --> D3[Record Responses]
+        D3 --> D4{Response Quality}
+        D4 -->|Good| D5[Positive Feedback]
+        D4 -->|Needs Improvement| D6[Improvement Suggestions]
+    end
+
+    subgraph HRCoach["👔 HR INTERVIEW COACH"]
+        direction LR
+        H1[Select HR Category] --> H2[Answer HR Questions]
+        H2 --> H3[AI Evaluates Response]
+        H3 --> H4{Red Flags?}
+        H4 -->|Yes| H5[Red Flag Warning]
+        H4 -->|No| H6[Score & Feedback]
+    end
+
+    subgraph SystemProcessing["⚙️ SYSTEM"]
+        direction LR
+        E1[Resume Analysis] --> E2[Skill Extraction]
+        E2 --> E3[Performance Evaluation]
+        E3 --> E4[Score Calculation]
+        E4 --> E5{Pass Criteria?}
+        E5 -->|Yes| E6[Generate Success Report]
+        E5 -->|No| E7[Generate Improvement Plan]
+    end
+
+    subgraph Results["📊 RESULTS"]
+        direction LR
+        F1[View Dashboard] --> F2[Performance Reports]
+        F2 --> F3{Interview Ready?}
+        F3 -->|Yes| F4[Interview Preparation Complete]
+        F3 -->|No| F5[Continue Practice]
+        F4 --> ENDNODE((◉))
+        F5 --> B2
+    end
+
+    %% ================================================================
+    %% CONNECTIONS BETWEEN SWIMLANES
+    %% ================================================================
+    
+    A3 --> B1
+    B1 --> E1
+    C1 --> D1
+    C2 --> E3
+    C3 --> E3
+    C4 --> E4
+    C5 --> E2
+    C6 --> H1
+    D5 --> E6
+    D6 --> E7
+    H5 --> E7
+    H6 --> E6
+    E6 --> F1
+    E7 --> F1
+
+    %% ================================================================
+    %% STYLING
+    %% ================================================================
+    
+    %% Start/End Nodes
+    style START fill:#4CAF50,stroke:#2E7D32,color:#fff
+    style ENDNODE fill:#F44336,stroke:#C62828,color:#fff
+    
+    %% HR Coach Section - Purple
+    style H1 fill:#CE93D8,stroke:#8E24AA,color:#000
+    style H2 fill:#CE93D8,stroke:#8E24AA,color:#000
+    style H3 fill:#CE93D8,stroke:#8E24AA,color:#000
+    style H4 fill:#E1BEE7,stroke:#8E24AA,color:#000
+    style H5 fill:#E57373,stroke:#D32F2F,color:#000
+    style H6 fill:#81C784,stroke:#388E3C,color:#000
+    style C6 fill:#FFB74D,stroke:#F57C00,color:#000
+    style HRCoach fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px
+    
+    %% Login Section - Light Blue
+    style A1 fill:#4FC3F7,stroke:#0288D1,color:#000
+    style A2 fill:#4FC3F7,stroke:#0288D1,color:#000
+    style A3 fill:#4FC3F7,stroke:#0288D1,color:#000
+    
+    %% User Actions - Orange
+    style B1 fill:#FFB74D,stroke:#F57C00,color:#000
+    style B2 fill:#FFB74D,stroke:#F57C00,color:#000
+    style B3 fill:#FFE0B2,stroke:#F57C00,color:#000
+    style C1 fill:#FFB74D,stroke:#F57C00,color:#000
+    style C2 fill:#FFB74D,stroke:#F57C00,color:#000
+    style C3 fill:#FFB74D,stroke:#F57C00,color:#000
+    style C4 fill:#FFB74D,stroke:#F57C00,color:#000
+    style C5 fill:#FFB74D,stroke:#F57C00,color:#000
+    
+    %% AI Interviewer - Cyan/Teal
+    style D1 fill:#4DD0E1,stroke:#00ACC1,color:#000
+    style D2 fill:#4DD0E1,stroke:#00ACC1,color:#000
+    style D3 fill:#4DD0E1,stroke:#00ACC1,color:#000
+    style D4 fill:#B2EBF2,stroke:#00ACC1,color:#000
+    style D5 fill:#81C784,stroke:#388E3C,color:#000
+    style D6 fill:#E57373,stroke:#D32F2F,color:#000
+    
+    %% System Processing - Green
+    style E1 fill:#81C784,stroke:#388E3C,color:#000
+    style E2 fill:#81C784,stroke:#388E3C,color:#000
+    style E3 fill:#81C784,stroke:#388E3C,color:#000
+    style E4 fill:#81C784,stroke:#388E3C,color:#000
+    style E5 fill:#C8E6C9,stroke:#388E3C,color:#000
+    style E6 fill:#81C784,stroke:#388E3C,color:#000
+    style E7 fill:#FFCC80,stroke:#F57C00,color:#000
+    
+    %% Results - Mixed
+    style F1 fill:#CE93D8,stroke:#8E24AA,color:#000
+    style F2 fill:#CE93D8,stroke:#8E24AA,color:#000
+    style F3 fill:#E1BEE7,stroke:#8E24AA,color:#000
+    style F4 fill:#4CAF50,stroke:#2E7D32,color:#fff
+    style F5 fill:#FFCC80,stroke:#F57C00,color:#000
+
+    %% Swimlane Styling
+    style Login fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+    style UserActions fill:#FFF3E0,stroke:#E65100,stroke-width:2px
+    style AIInterviewer fill:#E0F7FA,stroke:#00838F,stroke-width:2px
+    style SystemProcessing fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+    style Results fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px

@@ -1,9 +1,9 @@
 # 📚 Interview.ai - Feature Documentation Hub
 
-### Complete Documentation for All 11 Sidebar Features
+### Complete Documentation for All 12 Sidebar Features
 
 [![Documentation](https://img.shields.io/badge/Documentation-Complete-green?style=for-the-badge)]()
-[![Features](https://img.shields.io/badge/Features-11-blue?style=for-the-badge)]()
+[![Features](https://img.shields.io/badge/Features-12-blue?style=for-the-badge)]()
 [![Last Updated](https://img.shields.io/badge/Updated-January%202026-orange?style=for-the-badge)]()
 
 ---
@@ -23,29 +23,30 @@ This folder contains **comprehensive documentation** for every feature available
 | 1 | **[🎯 Interviews](1_INTERVIEWS.md)** | `1_INTERVIEWS.md` | AI-powered mock interviews with voice interaction |
 | 2 | **[👥 Interviewers](2_INTERVIEWERS.md)** | `2_INTERVIEWERS.md` | AI interviewer personas with unique characteristics |
 | 3 | **[🎓 Soft Skills](3_SOFT_SKILLS.md)** | `3_SOFT_SKILLS.md` | Communication, confidence & body language training |
+| 4 | **[👔 HR Interview Coach](12_HR_INTERVIEW_COACH.md)** | `12_HR_INTERVIEW_COACH.md` | HR round preparation with AI evaluation |
 
 ### 📚 Learning & Practice
 
 | # | Feature | File | Description |
 |---|---------|------|-------------|
-| 4 | **[📖 Interview Resource Hub](4_INTERVIEW_RESOURCE_HUB.md)** | `4_INTERVIEW_RESOURCE_HUB.md` | 30+ PDFs and study materials |
-| 5 | **[🎮 Games](5_GAMES.md)** | `5_GAMES.md` | 6 interactive skill-building games |
-| 6 | **[🧮 Aptitude Arena](6_APTITUDE_ARENA.md)** | `6_APTITUDE_ARENA.md` | 1000+ aptitude questions |
+| 5 | **[📖 Interview Resource Hub](4_INTERVIEW_RESOURCE_HUB.md)** | `4_INTERVIEW_RESOURCE_HUB.md` | 30+ PDFs and study materials |
+| 6 | **[🎮 Games](5_GAMES.md)** | `5_GAMES.md` | 6 interactive skill-building games |
+| 7 | **[🧮 Aptitude Arena](6_APTITUDE_ARENA.md)** | `6_APTITUDE_ARENA.md` | 1000+ aptitude questions |
 
 ### 💼 Career Planning
 
 | # | Feature | File | Description |
 |---|---------|------|-------------|
-| 7 | **[🏢 Dream Company Station](7_DREAM_COMPANY_STATION.md)** | `7_DREAM_COMPANY_STATION.md` | Company-specific preparation |
-| 8 | **[💼 Placement Drives](8_PLACEMENT_DRIVES.md)** | `8_PLACEMENT_DRIVES.md` | Live job opportunities |
-| 9 | **[📄 Resume Builder](9_RESUME_BUILDER.md)** | `9_RESUME_BUILDER.md` | Professional resume creation |
+| 8 | **[🏢 Dream Company Station](7_DREAM_COMPANY_STATION.md)** | `7_DREAM_COMPANY_STATION.md` | Company-specific preparation |
+| 9 | **[💼 Placement Drives](8_PLACEMENT_DRIVES.md)** | `8_PLACEMENT_DRIVES.md` | Live job opportunities |
+| 10 | **[📄 Resume Builder](9_RESUME_BUILDER.md)** | `9_RESUME_BUILDER.md` | Professional resume creation |
 
 ### 🤖 Advanced Tools
 
 | # | Feature | File | Description |
 |---|---------|------|-------------|
-| 10 | **[🤖 Skill Autofill](10_SKILL_AUTOFILL.md)** | `10_SKILL_AUTOFILL.md` | Automatic skill extraction |
-| 11 | **[⏰ Time Machine](11_TIME_MACHINE.md)** | `11_TIME_MACHINE.md` | Future success prediction |
+| 11 | **[🤖 Skill Autofill](10_SKILL_AUTOFILL.md)** | `10_SKILL_AUTOFILL.md` | Automatic skill extraction |
+| 12 | **[⏰ Time Machine](11_TIME_MACHINE.md)** | `11_TIME_MACHINE.md` | Future success prediction |
 
 ---
 

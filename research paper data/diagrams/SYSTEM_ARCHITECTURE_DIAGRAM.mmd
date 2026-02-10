@@ -16,6 +16,7 @@ flowchart TB
         F3["<b>Interview UI</b><br/>Voice Chat | AI Agent<br/>Recording"]
         F4["<b>Practice Modules</b><br/>Aptitude | Verbal<br/>Games | Soft Skills"]
         F5["<b>Feedback View</b><br/>Scores | Reports<br/>Analysis Charts"]
+        F6["<b>HR Interview Coach</b><br/>HR Questions | Evaluation<br/>Red Flag Detection"]
     end
 
     subgraph API["⚡ API LAYER"]
@@ -72,7 +73,7 @@ flowchart TB
     %% Connections
     U1 --> A1
     A1 --> FRONTEND
-    F1 & F2 & F3 & F4 & F5 --> AP1
+    F1 & F2 & F3 & F4 & F5 & F6 --> AP1
     AP1 --> SERVICES
     AP1 --> AIENGINE
     AI1 --> AI3
@@ -103,6 +104,7 @@ flowchart TB
     style F3 fill:#3B82F6,stroke:#2563EB,color:#fff
     style F4 fill:#3B82F6,stroke:#2563EB,color:#fff
     style F5 fill:#3B82F6,stroke:#2563EB,color:#fff
+    style F6 fill:#8B5CF6,stroke:#7C3AED,color:#fff
     style AP1 fill:#6366F1,stroke:#4F46E5,color:#fff
     style B1 fill:#A855F7,stroke:#9333EA,color:#fff
     style B2 fill:#A855F7,stroke:#9333EA,color:#fff

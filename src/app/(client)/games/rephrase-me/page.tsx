@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
+import { VoiceInputButton } from "@/components/ui/VoiceInputButton";
 import { DifficultyLevel, useGames } from "@/contexts/GamesContext";
 import {
     difficultyColors,
@@ -417,13 +418,23 @@ return "text-red-600 bg-red-50";
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <Textarea
-                  value={userRewrite}
-                  placeholder="Rewrite the sentence using professional, specific, and impactful language..."
-                  className="min-h-[150px] border-2 focus:border-emerald-400 resize-none"
-                  disabled={isLoading}
-                  onChange={(e) => setUserRewrite(e.target.value)}
-                />
+                {/* Answer input with voice support */}
+                <div className="relative">
+                  <Textarea
+                    value={userRewrite}
+                    placeholder="Rewrite using professional language... or use 🎤 voice input."
+                    className="min-h-[150px] border-2 focus:border-emerald-400 resize-none pr-12"
+                    disabled={isLoading}
+                    onChange={(e) => setUserRewrite(e.target.value)}
+                  />
+                  <div className="absolute top-2 right-2">
+                    <VoiceInputButton
+                      currentValue={userRewrite}
+                      disabled={isLoading}
+                      onValueChange={setUserRewrite}
+                    />
+                  </div>
+                </div>
                 <div className="flex gap-2 mt-4">
                   <Button
                     disabled={isLoading || !userRewrite.trim()}

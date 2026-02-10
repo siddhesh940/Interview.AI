@@ -4,38 +4,42 @@ flowchart TB
   hr[Recruiter HR]
 
   %% Frontend
-  subgraph FE
+  subgraph FE[Frontend]
     login[Login and Instructions UI]
     liveUI[Live Interview UI - Audio Webcam Timers]
+    hrCoachUI[HR Interview Coach UI]
     feedbackUI[Results and Feedback UI]
   end
 
   %% Backend
-  subgraph BE
+  subgraph BE[Backend]
     api[REST and WebSocket APIs]
     auth[Auth and Session - JWT OAuth]
     orchestrator[Analysis Orchestrator - Jobs Workers]
+    hrService[HR Coach Service]
   end
 
   %% AI Engine
-  subgraph AI
+  subgraph AI[AI Engine]
     stt[Speech to Text - ASR]
     nlp[NLP Evaluation - Relevance Clarity Accuracy]
     fer[Facial and Eye Tracking - Confidence Engagement Stress]
     fusion[Fusion and Scoring - Weighting Normalization]
+    hrEval[HR Answer Evaluation - Red Flag Detection]
   end
 
   %% Data Layer
-  subgraph DB
+  subgraph DB[Database]
     profiles[Candidate Profiles]
     questions[Question Sets]
+    hrQuestions[HR Questions Bank]
     responses[Responses]
     results[Scores and Reports]
     media[Recordings and Artifacts]
   end
 
   %% Admin Panel
-  subgraph ADMIN
+  subgraph ADMIN[Admin]
     adminUI[Dashboards Scores Recordings AI Evaluations]
   end
 
@@ -43,10 +47,13 @@ flowchart TB
   user --> login
   login --> api
   liveUI --> api
+  user --> hrCoachUI
+  hrCoachUI --> api
 
   api --> auth --> api
 
   api --> questions
+  api --> hrQuestions
   liveUI --> api
   api --> stt
   stt --> api
@@ -56,6 +63,9 @@ flowchart TB
   fer --> api
   api --> fusion
   fusion --> api
+  api --> hrService
+  hrService --> hrEval
+  hrEval --> api
 
   api --> responses
   api --> results
@@ -67,3 +77,4 @@ flowchart TB
   hr --> adminUI
   adminUI --> api
   api --> adminUI
+

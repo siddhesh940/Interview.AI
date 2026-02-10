@@ -7,19 +7,24 @@ The Interview.ai system has been successfully implemented and tested, demonstrat
 ## A. System Interface Implementation
 
 ### 1. Dashboard Interface
-The main dashboard provides users with comprehensive overview of their preparation progress, including skill assessments, practice module completion rates, and interview history tracking.
+The main dashboard displays all created interviews with response counts, providing quick access to interview management and analytics.
 
-*[Screenshot: Dashboard showing user progress, skill mapping, and module access]*
+![Dashboard Interface](../Demo_Images/Dashboard.png)
 
-### 2. Interview Session Interface
-The AI-powered interview interface demonstrates real-time voice interaction capabilities with clean, intuitive design facilitating natural conversation flow between candidates and the AI interviewer.
+### 2. Create Interview Interface
+The interview creation popup allows users to configure interview name, select AI interviewer, upload resume, and set interview parameters.
 
-*[Screenshot: Live interview session with voice controls, question display, and recording status]*
+![Create Interview](../Demo_Images/Create%20Interview.png)
 
-### 3. Resume Builder and Analysis
-The resume parsing and analysis interface showcases automatic skill extraction and mapping functionality, providing users with detailed breakdown of their competencies.
+### 3. Interview Session Interface
+The live interview interface features real-time voice transcription, AI interviewer interaction, and video recording with progress tracking.
 
-*[Screenshot: Resume upload interface with parsed skills display and gap analysis]*
+![Interview Call](../Demo_Images/Call.png)
+
+### 4. Resume Builder
+The resume editor provides a form-based interface with live preview, enabling users to build ATS-friendly resumes with PDF export functionality.
+
+![Resume Builder](../Demo_Images/Resume%20Builder.png)
 
 ---
 

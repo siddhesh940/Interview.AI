@@ -1,0 +1,536 @@
+<mxfile host="app.diagrams.net" modified="2026-01-29T12:00:00.000Z" agent="5.0" etag="interview-flowchart-final" version="21.0.0" type="device">
+  <diagram name="Interview.ai Complete Platform Flowchart" id="flowchart-final">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- ========== TITLE ========== -->
+        <mxCell id="title" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Interview.ai - Complete Platform Flowchart&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="10" width="400" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== TOP FLOW (Compact) ========== -->
+        <mxCell id="start" value="&lt;b&gt;Start&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="650" y="50" width="80" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user" value="&lt;b&gt;User&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="100" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arr1" value="" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="start" target="user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="login" value="&lt;b&gt;Login/SignUp&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="630" y="145" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="arr2" value="" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="user" target="login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dashboard" value="&lt;b&gt;Main Dashboard&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="640" y="210" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arr3" value="" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="login" target="dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="choose" value="&lt;b&gt;Choose Feature&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="255" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="arr4" value="" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="dashboard" target="choose">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== ROW 1: FEATURES (6 features) ==================== -->
+        <mxCell id="f1" value="&lt;b&gt;🎤 Interviews&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="340" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" value="&lt;b&gt;👔 Interviewers&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="340" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" value="&lt;b&gt;💬 Soft Skills&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="260" y="340" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" value="&lt;b&gt;📚 Resource Hub&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="380" y="340" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" value="&lt;b&gt;🎮 Games&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="340" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="f6" value="&lt;b&gt;🧮 Aptitude Arena&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="620" y="340" width="100" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== ROW 2: FEATURES (5 features) ==================== -->
+        <mxCell id="f7" value="&lt;b&gt;🏢 Dream Company&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="740" y="340" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="f8" value="&lt;b&gt;📋 Placement Drives&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="860" y="340" width="110" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="f9" value="&lt;b&gt;📄 Resume Builder&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="990" y="340" width="110" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="f10" value="&lt;b&gt;⚡ Skill Autofill&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="340" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="f11" value="&lt;b&gt;⏰ Time Machine&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="340" width="100" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- F12: HR INTERVIEW COACH -->
+        <mxCell id="f12" value="&lt;b&gt;🎯 HR Interview Coach&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#9C27B0;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="500" y="390" width="120" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrows from Choose to all features -->
+        <mxCell id="arr-f1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f2" value="" style="endArrow=classic;html=1;strokeWidth=1.5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f3" value="" style="endArrow=classic;html=1;strokeWidth=1.5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f4" value="" style="endArrow=classic;html=1;strokeWidth=1.5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f5" value="" style="endArrow=classic;html=1;strokeWidth=1.5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f6" value="" style="endArrow=classic;html=1;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f7" value="" style="endArrow=classic;html=1;strokeWidth=1.5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f8" value="" style="endArrow=classic;html=1;strokeWidth=1.5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f9" value="" style="endArrow=classic;html=1;strokeWidth=1.5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f10" value="" style="endArrow=classic;html=1;strokeWidth=1.5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f11" value="" style="endArrow=classic;html=1;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F1: INTERVIEWS COMPLETE FLOW ==================== -->
+        <mxCell id="int1" value="&lt;b&gt;Upload Documents&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="20" y="395" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f1" target="int1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="int2a" value="&lt;b&gt;Resume&lt;br&gt;Upload&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="10" y="440" width="55" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="int2b" value="&lt;b&gt;Manual&lt;br&gt;Entry&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="75" y="440" width="55" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int2a" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int1" target="int2a">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int2b" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int1" target="int2b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="int3" value="&lt;b&gt;NLP Extraction&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="25" y="495" width="90" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int3a" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int2a" target="int3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int3b" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int2b" target="int3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="int4" value="&lt;b&gt;AI Questions&lt;br&gt;(OpenAI/Gemini)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="17" y="543" width="106" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int4" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int3" target="int4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="int5" value="&lt;b&gt;Interview Session&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="20" y="598" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int5" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int4" target="int5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="int6" value="&lt;b&gt;Real-time Voice&lt;br&gt;Interview&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="646" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int6" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int5" target="int6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="int7" value="&lt;b&gt;STT + Sentiment&lt;br&gt;+ Facial Analysis&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="15" y="701" width="110" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int7" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int6" target="int7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="int8" value="&lt;b&gt;Performance&lt;br&gt;Analysis&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="25" y="756" width="90" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int8" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int7" target="int8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="int9" value="&lt;b&gt;Final Report&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="25" y="811" width="90" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-int9" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int8" target="int9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="end" value="&lt;b&gt;End&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="30" y="859" width="80" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-end" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="int9" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F2: INTERVIEWERS ==================== -->
+        <mxCell id="f2-1" value="&lt;b&gt;Select AI&lt;br&gt;Interviewer&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="140" y="395" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="f2-2" value="&lt;b&gt;Personality Type&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="140" y="450" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f2-3" value="&lt;b&gt;Start Interview&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="140" y="498" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f2-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f2" target="f2-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f2-2" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f2-1" target="f2-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f2-3" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f2-2" target="f2-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F3: SOFT SKILLS ==================== -->
+        <mxCell id="f3-1" value="&lt;b&gt;📹 Videos&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="260" y="395" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f3-2" value="&lt;b&gt;🖼️ Image Guide&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="260" y="430" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f3-3" value="&lt;b&gt;📝 Quiz&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="260" y="465" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f3-4" value="&lt;b&gt;📄 PDF Guidance&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="260" y="500" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f3-5" value="&lt;b&gt;💡 Daily Tips&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="260" y="535" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f3-6" value="&lt;b&gt;✅ Checklist&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="260" y="570" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f3-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f3" target="f3-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F4: RESOURCE HUB ==================== -->
+        <mxCell id="f4-1" value="&lt;b&gt;Technical Ques&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="380" y="395" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f4-2" value="&lt;b&gt;HR Questions&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="380" y="438" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f4-3" value="&lt;b&gt;Tips &amp;amp; Tricks&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="380" y="481" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f4-4" value="&lt;b&gt;Study Materials&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="380" y="524" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f4-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f4" target="f4-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F5: GAMES ==================== -->
+        <mxCell id="f5-1" value="&lt;b&gt;Word Games&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="500" y="395" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f5-2" value="&lt;b&gt;Memory Games&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="500" y="438" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f5-3" value="&lt;b&gt;Quiz Challenge&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="500" y="481" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f5-4" value="&lt;b&gt;🏆 Leaderboard&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="500" y="524" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f5-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f5" target="f5-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F6: APTITUDE ARENA ==================== -->
+        <mxCell id="f6-1" value="&lt;b&gt;📊 Quantitative&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="620" y="395" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f6-2" value="&lt;b&gt;🧠 Logical&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="620" y="438" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f6-3" value="&lt;b&gt;📝 Verbal&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="620" y="481" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f6-4" value="&lt;b&gt;📈 Score Tracking&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="620" y="524" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f6-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f6" target="f6-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F7: DREAM COMPANY ==================== -->
+        <mxCell id="f7-1" value="&lt;b&gt;TCS&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="740" y="395" width="45" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f7-2" value="&lt;b&gt;Infosys&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="795" y="395" width="45" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f7-3" value="&lt;b&gt;Wipro&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="740" y="430" width="45" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f7-4" value="&lt;b&gt;Accenture&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="795" y="430" width="45" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f7-5" value="&lt;b&gt;Cognizant&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=7;" vertex="1" parent="1">
+          <mxGeometry x="740" y="465" width="45" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f7-6" value="&lt;b&gt;Capgemini&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=7;" vertex="1" parent="1">
+          <mxGeometry x="795" y="465" width="45" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f7-7" value="&lt;b&gt;Company Prep&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="745" y="505" width="90" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f7-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f7" target="f7-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f7-2" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f7" target="f7-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F8: PLACEMENT DRIVES ==================== -->
+        <mxCell id="f8-1" value="&lt;b&gt;📅 Upcoming&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="860" y="395" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f8-2" value="&lt;b&gt;✅ Applied&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="860" y="430" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f8-3" value="&lt;b&gt;🗓️ Schedule&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="860" y="465" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f8-4" value="&lt;b&gt;📊 Track Progress&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="860" y="500" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f8-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f8" target="f8-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F9: RESUME BUILDER ==================== -->
+        <mxCell id="f9-1" value="&lt;b&gt;📋 Templates&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="990" y="395" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f9-2" value="&lt;b&gt;✏️ Fill Details&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="990" y="430" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f9-3" value="&lt;b&gt;🤖 AI Suggestions&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="990" y="465" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f9-4" value="&lt;b&gt;⬇️ Download PDF&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="990" y="500" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f9-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f9" target="f9-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F10: SKILL AUTOFILL ==================== -->
+        <mxCell id="f10-1" value="&lt;b&gt;Resume Parsing&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="395" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f10-2" value="&lt;b&gt;Auto-fill Skills&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="438" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f10-3" value="&lt;b&gt;Skill Mapping&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="481" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f10-4" value="&lt;b&gt;Career Match&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="524" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f10-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f10" target="f10-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F11: TIME MACHINE ==================== -->
+        <mxCell id="f11-1" value="&lt;b&gt;📜 History&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="395" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f11-2" value="&lt;b&gt;📈 Progress&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="438" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f11-3" value="&lt;b&gt;🔄 Compare&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="481" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f11-4" value="&lt;b&gt;💡 AI Insights&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="524" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f11-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f11" target="f11-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== F12: HR INTERVIEW COACH FLOW ==================== -->
+        <mxCell id="f12-1" value="&lt;b&gt;👤 Setup Profile&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#9C27B0;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="510" y="440" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f12-2" value="&lt;b&gt;📝 Answer Builder&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#9C27B0;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="510" y="483" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f12-3" value="&lt;b&gt;🎤 HR Mock Interview&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#9C27B0;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="510" y="526" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f12-4" value="&lt;b&gt;🚩 Red Flag Detection&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#9C27B0;strokeWidth=2;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="510" y="569" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="f12-5" value="&lt;b&gt;🎥 Video Tutorials&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#9C27B0;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="510" y="612" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f12-1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1" source="f12" target="f12-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-choose-f12" value="" style="endArrow=classic;html=1;strokeWidth=1.5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="choose" target="f12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== LEGEND ==================== -->
+        <mxCell id="legend" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="600" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-title" value="&lt;b&gt;LEGEND&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="605" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="635" width="30" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1-t" value="Start / End" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="635" width="70" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="660" width="30" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2-t" value="Decision" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="663" width="60" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="690" width="30" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3-t" value="Process" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="690" width="60" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-arr" value="" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1190" y="720" as="sourcePoint" />
+            <mxPoint x="1220" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg4-t" value="Flow" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="712" width="50" height="18" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== BOTTOM INFO BOX ==================== -->
+        <mxCell id="info-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0288d1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="140" y="620" width="330" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="info-title" value="&lt;b&gt;🚀 Platform Highlights&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="625" width="170" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="info-1" value="✅ AI-Powered Interview Simulation" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="155" y="655" width="200" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="info-2" value="✅ Real-time Voice Analysis" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="155" y="678" width="180" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="info-3" value="✅ Facial Recognition &amp;amp; Expression" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="155" y="701" width="200" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="info-4" value="✅ Sentiment Analysis" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="155" y="724" width="160" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="info-5" value="✅ Intelligent Resume Builder" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="155" y="747" width="180" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="info-6" value="✅ Company-Specific Prep (6+ Companies)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="155" y="770" width="220" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="info-7" value="✅ Placement Drive Management" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="155" y="793" width="200" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="info-8" value="✅ Aptitude &amp;amp; Soft Skills Training" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="155" y="816" width="200" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="info-9" value="✅ Interactive Games &amp;amp; Gamification" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="155" y="839" width="210" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="info-10" value="✅ Time Machine - Progress Tracking" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="155" y="862" width="210" height="18" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== TECH STACK BOX ==================== -->
+        <mxCell id="tech-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ff9800;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="620" width="250" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="tech-title" value="&lt;b&gt;🛠️ Technology Stack&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="555" y="625" width="140" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="tech-1" value="&lt;b&gt;Frontend:&lt;/b&gt; Next.js, React, TailwindCSS" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="515" y="655" width="220" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="tech-2" value="&lt;b&gt;Backend:&lt;/b&gt; Node.js, Express" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="515" y="678" width="180" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="tech-3" value="&lt;b&gt;Database:&lt;/b&gt; Supabase (PostgreSQL)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="515" y="701" width="200" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="tech-4" value="&lt;b&gt;AI/ML:&lt;/b&gt; OpenAI GPT-4, Gemini" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="515" y="724" width="200" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="tech-5" value="&lt;b&gt;Voice:&lt;/b&gt; Web Speech API, Deepgram" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="515" y="747" width="200" height="18" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== AI FEATURES BOX ==================== -->
+        <mxCell id="ai-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#4caf50;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="780" y="620" width="250" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-title" value="&lt;b&gt;🤖 AI Capabilities&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="845" y="625" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-1" value="• NLP-based Question Generation" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="795" y="655" width="200" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-2" value="• Real-time Answer Evaluation" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="795" y="678" width="180" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-3" value="• Confidence &amp;amp; Communication Scoring" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="795" y="701" width="220" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-4" value="• Personalized Feedback &amp;amp; Insights" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="795" y="724" width="210" height="18" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

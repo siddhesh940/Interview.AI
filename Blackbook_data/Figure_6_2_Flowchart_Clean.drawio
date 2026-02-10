@@ -1,0 +1,408 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0" version="22.1.0">
+  <diagram name="Interview.ai Flowchart" id="flowchart-clean">
+    <mxGraphModel dx="1100" dy="750" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- ========== START ========== -->
+        <mxCell id="start" value="START" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=13;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="100" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e1" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="start" target="homePage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== DISPLAY HOME PAGE ========== -->
+        <mxCell id="homePage" value="DISPLAY&#xa;HOME PAGE" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="480" y="90" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e2a" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0;exitY=0.5;entryX=0.5;entryY=0;" edge="1" parent="1" source="homePage" target="login">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="115" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="e2b" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=1;exitY=0.5;entryX=0.5;entryY=0;" edge="1" parent="1" source="homePage" target="signup">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="115" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ========== LOGIN ========== -->
+        <mxCell id="login" value="LOGIN" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="290" y="160" width="120" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e3" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="login" target="enterCred">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== SIGN UP ========== -->
+        <mxCell id="signup" value="SIGN UP" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="690" y="160" width="120" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e4" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="signup" target="enterReg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== SIGNUP FLOW ========== -->
+        <mxCell id="enterReg" value="Enter Registration&#xa;Details" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="670" y="230" width="160" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e5" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="enterReg" target="storeDb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="storeDb" value="Store User Data&#xa;in Database" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="700" y="300" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e6" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="storeDb" target="regSuccess">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="regSuccess" value="Registration&#xa;Successful" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="690" y="385" width="120" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e7" value="Redirect" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;fontSize=10;" edge="1" parent="1" source="regSuccess" target="login">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="408" />
+              <mxPoint x="600" y="183" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ========== LOGIN FLOW ========== -->
+        <mxCell id="enterCred" value="Enter&#xa;Credentials" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="270" y="230" width="160" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e8" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="enterCred" target="checkDb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="checkDb" value="Check&#xa;Database" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="300" y="300" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e9" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="checkDb" target="validDecision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="validDecision" value="Credentials&#xa;Valid?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="290" y="385" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e10" value="NO" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0;exitY=0.5;entryX=0.5;entryY=1;fontSize=10;" edge="1" parent="1" source="validDecision" target="errorMsg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="425" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="errorMsg" value="Show Error&#xa;Message" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="90" y="320" width="120" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e11" value="Retry" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=0;entryX=0;entryY=0.5;fontSize=10;" edge="1" parent="1" source="errorMsg" target="enterCred">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="253" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="e12" value="YES" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontSize=10;" edge="1" parent="1" source="validDecision" target="dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== DASHBOARD ========== -->
+        <mxCell id="dashboard" value="DASHBOARD&#xa;(Select Feature)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;fontStyle=1;fillColor=#E6E6E6;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="285" y="500" width="130" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e13a" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0;exitY=0.5;entryX=0.5;entryY=0;" edge="1" parent="1" source="dashboard" target="aiInterview">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="525" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="e13b" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="dashboard" target="practiceModule">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e13c" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=1;exitY=0.5;entryX=0.5;entryY=0;" edge="1" parent="1" source="dashboard" target="resumeBuilder">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="525" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ========== AI INTERVIEW ========== -->
+        <mxCell id="aiInterview" value="AI INTERVIEW" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#DAE8FC;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="40" y="570" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e14" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="aiInterview" target="selectRole">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="selectRole" value="Select Interview Role" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="25" y="630" width="150" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e15" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="selectRole" target="generateQ">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="generateQ" value="Generate AI Questions" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="35" y="685" width="130" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e16" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="generateQ" target="conductInt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="conductInt" value="Conduct Interview" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="35" y="740" width="130" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e17" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="conductInt" target="captureResp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="captureResp" value="Capture User Responses" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="20" y="795" width="160" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e18" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="captureResp" target="analyzeResp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="analyzeResp" value="Analyze Responses Using AI" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="25" y="850" width="150" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e19" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="analyzeResp" target="genFeedback1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="genFeedback1" value="Generate Feedback &amp; Score" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="25" y="905" width="150" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== PRACTICE MODULE ========== -->
+        <mxCell id="practiceModule" value="PRACTICE MODULE" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#D5E8D4;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="280" y="580" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e20" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="practiceModule" target="selectPractice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="selectPractice" value="Select Practice Type" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="265" y="645" width="170" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e21" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="selectPractice" target="attemptPractice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="attemptPractice" value="Attempt Practice" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="285" y="705" width="130" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e22" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="attemptPractice" target="evalPerf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="evalPerf" value="Evaluate Performance" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="280" y="765" width="140" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e23" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="evalPerf" target="genFeedback2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="genFeedback2" value="Generate Practice Feedback" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="270" y="825" width="160" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== RESUME BUILDER ========== -->
+        <mxCell id="resumeBuilder" value="RESUME BUILDER" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#FFE6CC;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="535" y="570" width="130" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== HR INTERVIEW COACH ========== -->
+        <mxCell id="hrInterviewCoach" value="HR INTERVIEW&#xa;COACH" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#E1BEE7;strokeColor=#9C27B0;" vertex="1" parent="1">
+          <mxGeometry x="720" y="570" width="130" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e13d" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=1;exitY=0.5;entryX=0.5;entryY=0;" edge="1" parent="1" source="dashboard" target="hrInterviewCoach">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="785" y="525" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="e34" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="hrInterviewCoach" target="hrProfileSetup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="hrProfileSetup" value="Setup HR Profile" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="700" y="635" width="160" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e35" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="hrProfileSetup" target="generateHRQ">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="generateHRQ" value="Generate HR Questions" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="710" y="695" width="160" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e36" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="generateHRQ" target="conductHRInterview">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="conductHRInterview" value="Practice HR Responses&#xa;(Voice / Text Input)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="705" y="755" width="170" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e37" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="conductHRInterview" target="evaluateHR">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="evaluateHR" value="Evaluate HR Answers &amp;&#xa;Detect Red Flags" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="700" y="815" width="180" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e38" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="evaluateHR" target="genHRFeedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="genHRFeedback" value="Generate HR Feedback &amp;&#xa;Readiness Score" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="700" y="880" width="180" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e24" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="resumeBuilder" target="enterResume">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="enterResume" value="Enter Resume Details" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="520" y="635" width="160" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e25" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="enterResume" target="generateATS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="generateATS" value="Generate ATS-Friendly Resume" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="515" y="695" width="170" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e26" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="generateATS" target="exportPDF">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="exportPDF" value="Export Resume as PDF" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=10;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="520" y="755" width="160" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== CONVERGE TO RESULT ========== -->
+        <mxCell id="e27" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="genFeedback1" target="generateResult">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="980" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="e28" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="genFeedback2" target="generateResult">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e29" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" edge="1" parent="1" source="exportPDF" target="generateResult">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="980" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- HR Coach to Generate Result -->
+        <mxCell id="e39" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" edge="1" parent="1" source="genHRFeedback" target="generateResult">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="980" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- GENERATE RESULT -->
+        <mxCell id="generateResult" value="GENERATE RESULT /&#xa;FEEDBACK" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="255" y="955" width="190" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e30" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="generateResult" target="displayReport">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- DISPLAY REPORT -->
+        <mxCell id="displayReport" value="DISPLAY&#xa;PERFORMANCE REPORT" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="255" y="1035" width="190" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e31" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="displayReport" target="continueDecision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- DECISION: Continue? -->
+        <mxCell id="continueDecision" value="Continue Using&#xa;Platform?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=11;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1115" width="140" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e32" value="YES" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;fontSize=10;" edge="1" parent="1" source="continueDecision" target="dashboard">
+          <mxGeometry x="-0.8" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="1160" />
+              <mxPoint x="220" y="525" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="e33" value="NO" style="endArrow=block;html=1;rounded=0;strokeWidth=2;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontSize=10;" edge="1" parent="1" source="continueDecision" target="stop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== STOP ========== -->
+        <mxCell id="stop" value="STOP" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=13;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1240" width="100" height="45" as="geometry" />
+        </mxCell>
+        
+        <!-- ========== FIGURE CAPTION ========== -->
+        <mxCell id="caption" value="&lt;i&gt;Figure 6.2: Flow Chart - AI Interview Preparation Platform&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1300" width="340" height="25" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

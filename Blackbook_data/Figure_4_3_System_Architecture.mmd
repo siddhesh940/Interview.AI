@@ -1,0 +1,189 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '12px'}}}%%
+flowchart TD
+    subgraph USERS["👤 USERS"]
+        U1[Candidates / Students]
+    end
+
+    subgraph AUTH["🔐 AUTHENTICATION LAYER"]
+        A1[Sign Up]
+        A2[Sign In]
+        A3[Session Management]
+    end
+
+    subgraph FRONTEND["📱 FRONTEND LAYER - UI MODULES"]
+        subgraph SIDEBAR["SIDEBAR FEATURES"]
+            S1[Interviews]
+            S2[Interviewers]
+            S3[Soft Skills]
+            S3A[HR Interview Coach]
+            S4[Interview Resource Hub]
+            S5[Games]
+            S6[Aptitude Arena]
+            S7[Dream Company Station]
+            S8[Placement Drives]
+            S9[Resume Builder]
+            S10[Skill Autofill]
+            S11[Time Machine]
+        end
+        subgraph UI_COMPONENTS["UI COMPONENTS"]
+            UI1[Dashboard & Navigation]
+            UI2[Interview UI - Voice/Text]
+            UI3[Practice & Game Interfaces]
+            UI4[Resume Builder & Viewer]
+            UI5[Reports & Analytics UI]
+            UI6[HR Coach Interface]
+        end
+    end
+
+    subgraph API["🔗 API LAYER"]
+        API1[REST APIs]
+        API2[WebSocket - Real-time Interview]
+        API3[Authentication APIs]
+        API4[Interview & Practice APIs]
+    end
+
+    subgraph BACKEND["⚙️ BACKEND / APPLICATION LAYER"]
+        B1[User Management Service]
+        B2[Interview Management Service]
+        B3[Interviewer Coordination Service]
+        B4[Resume Processing & Skill Autofill Service]
+        B5[Aptitude & Games Service]
+        B6[Soft Skills Service]
+        B7[Placement Drive Service]
+        B8[Dream Company Mapping Service]
+        B9[Career Progress / Time Machine Service]
+        B10[Feedback & Scoring Service]
+        B11[Report & Analytics Service]
+        B12[Notification & Scheduler Service]
+        B13[HR Interview Coach Service]
+    end
+
+    subgraph AI_ENGINE["🤖 AI ENGINE"]
+        subgraph AI_CORE["CORE AI MODULES"]
+            AI1[Resume Parsing & Skill Extraction]
+            AI2[Interview Question Generation]
+            AI3[Answer Evaluation Engine]
+            AI4[Confidence & Communication Scoring]
+            AI5[Multi-Metric Performance Scoring]
+            AI6[Feedback & Recommendation Engine]
+            AI7[HR Question Generator]
+            AI8[HR Answer Evaluation]
+            AI9[HR Red Flag Detection]
+            AI10[Sentiment & Tone Analysis]
+        end
+        subgraph AI_SERVICES["AI SERVICES"]
+            AIS1[NLP Engine]
+            AIS2[Voice Processing - STT/TTS]
+            AIS3[Embedding & Similarity Matching]
+            AIS4[Behavioral Pattern Analysis]
+        end
+    end
+
+    subgraph DATABASE["🗄️ DATA LAYER"]
+        DB1[(User Profiles)]
+        DB2[(Resume Data)]
+        DB3[(Skills & Career Maps)]
+        DB4[(Interview Questions Bank)]
+        DB5[(Interview Responses)]
+        DB6[(Scores & Feedback)]
+        DB7[(Practice & Game Progress)]
+        DB8[(Placement & Company Data)]
+        DB9[(HR Questions & Answers)]
+        DB10[(HR Readiness Scores)]
+    end
+
+    subgraph EXTERNAL["☁️ EXTERNAL SERVICES"]
+        E1[Cloud Hosting - Vercel/AWS]
+        E2[Cloud Database - Supabase]
+        E3[AI APIs - OpenAI/Gemini]
+    end
+
+    %% User Flow
+    U1 --> A1 & A2
+    A1 & A2 --> A3
+    A3 --> UI1
+
+    %% Sidebar to UI
+    UI1 --> S1 & S2 & S3 & S3A & S4 & S5 & S6 & S7 & S8 & S9 & S10 & S11
+    
+    %% Sidebar Features to UI Components
+    S1 --> UI2
+    S2 --> UI2
+    S3 --> UI3
+    S3A --> UI6
+    S4 --> UI3
+    S5 --> UI3
+    S6 --> UI3
+    S7 --> UI5
+    S8 --> UI5
+    S9 --> UI4
+    S10 --> UI4
+    S11 --> UI5
+
+    %% UI to API
+    UI2 --> API2 & API4
+    UI3 --> API1 & API4
+    UI4 --> API1
+    UI5 --> API1
+    UI6 --> API2 & API4
+    A3 --> API3
+
+    %% API to Backend
+    API3 --> B1
+    API1 --> B4 & B5 & B6 & B7 & B8 & B9 & B11 & B13
+    API2 --> B2 & B3 & B13
+    API4 --> B2 & B5 & B6 & B10 & B13
+
+    %% Backend to AI Engine
+    B2 --> AI2 & AI3
+    B3 --> AI2
+    B4 --> AI1
+    B5 --> AI5
+    B6 --> AI4
+    B9 --> AI6
+    B10 --> AI4 & AI5 & AI6
+    B13 --> AI7 & AI8 & AI9 & AI10
+
+    %% AI Core to AI Services
+    AI1 --> AIS1 & AIS3
+    AI2 --> AIS1
+    AI3 --> AIS1 & AIS2
+    AI4 --> AIS2
+    AI5 --> AIS3
+    AI6 --> AIS1 & AIS3
+    AI7 --> AIS1 & AIS4
+    AI8 --> AIS1 & AIS2 & AIS4
+    AI9 --> AIS1 & AIS4
+    AI10 --> AIS1 & AIS2
+
+    %% Backend to Database
+    B1 --> DB1
+    B2 --> DB4 & DB5
+    B4 --> DB2 & DB3
+    B5 --> DB7
+    B6 --> DB6
+    B7 --> DB8
+    B8 --> DB8
+    B9 --> DB3
+    B10 --> DB6
+    B11 --> DB6 & DB7
+    B13 --> DB9 & DB10
+
+    %% AI to Database
+    AI1 --> DB2 & DB3
+    AI2 --> DB4
+    AI3 --> DB5
+    AI6 --> DB6
+    AI7 --> DB9
+    AI8 --> DB10
+    AI9 --> DB9
+
+    %% External Services Connection
+    E1 -.-> FRONTEND
+    E2 -.-> DATABASE
+    E3 -.-> AI_ENGINE
+
+    %% Feedback Loop
+    DB6 -->|Continuous Improvement| B10
+    B10 -->|Updated Recommendations| AI6
+    AI6 -->|Feedback to User| UI5
