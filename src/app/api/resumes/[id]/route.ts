@@ -1,6 +1,6 @@
 import { auth } from '@clerk/nextjs/server';
 import { createClient } from '@supabase/supabase-js';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 // Lazy initialization to avoid build-time errors
 function getSupabaseClient() {

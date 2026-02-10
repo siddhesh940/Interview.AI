@@ -5,6 +5,9 @@ import { createClient } from '@/lib/supabase';
 import { auth } from '@clerk/nextjs/server';
 import { NextRequest, NextResponse } from 'next/server';
 
+// Force dynamic rendering since we use auth() which needs headers
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const { userId } = auth();

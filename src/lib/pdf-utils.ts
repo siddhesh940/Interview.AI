@@ -1,6 +1,17 @@
 // @ts-ignore
 import { ResumeData } from "@/types/resume";
-import html2pdf from "html2pdf.js";
+
+// Dynamic import to avoid 'self is not defined' on server
+let html2pdfModule: any = null;
+const getHtml2Pdf = async () => {
+  if (typeof window === 'undefined') {
+    throw new Error('PDF generation is only available in browser');
+  }
+  if (!html2pdfModule) {
+    html2pdfModule = (await import('html2pdf.js')).default;
+  }
+  return html2pdfModule;
+};
 
 export const downloadResumeAsPDF = async (
   resumeData: ResumeData, 
@@ -44,6 +55,7 @@ export const downloadResumeAsPDF = async (
   };
 
   try {
+    const html2pdf = await getHtml2Pdf();
     await html2pdf().set(options).from(tempDiv).save();
   } catch (error) {
     console.error('Error generating PDF:', error);
