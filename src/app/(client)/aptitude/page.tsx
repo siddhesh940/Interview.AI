@@ -4,20 +4,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { motion } from "framer-motion";
 import {
-    AlertCircle,
-    ArrowRight,
-    Brain,
-    Calculator,
-    CheckCircle,
-    Clock,
-    Flame,
-    MessageCircle,
-    Puzzle,
-    Sparkles,
-    Target,
-    TrendingUp,
-    Trophy,
-    Zap
+  AlertCircle,
+  ArrowRight,
+  Brain,
+  Calculator,
+  CheckCircle,
+  Clock,
+  Flame,
+  MessageCircle,
+  Puzzle,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Trophy,
+  Zap
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -46,10 +46,6 @@ const floatingAnimation = {
   transition: { duration: 3, repeat: Infinity, ease: "easeInOut" }
 };
 
-const pulseAnimation = {
-  scale: [1, 1.05, 1],
-  transition: { duration: 2, repeat: Infinity }
-};
 
 // Animated number counter
 function AnimatedNumber({ value }: { value: number }) {
@@ -120,35 +116,41 @@ export default function AptitudePage() {
   // Calculate stats
   const getTotalQuestionsAttempted = () => {
     let total = 0;
-    Object.values(progress).forEach(category => {
-      Object.values(category).forEach(topic => {
+    Object.values(progress).forEach((category: CategoryProgress) => {
+      (Object.values(category) as TopicProgress[]).forEach((topic) => {
         total += topic.attempted;
       });
     });
+
     return total;
   };
 
   const getTotalCorrect = () => {
     let total = 0;
-    Object.values(progress).forEach(category => {
-      Object.values(category).forEach(topic => {
+    Object.values(progress).forEach((category: CategoryProgress) => {
+      (Object.values(category) as TopicProgress[]).forEach((topic) => {
         total += topic.correct;
       });
     });
+
     return total;
   };
 
   const getAccuracy = () => {
     const attempted = getTotalQuestionsAttempted();
-    if (attempted === 0) return 0;
+    if (attempted === 0) {
+      return 0;
+    }
+
     return Math.round((getTotalCorrect() / attempted) * 100);
   };
 
-  const getWeakestArea = () => {
-    let weakest: { topic: string; accuracy: number } | null = null;
+  const getWeakestArea = (): string => {
+    type WeakestType = { topic: string; accuracy: number } | null;
+    let weakest: WeakestType = null;
     
     Object.entries(progress).forEach(([, categoryData]) => {
-      Object.entries(categoryData).forEach(([topicId, topicData]) => {
+      (Object.entries(categoryData) as [string, TopicProgress][]).forEach(([topicId, topicData]) => {
         if (topicData.attempted >= 3) {
           const accuracy = (topicData.correct / topicData.attempted) * 100;
           if (!weakest || accuracy < weakest.accuracy) {
@@ -157,8 +159,8 @@ export default function AptitudePage() {
         }
       });
     });
-    
-    return weakest?.topic || "Practice more!";
+
+    return (weakest as WeakestType)?.topic ?? "Practice more!";
   };
 
   const formatTopicName = (id: string) => {
@@ -268,6 +270,7 @@ export default function AptitudePage() {
         progress: "bg-green-500"
       },
     };
+
     return colorMap[color] || colorMap.blue;
   };
 
@@ -458,10 +461,10 @@ export default function AptitudePage() {
                 </div>
                 <div className="px-5 pb-5 md:pb-0 md:pr-5">
                   <motion.button
-                    onClick={() => router.push("/aptitude/quick-challenge")}
                     className="w-full md:w-auto px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
                     whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(245, 158, 11, 0.3)" }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => router.push("/aptitude/quick-challenge")}
                   >
                     Start Challenge
                     <motion.div
@@ -741,9 +744,9 @@ export default function AptitudePage() {
             <div className="absolute inset-0 opacity-30">
               {[...Array(6)].map((_, i) => (
                 <motion.div
-                  key={i}
+                  key={`dot-${i}`}
                   className="absolute w-2 h-2 bg-indigo-400 rounded-full"
-                  style={{
+                  initial={{
                     left: `${20 + i * 15}%`,
                     top: `${30 + (i % 3) * 20}%`,
                   }}
