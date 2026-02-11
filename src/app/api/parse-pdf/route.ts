@@ -4,6 +4,10 @@ import { convertToLegacyFormat as convertV3ToLegacy, parseResumeV3 } from '@/lib
 import { NextRequest, NextResponse } from 'next/server';
 import Tesseract from 'tesseract.js';
 
+// Route Segment Config - Increase body size limit for PDF uploads (Vercel default is 4.5MB)
+export const maxDuration = 60; // Allow up to 60s for OCR processing
+export const dynamic = 'force-dynamic';
+
 // ============================================================================
 // EXTRACTION CONFIDENCE CALCULATOR
 // ============================================================================

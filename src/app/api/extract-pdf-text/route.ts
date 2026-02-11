@@ -1,6 +1,10 @@
 import { unlink } from 'fs/promises';
 import { NextRequest, NextResponse } from 'next/server';
 
+// Route Segment Config - Increase body size limit for PDF uploads (Vercel default is 4.5MB)
+export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
+
 // Method 1: Using pdf2json
 async function extractWithPdf2Json(buffer: Buffer): Promise<string> {
   const PDFParser = (await import('pdf2json')).default;

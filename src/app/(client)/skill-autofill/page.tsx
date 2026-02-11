@@ -17,17 +17,14 @@ import {
     ArrowRight,
     Check,
     CheckCircle2,
-    ChevronDown,
-    ChevronUp,
-    FileText,
-    Lightbulb,
+    ChevronDown, FileText,
     Loader2,
     Pencil,
     Plus,
     Sparkles,
     Trash2,
     Upload,
-    X,
+    X
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
@@ -92,6 +89,12 @@ export default function SkillAutofillPage() {
     if (!isPDF) {
       setUploadError('Please upload a PDF file');
 
+      return;
+    }
+
+    // Check file size (10MB max - Vercel serverless limit)
+    if (file.size > 10 * 1024 * 1024) {
+      setUploadError('File too large. Please upload a PDF smaller than 10MB.');
       return;
     }
     

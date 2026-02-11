@@ -2,6 +2,27 @@
     "buildCommand": "next build",
     "installCommand": "npm install --legacy-peer-deps --ignore-optional",
     "framework": "nextjs",
+    "functions": {
+        "src/app/api/parse-pdf/route.ts": {
+            "maxDuration": 60,
+            "memory": 1024
+        },
+        "src/app/api/extract-pdf-text/route.ts": {
+            "maxDuration": 60,
+            "memory": 1024
+        },
+        "src/app/api/time-machine/analyze/route.ts": {
+            "maxDuration": 60,
+            "memory": 1024
+        },
+        "src/app/api/time-machine/analyze-fixed/route.ts": {
+            "maxDuration": 60,
+            "memory": 1024
+        },
+        "src/app/api/generate-interview-questions/route.ts": {
+            "maxDuration": 60
+        }
+    },
     "env": {
         "NEXT_TELEMETRY_DISABLED": "1",
         "DISABLE_ESLINT_PLUGIN": "1",

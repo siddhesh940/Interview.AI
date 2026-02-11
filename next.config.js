@@ -8,6 +8,12 @@ const nextConfig = {
     // Disable TypeScript errors during production builds
     ignoreBuildErrors: true,
   },
+  // Increase server actions body size limit for PDF uploads
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
+  },
   // Exclude large public folder files from serverless function bundles (250MB limit)
   outputFileTracingExcludes: {
     '*': [
