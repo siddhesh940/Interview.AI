@@ -6,7 +6,6 @@ import SideMenu from "@/components/sideMenu";
 import { GamesProvider } from "@/contexts/GamesContext";
 import { InterviewResourcesProvider } from "@/contexts/InterviewResourcesContext";
 import { SidebarProvider, useSidebar } from "@/contexts/SidebarContext";
-import { ClerkProvider } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { Toaster } from "sonner";
 
@@ -35,10 +34,6 @@ export default function ClientLayout({
   const isAuthPage = pathname.includes("/sign-in") || pathname.includes("/sign-up");
 
   return (
-    <ClerkProvider
-      signInFallbackRedirectUrl="/dashboard"
-      afterSignOutUrl="/sign-in"
-    >
       <Providers>
         <SidebarProvider>
           <GamesProvider>
@@ -66,6 +61,5 @@ export default function ClientLayout({
           </GamesProvider>
         </SidebarProvider>
       </Providers>
-    </ClerkProvider>
   );
 }

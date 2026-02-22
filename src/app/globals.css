@@ -186,6 +186,11 @@
   animation: float 3s ease-in-out infinite;
 }
 
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradient-shift 3s ease infinite;
+}
+
 .animate-shimmer {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   background-size: 200% 100%;
@@ -276,8 +281,8 @@
 /* Glass Effect */
 .glass-effect {
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 :is(.dark .glass-effect) {

@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter, Lato, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
@@ -39,13 +40,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/browser-client-icon.ico" />
-      </head>
-      <body className={`${inter.className} ${sourceSans.variable} ${lato.variable}`}>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider
+      signInFallbackRedirectUrl="/dashboard"
+      afterSignOutUrl="/"
+    >
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <link rel="icon" href="/browser-client-icon.ico" />
+        </head>
+        <body className={`${inter.className} ${sourceSans.variable} ${lato.variable}`}>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

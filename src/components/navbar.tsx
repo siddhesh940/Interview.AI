@@ -49,7 +49,7 @@ function Navbar() {
         </div>
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <UserButton afterSignOutUrl="/sign-in" signInUrl="/sign-in" />
+          <UserButton afterSignOutUrl="/" signInUrl="/sign-in" />
         </div>
       </div>
     </div>

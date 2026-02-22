@@ -28,15 +28,8 @@ const nextConfig = {
       './public/images/**',
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/dashboard",
-        permanent: true,
-      },
-    ];
-  },
+  // Landing page is now shown at "/" - no redirect to dashboard
+  // Users will navigate to dashboard after signing in
   images: {
     remotePatterns: [
       {

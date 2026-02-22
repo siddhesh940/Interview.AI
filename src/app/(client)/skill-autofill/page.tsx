@@ -5,27 +5,27 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { CATEGORY_COLORS, CATEGORY_ORDER, SkillCategory } from "@/data/skills-database";
 import {
-    ExtractedSkill,
-    formatSkillsForResumeBuilder,
-    getSkillStats,
-    groupSkillsByCategory,
-    processSkillExtraction,
+  ExtractedSkill,
+  formatSkillsForResumeBuilder,
+  getSkillStats,
+  groupSkillsByCategory,
+  processSkillExtraction,
 } from "@/lib/skill-extraction";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-    AlertCircle,
-    ArrowRight,
-    Check,
-    CheckCircle2,
-    ChevronDown, FileText,
-    Lightbulb,
-    Loader2,
-    Pencil,
-    Plus,
-    Sparkles,
-    Trash2,
-    Upload,
-    X
+  AlertCircle,
+  ArrowRight,
+  Check,
+  CheckCircle2,
+  ChevronDown, FileText,
+  Lightbulb,
+  Loader2,
+  Pencil,
+  Plus,
+  Sparkles,
+  Trash2,
+  Upload,
+  X
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";

@@ -24,7 +24,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "target": "ES2015",
+    "ignoreDeprecations": "6.0",
     "downlevelIteration": true,
     "baseUrl": "."
   },
