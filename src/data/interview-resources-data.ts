@@ -1,6 +1,8 @@
 // src/data/interview-resources-data.ts
 // Enterprise-grade PDF Resource Management System
 
+import { getPdfUrl } from '@/lib/pdf-storage';
+
 export type PDFCategory = 
   | 'programming-languages'
   | 'backend-frameworks'
@@ -462,6 +464,15 @@ export const pdfResources: PDFResource[] = [
 ];
 
 // Helper functions
+
+/**
+ * Get the full Supabase Storage URL for a PDF resource.
+ * Use this instead of directly accessing resource.filePath for links.
+ */
+export const getResourceUrl = (resource: PDFResource): string => {
+  return getPdfUrl(resource.filePath);
+};
+
 export const getCategoryById = (id: PDFCategory): CategoryInfo | undefined => {
   return categories.find(cat => cat.id === id);
 };

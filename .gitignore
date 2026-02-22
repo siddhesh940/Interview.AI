@@ -67,3 +67,13 @@ Thumbs.db
 *.tmp
 *.temp
 Demo_videoes/  
+
+# Heavy PDF folders (moved to Supabase Storage bucket: interview-pdfs)
+public/InterviewPrep/
+public/WIPRO/
+public/TCS/
+public/CAPGEMINI/
+public/COGNIZANT/
+public/INFOSYS/
+public/ACCENTURE/
+public/pdfs/

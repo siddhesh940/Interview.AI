@@ -34,6 +34,7 @@ const floatingAnimation = {
 interface PDFFile {
   name: string;
   displayName: string;
+  url?: string;
 }
 
 interface CompanyData {
@@ -141,13 +142,14 @@ export default function CompanyResourcePage() {
     fetchCompanyData();
   }, [companySlug]);
 
-  const handleView = (filename: string) => {
-    const pdfPath = `/${companyData!.name}/${filename}`;
+  const handleView = (filename: string, pdfUrl?: string) => {
+    // Use the Supabase Storage URL if available, otherwise fall back to local path
+    const url = pdfUrl || `/${companyData!.name}/${filename}`;
     // Mark as viewed
     const newViewed = new Set(viewedPdfs).add(filename);
     setViewedPdfs(newViewed);
     localStorage.setItem(`viewed-pdfs-${companySlug}`, JSON.stringify(Array.from(newViewed)));
-    window.open(pdfPath, '_blank');
+    window.open(url, '_blank');
   };
 
   const toggleImportant = (filename: string, e: React.MouseEvent) => {
@@ -162,10 +164,10 @@ export default function CompanyResourcePage() {
     localStorage.setItem(`important-pdfs-${companySlug}`, JSON.stringify(Array.from(newImportant)));
   };
 
-  const handleDownload = (filename: string) => {
-    const pdfPath = `/${companyData!.name}/${filename}`;
+  const handleDownload = (filename: string, pdfUrl?: string) => {
+    const url = pdfUrl || `/${companyData!.name}/${filename}`;
     const link = document.createElement('a');
-    link.href = pdfPath;
+    link.href = url;
     link.download = filename;
     document.body.appendChild(link);
     link.click();
@@ -575,7 +577,7 @@ export default function CompanyResourcePage() {
                         <Button
                           className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                           size="sm"
-                          onClick={() => handleView(pdf.name)}
+                          onClick={() => handleView(pdf.name, pdf.url)}
                         >
                           <Eye className="h-4 w-4 mr-1.5" />
                           View PDF
@@ -586,7 +588,7 @@ export default function CompanyResourcePage() {
                           variant="outline"
                           className="w-full border-gray-300 text-gray-700 hover:bg-gray-50"
                           size="sm"
-                          onClick={() => handleDownload(pdf.name)}
+                          onClick={() => handleDownload(pdf.name, pdf.url)}
                         >
                           <Download className="h-4 w-4 mr-1.5" />
                           Download

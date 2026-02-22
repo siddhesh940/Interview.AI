@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useSoftSkills } from '@/contexts/SoftSkillsContext';
 import { PROGRESS_WEIGHTS, skillLevelConfig, skills } from '@/data/soft-skills-data';
+import { getPdfUrl } from '@/lib/pdf-storage';
 import { motion, useInView } from 'framer-motion';
 import { Award, Briefcase, CheckCircle2, ChevronRight, Ear, Heart, MessageCircle, PlayCircle, Target, TrendingUp, User } from 'lucide-react';
 import Link from 'next/link';
@@ -574,7 +575,7 @@ export default function SoftSkillsPage() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <motion.a 
-                  href="/pdfs/SoftSkill.pdf" 
+                  href={getPdfUrl('pdfs/SoftSkill.pdf')} 
                   target="_blank" 
                   className="flex items-center gap-3 p-3 rounded-lg border hover:border-indigo-200 hover:bg-indigo-50 transition-colors"
                   whileHover={{ scale: 1.02, y: -2 }}
@@ -589,7 +590,7 @@ export default function SoftSkillsPage() {
                   </div>
                 </motion.a>
                 <motion.a 
-                  href="/pdfs/InterviewGuide.pdf" 
+                  href={getPdfUrl('pdfs/InterviewGuide.pdf')} 
                   target="_blank" 
                   className="flex items-center gap-3 p-3 rounded-lg border hover:border-indigo-200 hover:bg-indigo-50 transition-colors"
                   whileHover={{ scale: 1.02, y: -2 }}
@@ -604,7 +605,7 @@ export default function SoftSkillsPage() {
                   </div>
                 </motion.a>
                 <motion.a 
-                  href="/pdfs/SoftskillsWorkbook.pdf" 
+                  href={getPdfUrl('pdfs/SoftskillsWorkbook.pdf')} 
                   target="_blank" 
                   className="flex items-center gap-3 p-3 rounded-lg border hover:border-indigo-200 hover:bg-indigo-50 transition-colors"
                   whileHover={{ scale: 1.02, y: -2 }}

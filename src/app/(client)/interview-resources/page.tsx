@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { useInterviewResources } from "@/contexts/InterviewResourcesContext";
 import {
     categories,
-    difficultyConfig, getStats,
+    difficultyConfig, getResourceUrl, getStats,
     PDFCategory,
     PDFResource,
     pdfResources
@@ -184,13 +184,13 @@ export default function InterviewResourcesPage() {
 
   const handleView = (pdf: PDFResource) => {
     addToRecentlyViewed(pdf.id);
-    window.open(pdf.filePath, '_blank');
+    window.open(getResourceUrl(pdf), '_blank');
   };
 
   const handleDownload = (pdf: PDFResource) => {
     addToRecentlyViewed(pdf.id);
     const link = document.createElement('a');
-    link.href = pdf.filePath;
+    link.href = getResourceUrl(pdf);
     link.download = pdf.fileName;
     document.body.appendChild(link);
     link.click();

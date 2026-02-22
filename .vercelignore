@@ -1,0 +1,21 @@
+# Exclude heavy PDF folders from Vercel deployment (moved to Supabase Storage)
+public/InterviewPrep
+public/WIPRO
+public/TCS
+public/CAPGEMINI
+public/COGNIZANT
+public/INFOSYS
+public/ACCENTURE
+public/pdfs
+
+# Exclude other non-essential folders
+Demo_videoes
+Demo_Images
+Blackbook_data
+Blackbook_Content_Code
+logbook_data
+PPT Data
+research paper data
+AI_Bharat_Hackathon
+temp_push_repo
+test

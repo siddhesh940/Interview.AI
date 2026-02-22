@@ -1,6 +1,6 @@
-import fs from 'fs';
+import { BUCKET_NAME, getCompanyPdfUrl } from '@/lib/pdf-storage';
+import { createClient } from '@/lib/supabase';
 import { NextResponse } from 'next/server';
-import path from 'path';
 
 // Simple company mapping - no external dependencies
 const COMPANIES = {
@@ -54,32 +54,30 @@ export async function GET(
         available: Object.keys(COMPANIES)
       }, { status: 404 });
     }
-    
-    // Get paths
-    const publicPath = path.join(process.cwd(), 'public');
-    const companyPath = path.join(publicPath, folderName);
-    
-    // Check if folder exists
-    if (!fs.existsSync(companyPath)) {
-      return NextResponse.json({ 
-        error: 'Company folder not found' 
-      }, { status: 404 });
-    }
 
-    // Read PDF files
-    let pdfFiles: Array<{name: string, displayName: string}> = [];
-    
+    // List PDF files from Supabase Storage
+    const supabase = createClient();
+    let pdfFiles: Array<{name: string, displayName: string, url: string}> = [];
+
     try {
-      const allFiles = fs.readdirSync(companyPath);
-      pdfFiles = allFiles
-        .filter(file => file.toLowerCase().endsWith('.pdf'))
-        .map(file => ({
-          name: file,
-          displayName: formatDisplayName(file)
-        }))
-        .sort((a, b) => a.displayName.localeCompare(b.displayName));
+      const { data: files, error } = await supabase.storage
+        .from(BUCKET_NAME)
+        .list(folderName, {
+          limit: 1000,
+        });
+
+      if (!error && files) {
+        pdfFiles = files
+          .filter(file => file.name.toLowerCase().endsWith('.pdf'))
+          .map(file => ({
+            name: file.name,
+            displayName: formatDisplayName(file.name),
+            url: getCompanyPdfUrl(folderName, file.name),
+          }))
+          .sort((a, b) => a.displayName.localeCompare(b.displayName));
+      }
     } catch (error) {
-      console.error('Error reading files:', error);
+      console.error('Error listing files from storage:', error);
     }
 
     // Return company data
@@ -99,7 +97,7 @@ export async function GET(
   } catch (error) {
     console.error('API Error:', error);
     
-return NextResponse.json({ 
+    return NextResponse.json({ 
       error: 'Internal server error' 
     }, { status: 500 });
   }

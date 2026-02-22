@@ -13,20 +13,20 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '10mb',
     },
-  },
-  // Exclude large public folder files from serverless function bundles (250MB limit)
-  outputFileTracingExcludes: {
-    '*': [
-      './public/InterviewPrep/**',
-      './public/WIPRO/**',
-      './public/TCS/**',
-      './public/CAPGEMINI/**',
-      './public/COGNIZANT/**',
-      './public/INFOSYS/**',
-      './public/ACCENTURE/**',
-      './public/pdfs/**',
-      './public/images/**',
-    ],
+    // Exclude large public folder files from serverless function bundles (250MB limit)
+    outputFileTracingExcludes: {
+      '*': [
+        './public/InterviewPrep/**',
+        './public/WIPRO/**',
+        './public/TCS/**',
+        './public/CAPGEMINI/**',
+        './public/COGNIZANT/**',
+        './public/INFOSYS/**',
+        './public/ACCENTURE/**',
+        './public/pdfs/**',
+        './public/images/**',
+      ],
+    },
   },
   // Landing page is now shown at "/" - no redirect to dashboard
   // Users will navigate to dashboard after signing in
