@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Progress } from '@/components/ui/progress';
 import { useSoftSkills } from '@/contexts/SoftSkillsContext';
 import { getSkillById, Skill, skillLevelConfig } from '@/data/soft-skills-data';
+import { getVideoUrl } from '@/utils/video-url';
 import { AnimatePresence, motion, useInView } from 'framer-motion';
 import {
     ArrowRight,
@@ -241,7 +242,7 @@ function VideoSection({ videos, skillId }: { videos: Skill['videos']; skillId: s
             {videos.map((video) => (
               <video
                 key={`meta-${video.id}`}
-                src={video.src}
+                src={getVideoUrl(video.src)}
                 preload="metadata"
                 ref={(el) => { hiddenVideoRefs.current[video.id] = el; }}
                 onLoadedMetadata={(e) => {
@@ -256,7 +257,7 @@ function VideoSection({ videos, skillId }: { videos: Skill['videos']; skillId: s
           <div className="aspect-video bg-gray-900 rounded-lg overflow-hidden relative">
             <video 
               ref={mainVideoRef}
-              src={videos[activeVideo].src} 
+              src={getVideoUrl(videos[activeVideo].src)} 
               className="w-full h-full object-contain"
               preload="metadata"
               controls={true}

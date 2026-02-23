@@ -132,7 +132,7 @@ export const skills: Skill[] = [
       {
         id: 'conf-v1',
         title: 'Building Confidence',
-        src: '/videos/confidence2.mp4',
+        src: '/videos/Confidence2.mp4',
         duration: '5:15',
         description: 'Techniques to build genuine self-confidence for interviews.'
       },
@@ -204,14 +204,14 @@ export const skills: Skill[] = [
       {
         id: 'bl-v2',
         title: 'Advanced Body Language',
-        src: '/videos/Bodylanguage2.mp4',
+        src: '/videos/BodyLanguage2.mp4',
         duration: '4:30',
         description: 'Master subtle gestures and posture for maximum impact.'
       },
       {
         id: 'bl-v3',
         title: 'Body Language in Practice',
-        src: '/videos/Bodylanguage3.mp4',
+        src: '/videos/BodyLanguage3.mp4',
         duration: '4:00',
         description: 'Real-world examples and practice scenarios.'
       }

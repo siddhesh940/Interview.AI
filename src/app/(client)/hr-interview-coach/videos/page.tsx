@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { HRVideo, HRVideoSection, hrVideoSections } from '@/data/hr-coach-data';
+import { getVideoUrl } from '@/utils/video-url';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
     ArrowLeft,
@@ -240,7 +241,7 @@ return Math.round((watched / allVideos.length) * 100);
                                           onPlay={() => markAsWatched(video.id)}
                                           onEnded={() => markAsWatched(video.id)}
                                         >
-                                          <source src={video.videoPath} type="video/mp4" />
+                                          <source src={getVideoUrl(video.videoPath)} type="video/mp4" />
                                           Your browser does not support the video tag.
                                         </video>
                                         <div className="flex justify-between items-center mt-3">
