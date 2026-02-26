@@ -44,21 +44,25 @@ function loadEnv() {
 
 const env = loadEnv();
 const SUPABASE_URL = env.NEXT_PUBLIC_SUPABASE_URL;
-// Prefer service_role key (bypasses RLS) over anon key
-const SUPABASE_KEY = env.SUPABASE_SERVICE_ROLE_KEY || env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+// Priority: CLI argument > env var SUPABASE_SERVICE_ROLE_KEY > anon key
+const cliServiceKey = process.argv[2]; // pass as: node upload-pdfs-to-supabase.js <SERVICE_ROLE_KEY>
+const SUPABASE_KEY = cliServiceKey || env.SUPABASE_SERVICE_ROLE_KEY || env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
   console.error('❌ NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY missing from .env');
   process.exit(1);
 }
 
-if (!env.SUPABASE_SERVICE_ROLE_KEY) {
-  console.log('⚠️  SUPABASE_SERVICE_ROLE_KEY not found — using anon key (may fail due to RLS)');
-  console.log('   Add SUPABASE_SERVICE_ROLE_KEY to your .env file from:');
-  console.log('   https://supabase.com/dashboard/project/rlqxnacafghtdfzczmyy/settings/api');
-  console.log('   (Look for "service_role" under "Project API keys")\n');
+if (cliServiceKey) {
+  console.log('✅ Using service_role key from command line argument (bypasses RLS)');
+} else if (env.SUPABASE_SERVICE_ROLE_KEY) {
+  console.log('✅ Using service_role key from .env (bypasses RLS)');
 } else {
-  console.log('✅ Using service_role key (bypasses RLS)');
+  console.log('⚠️  SUPABASE_SERVICE_ROLE_KEY not found — using anon key (may fail due to RLS)');
+  console.log('   Usage: node upload-pdfs-to-supabase.js <YOUR_SERVICE_ROLE_KEY>');
+  console.log('   Or add SUPABASE_SERVICE_ROLE_KEY=... to your .env file');
+  console.log('   Find it at: https://supabase.com/dashboard/project/rlqxnacafghtdfzczmyy/settings/api\n');
 }
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);

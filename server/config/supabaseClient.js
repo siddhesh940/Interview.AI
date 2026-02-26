@@ -67,6 +67,16 @@ class SupabaseService {
 return data?.id;
   }
 
+  async getCompanyByName(companyName) {
+    const { data } = await supabase
+      .from('companies')
+      .select('*')
+      .ilike('name', companyName)
+      .single();
+    
+return data;
+  }
+
   async cleanupOldDrives(daysOld = 30) {
     const cutoffDate = new Date();
     cutoffDate.setDate(cutoffDate.getDate() - daysOld);

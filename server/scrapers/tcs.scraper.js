@@ -10,6 +10,10 @@ class TcsScraper {
       'https://ibegin.tcs.com/iBegin/jobs',
       'https://careers.tcs.com/careers/apply?keywords=graduate&experience=Fresher'
     ];
+    // TCS NQT / special hiring pages on www.tcs.com
+    this.nqtUrls = [
+      'https://www.tcs.com/careers/india/tcs-all-india-nqt-hiring'
+    ];
   }
 
   async scrape() {
@@ -28,6 +32,7 @@ class TcsScraper {
       
       const allDrives = [];
       
+      // ── Scrape standard careers pages ──
       for (const url of this.searchUrls) {
         try {
           console.log(`[${this.companyName}] Scraping: ${url}`);
@@ -66,8 +71,8 @@ class TcsScraper {
                 if (!title) {return;}
                 
                 // Filter for relevant positions
-                const isRelevant = /ninja|fresher|graduate|entry|trainee|associate|campus|ibegin|tcs ion|digital/i.test(title) ||
-                                 /ninja|fresher|graduate|entry|trainee|associate|campus/i.test(description);
+                const isRelevant = /ninja|fresher|graduate|entry|trainee|associate|campus|ibegin|tcs ion|digital|nqt|national qualifier/i.test(title) ||
+                                 /ninja|fresher|graduate|entry|trainee|associate|campus|nqt/i.test(description);
                 
                 if (isRelevant) {
                   drives.push({
@@ -97,7 +102,13 @@ class TcsScraper {
       }
       
       const normalizedDrives = await this.normalizeDrives(allDrives);
-      console.log(`[${this.companyName}] Normalized ${normalizedDrives.length} drives`);
+
+      // ── Scrape TCS NQT / special hiring pages ──
+      const nqtDrives = await this.scrapeNqtPages(page);
+      const normalizedNqtDrives = await this.normalizeNqtDrives(nqtDrives);
+      normalizedDrives.push(...normalizedNqtDrives);
+
+      console.log(`[${this.companyName}] Total normalized drives: ${normalizedDrives.length} (${normalizedNqtDrives.length} from NQT pages)`);
       
       return normalizedDrives;
       
@@ -209,6 +220,188 @@ return false;
     }
 
     return true;
+  }
+
+  // ─────────────────────────────────────────────────────
+  // TCS NQT / Special Hiring Pages Scraper
+  // Handles pages like www.tcs.com/careers/india/tcs-all-india-nqt-hiring
+  // ─────────────────────────────────────────────────────
+  async scrapeNqtPages(page) {
+    const nqtDrives = [];
+
+    for (const url of this.nqtUrls) {
+      try {
+        console.log(`[${this.companyName}] Scraping NQT page: ${url}`);
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 });
+
+        // Wait for content to load (these pages are heavy on JS)
+        await page.waitForTimeout(5000);
+
+        const pageData = await page.evaluate(() => {
+          const bodyText = document.body.innerText || '';
+          
+          // Extract batch info (e.g. "Batch of 2026, 2025 & 2024")
+          const batchMatch = bodyText.match(/Batch\s+of\s+([\d,\s&]+)/i);
+          const batches = [];
+          if (batchMatch) {
+            const batchStr = batchMatch[1];
+            const years = batchStr.match(/\d{4}/g);
+            if (years) batches.push(...years);
+          }
+
+          // Extract registration dates
+          let registrationStart = null;
+          let registrationEnd = null;
+          const startMatch = bodyText.match(/Registration\s+Start\s+Date[:\s]*(\d+\s+\w+\s+\d{4})/i);
+          const endMatch = bodyText.match(/Registration\s+End\s+Date[:\s]*(\d+\s+\w+\s+\d{4})/i);
+          if (startMatch) registrationStart = startMatch[1];
+          if (endMatch) registrationEnd = endMatch[1];
+
+          // Extract test date
+          let testDate = null;
+          const testMatch = bodyText.match(/Test\s+Date[:\s]*(\d+\s+\w+\s+\d{4})/i);
+          if (testMatch) testDate = testMatch[1];
+
+          // Look for Apply Now link (NextStep portal)
+          let applyLink = '';
+          const links = document.querySelectorAll('a[href*="nextstep"], a[href*="tcsapps"], a[href*="ibegin"]');
+          if (links.length > 0) {
+            applyLink = links[0].href;
+          }
+
+          // Check for CTC info to determine categories
+          const hasPrime = /prime/i.test(bodyText);
+          const hasDigital = /digital/i.test(bodyText);
+
+          // Check if it's NQT
+          const isNQT = /nqt|national\s+qualifier/i.test(bodyText);
+
+          return {
+            batches,
+            registrationStart,
+            registrationEnd,
+            testDate,
+            applyLink,
+            hasPrime,
+            hasDigital,
+            isNQT,
+            pageTitle: document.title || ''
+          };
+        });
+
+        if (pageData.isNQT && pageData.batches.length > 0) {
+          // Create a drive entry per batch
+          for (const batch of pageData.batches) {
+            let role = 'TCS NQT Hiring';
+            if (pageData.hasPrime && pageData.hasDigital) {
+              role = `TCS NQT Hiring – Prime & Digital Cadre (Batch ${batch})`;
+            } else if (pageData.hasPrime) {
+              role = `TCS NQT Hiring – Prime Cadre (Batch ${batch})`;
+            } else if (pageData.hasDigital) {
+              role = `TCS NQT Hiring – Digital Cadre (Batch ${batch})`;
+            }
+
+            // Parse deadline from registration end date
+            let deadline = null;
+            if (pageData.registrationEnd) {
+              try {
+                deadline = new Date(pageData.registrationEnd).toISOString();
+              } catch (e) {
+                // Fallback: 21 days from now
+                const d = new Date();
+                d.setDate(d.getDate() + 21);
+                deadline = d.toISOString();
+              }
+            }
+
+            nqtDrives.push({
+              title: role,
+              batch,
+              link: pageData.applyLink || 'https://nextstep.tcsapps.com/indiacampus/#/',
+              scraped_from: url,
+              deadline,
+              testDate: pageData.testDate,
+              isNQT: true
+            });
+          }
+
+          console.log(`[${this.companyName}] Found ${nqtDrives.length} NQT drives from ${url}`);
+        } else {
+          console.log(`[${this.companyName}] No NQT drives detected on ${url}`);
+        }
+
+        await page.waitForTimeout(3000);
+
+      } catch (error) {
+        console.error(`[${this.companyName}] Error scraping NQT page ${url}:`, error.message);
+      }
+    }
+
+    return nqtDrives;
+  }
+
+  async normalizeNqtDrives(nqtDrives) {
+    const company = await supabaseService.getCompanyByName(this.companyName);
+    if (!company) {
+      console.error(`Company ${this.companyName} not found in database`);
+      return [];
+    }
+
+    const normalizedDrives = [];
+
+    for (const drive of nqtDrives) {
+      try {
+        // NQT is always off-campus (All India test)
+        const driveType = 'off-campus';
+
+        // TCS NQT min CGPA is typically 60% = 6.0
+        const minCgpa = 6.0;
+
+        // TCS NQT accepts all major engineering branches
+        const branches = [
+          'Computer Science Engineering',
+          'Information Technology',
+          'Electronics and Communication',
+          'Electrical Engineering',
+          'Mechanical Engineering',
+          'Civil Engineering',
+          'Electronics and Instrumentation',
+          'Instrumentation and Control',
+          'Aerospace Engineering',
+          'Chemical Engineering',
+          'CSE', 'IT', 'ECE', 'EEE', 'ME', 'CE'
+        ];
+
+        // Use extracted deadline or fallback
+        let deadline = drive.deadline;
+        if (!deadline) {
+          const d = new Date();
+          d.setDate(d.getDate() + 21);
+          deadline = d.toISOString();
+        }
+
+        const normalizedDrive = {
+          company_id: company.id,
+          role: drive.title,
+          drive_type: driveType,
+          batch: drive.batch,
+          min_cgpa: minCgpa,
+          branches: branches,
+          deadline: deadline,
+          registration_link: drive.link,
+          source_url: drive.scraped_from,
+          is_dummy: false
+        };
+
+        if (this.validateDrive(normalizedDrive)) {
+          normalizedDrives.push(normalizedDrive);
+        }
+      } catch (error) {
+        console.error(`[${this.companyName}] Error normalizing NQT drive:`, error);
+      }
+    }
+
+    return normalizedDrives;
   }
 }
 

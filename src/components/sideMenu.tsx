@@ -36,7 +36,7 @@ function SideMenu() {
 
   return (
     <div 
-      className={`z-[10] bg-slate-100 dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 p-6 fixed top-[64px] left-0 h-full transition-all duration-300 ease-in-out ${
+      className={`z-[10] bg-slate-100 dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 p-6 pb-24 fixed top-[64px] left-0 h-[calc(100vh-64px)] overflow-y-auto transition-all duration-300 ease-in-out ${
         isCollapsed ? '-translate-x-full w-0 opacity-0' : 'translate-x-0 w-72 opacity-100'
       }`}
     >
