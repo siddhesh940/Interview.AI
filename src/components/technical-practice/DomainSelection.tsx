@@ -57,7 +57,7 @@ export default function DomainSelection({ domains, onSelect, onBack }: DomainSel
       <div className="space-y-8">
         {/* Core CS Subjects */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-300 mb-4 flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-300 mb-4 flex items-center gap-2">
             <BookOpen className="w-5 h-5" />
             Core Computer Science
           </h3>
@@ -76,7 +76,7 @@ export default function DomainSelection({ domains, onSelect, onBack }: DomainSel
 
         {/* Programming Languages */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-300 mb-4 flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-300 mb-4 flex items-center gap-2">
             <Target className="w-5 h-5" />
             Programming Languages
           </h3>
@@ -146,7 +146,7 @@ function DomainCard({ domain, progress, index, onSelect }: DomainCardProps) {
       className="cursor-pointer"
       onClick={() => onSelect(domain.id)}
     >
-      <Card className="bg-gray-800/70 border-gray-700 hover:border-blue-500/50 transition-all overflow-hidden">
+      <Card className="bg-white dark:bg-gray-800/70 border-slate-200 dark:border-gray-700 hover:border-blue-500/50 transition-all overflow-hidden">
         <CardContent className="p-0">
           {/* Gradient Header */}
           <div className={`h-2 bg-gradient-to-r ${domain.color}`} />
@@ -159,8 +159,8 @@ function DomainCard({ domain, progress, index, onSelect }: DomainCardProps) {
                   <domain.icon className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white">{domain.name}</h4>
-                  <p className="text-xs text-gray-400">{domain.questions} questions</p>
+                  <h4 className="font-bold text-slate-900 dark:text-white">{domain.name}</h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">{domain.questions} questions</p>
                 </div>
               </div>
             </div>
@@ -168,17 +168,17 @@ function DomainCard({ domain, progress, index, onSelect }: DomainCardProps) {
             {/* Progress */}
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400">Progress</span>
+                <span className="text-slate-600 dark:text-slate-400">Progress</span>
                 <span className="font-medium">{progress.progress}%</span>
               </div>
               <Progress value={progress.progress} className="h-2" />
             </div>
 
             {/* Stats */}
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-200 dark:border-gray-700">
               <div className="flex items-center gap-1">
                 <Star className="w-4 h-4 text-yellow-500" />
-                <span className="text-sm text-gray-300">Last: {progress.lastScore}%</span>
+                <span className="text-sm text-slate-600 dark:text-slate-300">Last: {progress.lastScore}%</span>
               </div>
               <Badge variant="secondary" className="text-xs">
                 {progress.sessionsCompleted} sessions

@@ -243,9 +243,9 @@ return Math.round(sessionScores.reduce((a, b) => a + b, 0) / sessionScores.lengt
         <div>
           <div className="flex items-center gap-2">
             <MessageSquare className="w-6 h-6 text-purple-500" />
-            <h2 className="text-2xl font-bold">Follow-Up Question Mode</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Follow-Up Question Mode</h2>
           </div>
-          <p className="text-gray-400 mt-1">Dynamic interview simulation with follow-up questions</p>
+          <p className="text-slate-500 dark:text-slate-400 mt-1">Dynamic interview simulation with follow-up questions</p>
         </div>
         <div className="flex items-center gap-4">
           <Badge variant="outline" className="text-lg px-4 py-2">
@@ -262,12 +262,12 @@ return Math.round(sessionScores.reduce((a, b) => a + b, 0) / sessionScores.lengt
       <Progress value={((currentTopicIndex + 1) / (maxTopics || 1)) * 100} className="h-2" />
 
       {/* Chat Area */}
-      <Card className="bg-gray-800/70 border-gray-700 flex-1 flex flex-col overflow-hidden">
-        <CardHeader className="pb-2 border-b border-gray-700">
+      <Card className="bg-white dark:bg-gray-800/70 border-slate-200 dark:border-gray-700 flex-1 flex flex-col overflow-hidden">
+        <CardHeader className="pb-2 border-b border-slate-200 dark:border-gray-700">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Brain className="w-5 h-5 text-purple-500" />
-              <span className="font-medium">AI Technical Interviewer</span>
+              <span className="font-medium text-slate-900 dark:text-white">AI Technical Interviewer</span>
             </div>
             <div className="flex items-center gap-2">
               <Badge variant="secondary">
@@ -298,7 +298,7 @@ return Math.round(sessionScores.reduce((a, b) => a + b, 0) / sessionScores.lengt
                   >
                     {message.type === 'system' ? (
                       <div className="w-full text-center">
-                        <span className="inline-block px-4 py-2 bg-gray-700/50 rounded-full text-sm text-gray-300">
+                        <span className="inline-block px-4 py-2 bg-slate-100 dark:bg-gray-700/50 rounded-full text-sm text-slate-600 dark:text-slate-300">
                           {message.content}
                         </span>
                       </div>
@@ -316,10 +316,10 @@ return Math.round(sessionScores.reduce((a, b) => a + b, 0) / sessionScores.lengt
                         <div className={`space-y-2 ${message.type === 'user' ? 'items-end' : 'items-start'}`}>
                           <div className={`p-4 rounded-2xl ${
                             message.type === 'interviewer' 
-                              ? 'bg-gray-700 rounded-tl-none' 
+                              ? 'bg-slate-100 dark:bg-gray-700 rounded-tl-none' 
                               : 'bg-blue-600 rounded-tr-none'
                           }`}>
-                            <p className="text-white">{message.content}</p>
+                            <p className={message.type === 'interviewer' ? 'text-slate-800 dark:text-white' : 'text-white'}>{message.content}</p>
                           </div>
                           {message.score !== undefined && (
                             <div className="flex items-center gap-2 text-sm">
@@ -329,7 +329,7 @@ return Math.round(sessionScores.reduce((a, b) => a + b, 0) / sessionScores.lengt
                               }`}>
                                 {message.score}%
                               </Badge>
-                              <span className="text-gray-400 text-xs">{message.feedback}</span>
+                              <span className="text-slate-500 dark:text-slate-400 text-xs">{message.feedback}</span>
                             </div>
                           )}
                         </div>
@@ -349,14 +349,14 @@ return Math.round(sessionScores.reduce((a, b) => a + b, 0) / sessionScores.lengt
                   <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center">
                     <Bot className="w-5 h-5 text-white" />
                   </div>
-                  <div className="p-4 bg-gray-700 rounded-2xl rounded-tl-none">
+                  <div className="p-4 bg-slate-100 dark:bg-gray-700 rounded-2xl rounded-tl-none">
                     <div className="flex items-center gap-2">
                       <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                        <div className="w-2 h-2 bg-slate-400 dark:bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <div className="w-2 h-2 bg-slate-400 dark:bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                        <div className="w-2 h-2 bg-slate-400 dark:bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                       </div>
-                      <span className="text-gray-400 text-sm">Thinking...</span>
+                      <span className="text-slate-500 dark:text-slate-400 text-sm">Thinking...</span>
                     </div>
                   </div>
                 </motion.div>
@@ -365,14 +365,14 @@ return Math.round(sessionScores.reduce((a, b) => a + b, 0) / sessionScores.lengt
           </ScrollArea>
 
           {/* Input Area */}
-          <div className="p-4 border-t border-gray-700 bg-gray-900">
+          <div className="p-4 border-t border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-900">
             {!isSessionComplete ? (
               <div className="flex items-end gap-3">
                 <div className="flex-1">
                   <Textarea
                     value={userInput}
                     placeholder="Type your answer here... or use 🎤 voice input. Be detailed and cover key concepts."
-                    className="min-h-[80px] bg-gray-800 border-gray-600 text-white resize-none"
+                    className="min-h-[80px] bg-slate-50 dark:bg-gray-800 border-slate-200 dark:border-gray-600 text-slate-900 dark:text-white resize-none"
                     onChange={(e) => setUserInput(e.target.value)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
@@ -402,7 +402,7 @@ return Math.round(sessionScores.reduce((a, b) => a + b, 0) / sessionScores.lengt
               </div>
             ) : (
               <div className="text-center py-4">
-                <p className="text-gray-400 mb-4">Interview simulation complete!</p>
+                <p className="text-slate-600 dark:text-slate-400 mb-4">Interview simulation complete!</p>
                 <Button className="bg-purple-600 hover:bg-purple-700" onClick={onComplete}>
                   View Results
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -415,11 +415,11 @@ return Math.round(sessionScores.reduce((a, b) => a + b, 0) / sessionScores.lengt
 
       {/* Session Stats */}
       {sessionScores.length > 0 && (
-        <Card className="bg-gray-800/50 border-gray-700">
+        <Card className="bg-white/60 dark:bg-gray-800/50 border-slate-200 dark:border-gray-700">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <span className="text-gray-400">Response Scores:</span>
+                <span className="text-slate-600 dark:text-slate-400">Response Scores:</span>
                 {sessionScores.map((score, i) => (
                   <Badge key={`score-${i}`} className={`${
                     score >= 80 ? 'bg-green-600' : score >= 60 ? 'bg-yellow-600' : 'bg-red-600'

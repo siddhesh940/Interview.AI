@@ -213,7 +213,7 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
   if (!currentProblem) {
     return (
       <div className="flex items-center justify-center h-96">
-        <p className="text-gray-400">No debugging problems available for this domain.</p>
+        <p className="text-slate-500 dark:text-slate-400">No debugging problems available for this domain.</p>
       </div>
     );
   }
@@ -227,9 +227,9 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
         <div>
           <div className="flex items-center gap-2">
             <Bug className="w-6 h-6 text-red-500" />
-            <h2 className="text-2xl font-bold">Debugging Mode</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Debugging Mode</h2>
           </div>
-          <p className="text-gray-400 mt-1">Find and fix the bugs in the code</p>
+          <p className="text-slate-500 dark:text-slate-400 mt-1">Find and fix the bugs in the code</p>
         </div>
         <div className="flex items-center gap-4">
           <Badge variant="outline" className="text-lg px-4 py-2">
@@ -248,11 +248,11 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
       {/* Main Content */}
       <div className="grid grid-cols-2 gap-4 h-[calc(100%-120px)]">
         {/* Left Panel - Problem & Hints */}
-        <Card className="bg-gray-800/70 border-gray-700 overflow-hidden flex flex-col">
+        <Card className="bg-white dark:bg-gray-800/70 border-slate-200 dark:border-gray-700 overflow-hidden flex flex-col">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-lg text-white">{currentProblem.topic}</CardTitle>
+                <CardTitle className="text-lg text-slate-900 dark:text-white">{currentProblem.topic}</CardTitle>
                 <div className="flex items-center gap-2 mt-2">
                   <Badge variant="outline" className="border-red-500 text-red-500">
                     {currentProblem.bugs.length} Bug{currentProblem.bugs.length > 1 ? 's' : ''}
@@ -266,7 +266,7 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
           
           <CardContent className="flex-1 overflow-y-auto">
             <Tabs className="h-full" value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="bg-gray-900">
+              <TabsList className="bg-slate-100 dark:bg-gray-900">
                 <TabsTrigger value="problem">Problem</TabsTrigger>
                 <TabsTrigger value="hints">Hints</TabsTrigger>
                 <TabsTrigger value="output" className={output ? (output.type === 'success' ? 'text-green-400' : 'text-red-400') : ''}>Output {output && '●'}</TabsTrigger>
@@ -274,12 +274,12 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
               
               <TabsContent value="problem" className="mt-4 space-y-4">
                 <div>
-                  <h4 className="font-medium text-gray-300 mb-2">Description</h4>
-                  <p className="text-gray-400">{currentProblem.question}</p>
+                  <h4 className="font-medium text-slate-700 dark:text-slate-300 mb-2">Description</h4>
+                  <p className="text-slate-600 dark:text-slate-400">{currentProblem.question}</p>
                 </div>
                 
                 <div>
-                  <h4 className="font-medium text-gray-300 mb-2">Bug Information</h4>
+                  <h4 className="font-medium text-slate-700 dark:text-slate-300 mb-2">Bug Information</h4>
                   <div className="space-y-2">
                     {currentProblem.bugs.map((bug, idx) => (
                       <div 
@@ -290,7 +290,7 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
                           <Badge className="bg-red-600">Line {bug.lineNumber}</Badge>
                           <Badge variant="outline">{bug.bugType}</Badge>
                         </div>
-                        <p className="text-gray-400 text-sm mt-2">{bug.hint}</p>
+                        <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">{bug.hint}</p>
                       </div>
                     ))}
                   </div>
@@ -301,8 +301,8 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
                 {!showHints ? (
                   <div className="text-center py-8">
                     <Lightbulb className="w-12 h-12 mx-auto text-yellow-500 mb-4" />
-                    <p className="text-gray-400 mb-4">Need help finding the bugs?</p>
-                    <p className="text-yellow-500 text-sm mb-4">Using hints will reduce your score by 5% each</p>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4">Need help finding the bugs?</p>
+                    <p className="text-yellow-600 dark:text-yellow-500 text-sm mb-4">Using hints will reduce your score by 5% each</p>
                     <Button 
                       className="bg-yellow-600 hover:bg-yellow-700"
                       onClick={() => setShowHints(true)}
@@ -335,10 +335,10 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
                   </div>
                 )}
 
-                <div className="pt-4 border-t border-gray-700">
+                <div className="pt-4 border-t border-slate-200 dark:border-gray-700">
                   <Button
                     variant="outline"
-                    className={`w-full ${showSolution ? 'border-green-500 text-green-500' : 'border-gray-500 text-gray-500'}`}
+                    className={`w-full ${showSolution ? 'border-green-500 text-green-600 dark:text-green-500' : 'border-slate-400 dark:border-gray-500 text-slate-500 dark:text-gray-500'}`}
                     onClick={() => setShowSolution(!showSolution)}
                   >
                     {showSolution ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
@@ -353,8 +353,8 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
                         exit={{ opacity: 0, height: 0 }}
                         className="mt-4"
                       >
-                        <h4 className="font-medium text-gray-300 mb-2">Correct Solution:</h4>
-                        <pre className="p-4 bg-gray-900 rounded-lg overflow-x-auto text-sm text-green-400">
+                        <h4 className="font-medium text-slate-700 dark:text-slate-300 mb-2">Correct Solution:</h4>
+                        <pre className="p-4 bg-slate-100 dark:bg-gray-900 rounded-lg overflow-x-auto text-sm text-green-600 dark:text-green-400">
                           {currentProblem.fixedCode}
                         </pre>
                       </motion.div>
@@ -373,7 +373,7 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
                     </p>
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-gray-400">
+                  <div className="text-center py-8 text-slate-500 dark:text-slate-400">
                     <Code className="w-12 h-12 mx-auto mb-4 opacity-50" />
                     <p>Run your code to see output</p>
                   </div>
@@ -384,10 +384,10 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
         </Card>
 
         {/* Right Panel - Code Editor & Results */}
-        <Card className="bg-gray-800/70 border-gray-700 overflow-hidden flex flex-col">
+        <Card className="bg-white dark:bg-gray-800/70 border-slate-200 dark:border-gray-700 overflow-hidden flex flex-col">
           <CardHeader className="pb-2 flex-shrink-0">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-lg text-white flex items-center gap-2">
+              <CardTitle className="text-lg text-slate-900 dark:text-white flex items-center gap-2">
                 <Code className="w-5 h-5" />
                 Code Editor
               </CardTitle>
@@ -422,7 +422,7 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
             {!evaluation ? (
               <>
                 {/* Code Lines with Line Numbers */}
-                <div className="flex-1 overflow-y-auto bg-gray-900 rounded-lg p-2">
+                <div className="flex-1 overflow-y-auto bg-slate-50 dark:bg-gray-900 rounded-lg p-2">
                   <div className="font-mono text-sm">
                     {codeLines.map((line, idx) => {
                       const lineNum = idx + 1;
@@ -431,17 +431,17 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
                       return (
                         <div 
                           key={`line-${lineNum}`}
-                          className={`flex items-start hover:bg-gray-800/50 cursor-pointer ${
+                          className={`flex items-start hover:bg-slate-200/50 dark:hover:bg-gray-800/50 cursor-pointer ${
                             isIdentified ? 'bg-red-500/20' : ''
                           }`}
                           onClick={() => toggleBugIdentification(lineNum)}
                         >
                           <span className={`w-8 text-right pr-2 select-none ${
-                            isIdentified ? 'text-red-500 font-bold' : 'text-gray-500'
+                            isIdentified ? 'text-red-500 font-bold' : 'text-slate-400 dark:text-gray-500'
                           }`}>
                             {lineNum}
                           </span>
-                          <span className="flex-1 text-gray-300 whitespace-pre">{line || ' '}</span>
+                          <span className="flex-1 text-slate-800 dark:text-slate-300 whitespace-pre">{line || ' '}</span>
                           {isIdentified && (
                             <Bug className="w-4 h-4 text-red-500 mr-2" />
                           )}
@@ -451,14 +451,14 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
                   </div>
                 </div>
                 
-                <div className="mt-4 p-3 bg-gray-900 rounded-lg">
-                  <p className="text-sm text-gray-400 mb-2">
-                    <span className="text-yellow-500">Click on lines</span> to mark them as buggy. 
+                <div className="mt-4 p-3 bg-slate-100 dark:bg-gray-900 rounded-lg">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
+                    <span className="text-yellow-600 dark:text-yellow-500">Click on lines</span> to mark them as buggy. 
                     Identified bugs: <span className="text-red-500 font-bold">{identifiedBugs.length}</span>
                   </p>
                   <textarea
                     value={code}
-                    className="w-full h-32 bg-gray-800 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-300 resize-none"
+                    className="w-full h-32 bg-white dark:bg-gray-800 border border-slate-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-slate-800 dark:text-slate-300 resize-none"
                     placeholder="Edit the code here to fix the bugs..."
                     onChange={(e) => setCode(e.target.value)}
                   />
@@ -501,28 +501,28 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
                   <div className="text-5xl font-bold mb-2">
                     {evaluation.score}%
                   </div>
-                  <p className="text-gray-400">{evaluation.feedback}</p>
+                  <p className="text-slate-600 dark:text-slate-400">{evaluation.feedback}</p>
                 </div>
 
                 {/* Stats Grid */}
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="p-3 bg-gray-900 rounded-lg text-center">
-                    <div className="text-2xl font-bold text-red-400">
+                  <div className="p-3 bg-slate-100 dark:bg-gray-900 rounded-lg text-center">
+                    <div className="text-2xl font-bold text-red-600 dark:text-red-400">
                       {evaluation.bugsFound}/{evaluation.totalBugs}
                     </div>
-                    <p className="text-xs text-gray-500">Bugs Found</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-500">Bugs Found</p>
                   </div>
-                  <div className="p-3 bg-gray-900 rounded-lg text-center">
-                    <div className="text-2xl font-bold text-blue-400">
+                  <div className="p-3 bg-slate-100 dark:bg-gray-900 rounded-lg text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                       {evaluation.fixAccuracy}%
                     </div>
-                    <p className="text-xs text-gray-500">Fix Accuracy</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-500">Fix Accuracy</p>
                   </div>
-                  <div className="p-3 bg-gray-900 rounded-lg text-center">
-                    <div className="text-2xl font-bold text-purple-400">
+                  <div className="p-3 bg-slate-100 dark:bg-gray-900 rounded-lg text-center">
+                    <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
                       {evaluation.problemSolving}%
                     </div>
-                    <p className="text-xs text-gray-500">Problem Solving</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-500">Problem Solving</p>
                   </div>
                 </div>
 
@@ -535,8 +535,8 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
                     </h4>
                     <ul className="space-y-2">
                       {evaluation.missedBugs.map((bug, idx) => (
-                        <li key={`missed-${bug.lineNumber}-${idx}`} className="text-sm text-gray-300">
-                          <span className="text-red-400">Line {bug.lineNumber}:</span> {bug.description}
+                        <li key={`missed-${bug.lineNumber}-${idx}`} className="text-sm text-slate-700 dark:text-slate-300">
+                          <span className="text-red-600 dark:text-red-400">Line {bug.lineNumber}:</span> {bug.description}
                         </li>
                       ))}
                     </ul>
@@ -552,8 +552,8 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
                     </h4>
                     <ul className="space-y-2">
                       {evaluation.foundBugs.map((bug, idx) => (
-                        <li key={`found-${bug.lineNumber}-${idx}`} className="text-sm text-gray-300">
-                          <span className="text-green-400">Line {bug.lineNumber}:</span> {bug.description}
+                        <li key={`found-${bug.lineNumber}-${idx}`} className="text-sm text-slate-700 dark:text-slate-300">
+                          <span className="text-green-600 dark:text-green-400">Line {bug.lineNumber}:</span> {bug.description}
                         </li>
                       ))}
                     </ul>
@@ -585,11 +585,11 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
 
       {/* Session Progress */}
       {sessionScores.length > 0 && (
-        <Card className="bg-gray-800/50 border-gray-700">
+        <Card className="bg-white/60 dark:bg-gray-800/50 border-slate-200 dark:border-gray-700">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <span className="text-gray-400">Problem Scores:</span>
+                <span className="text-slate-600 dark:text-slate-400">Problem Scores:</span>
                 {sessionScores.map((score, idx) => (
                   <Badge 
                     key={`score-${idx}`}
@@ -603,7 +603,7 @@ export default function DebuggingMode({ domain, onComplete }: DebuggingModeProps
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="w-4 h-4 text-yellow-500" />
-                <span className="font-bold text-white">
+                <span className="font-bold text-slate-900 dark:text-white">
                   Average: {Math.round(sessionScores.reduce((a, b) => a + b, 0) / sessionScores.length)}%
                 </span>
               </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import CodingPracticeMode from '@/components/technical-practice/CodingPracticeMode';
-import ConceptExplanationMode from '@/components/technical-practice/ConceptExplanationMode';
+import ConceptExplanationMode, { SessionResultData } from '@/components/technical-practice/ConceptExplanationMode';
 import DebuggingMode from '@/components/technical-practice/DebuggingMode';
 import DomainSelection from '@/components/technical-practice/DomainSelection';
 import FollowUpMode from '@/components/technical-practice/FollowUpMode';
@@ -11,23 +11,23 @@ import { Card, CardContent } from '@/components/ui/card';
 import { TechPrepProvider, useTechPrep } from '@/contexts/TechPrepContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  AlertCircle,
-  ArrowRight,
-  BookOpen,
-  Box,
-  CheckCircle,
-  ChevronRight,
-  Code,
-  Cpu,
-  Database,
-  MessageSquare,
-  Network,
-  Play,
-  Target,
-  Terminal,
-  TrendingUp,
-  Trophy,
-  Zap
+    AlertCircle,
+    ArrowRight,
+    BookOpen,
+    Box,
+    CheckCircle,
+    ChevronRight,
+    Code,
+    Cpu,
+    Database,
+    MessageSquare,
+    Network,
+    Play,
+    Target,
+    Terminal,
+    TrendingUp,
+    Trophy,
+    Zap
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -75,6 +75,7 @@ function TechnicalPracticeEngineContent() {
   const [currentView, setCurrentView] = useState<'home' | 'domain' | 'mode' | 'practice' | 'results'>('home');
   const [selectedDomain, setSelectedDomain] = useState<string | null>(null);
   const [selectedMode, setSelectedMode] = useState<string | null>(null);
+  const [sessionResultData, setSessionResultData] = useState<SessionResultData | null>(null);
 
   // User Stats - starts empty, will be populated from API/database after user practices
   const userStats = {
@@ -98,7 +99,10 @@ function TechnicalPracticeEngineContent() {
     setCurrentView('practice');
   };
 
-  const handleSessionComplete = () => {
+  const handleSessionComplete = (data?: SessionResultData) => {
+    if (data) {
+      setSessionResultData(data);
+    }
     setCurrentView('results');
   };
 
@@ -374,6 +378,7 @@ function TechnicalPracticeEngineContent() {
               <TechPrepResults 
                 domain={selectedDomain!}
                 mode={selectedMode!}
+                sessionData={sessionResultData}
                 onRetry={() => setCurrentView('practice')}
                 onNewSession={handleBackToHome}
               />

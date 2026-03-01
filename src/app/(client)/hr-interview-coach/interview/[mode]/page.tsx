@@ -9,15 +9,15 @@ import { InterviewSession, useHRCoach } from '@/contexts/HRCoachContext';
 import { evaluationParameters, hrQuestions, interviewModes } from '@/data/hr-coach-data';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  ArrowLeft,
-  ArrowRight,
-  CheckCircle,
-  ChevronLeft,
-  Lightbulb,
-  Play,
-  Send,
-  SkipForward,
-  XCircle
+    ArrowLeft,
+    ArrowRight,
+    CheckCircle,
+    ChevronLeft,
+    Lightbulb,
+    Play,
+    Send,
+    SkipForward,
+    XCircle
 } from 'lucide-react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
@@ -132,13 +132,37 @@ function evaluateResponse(response: string, question: typeof hrQuestions[0]) {
   // Calculate individual scores with some variance
   const variance = () => (Math.random() - 0.5) * 10;
   
+  // Calculate redFlagCheck properly based on multiple factors
+  // Start from baseScore instead of always 100
+  let redFlagScore = 70; // Start from a neutral base, not 100
+  
+  // Hard penalties for actual red flags detected
+  redFlagScore -= redFlagsDetected.length * 20;
+  
+  // Soft penalties for answer quality issues (these are also red flags in HR interviews)
+  if (isVague) redFlagScore -= 15; // Vague answers are a red flag
+  if (isGeneric) redFlagScore -= 12; // Generic/copy-paste answers are a red flag
+  if (wordCount < 20) redFlagScore -= 20; // Too brief = lack of preparation red flag
+  else if (wordCount < 40) redFlagScore -= 10;
+  if (wordCount > 300) redFlagScore -= 5; // Over-talking is a mild red flag
+  
+  // Bonus for good answer quality
+  if (idealPointsScore >= 60) redFlagScore += 15; // Covers key points well
+  else if (idealPointsScore >= 30) redFlagScore += 8;
+  if (hasSpecifics) redFlagScore += 8; // Specific examples show preparation
+  if (sentences.length >= 3 && sentences.length <= 8) redFlagScore += 5; // Good structure
+  if (question.category === 'behavioral' && starScore >= 75) redFlagScore += 7; // STAR method used
+  
+  // Clamp redFlagScore
+  redFlagScore = Math.min(98, Math.max(5, Math.round(redFlagScore)));
+  
   const scores = {
     confidence: Math.min(100, Math.max(10, baseScore + (isVague ? -20 : 5) + variance())),
     communication: Math.min(100, Math.max(10, baseScore + (sentences.length >= 2 ? 5 : -10) + variance())),
     professionalTone: Math.min(100, Math.max(10, baseScore - redFlagPenalty + variance())),
     attitude: Math.min(100, Math.max(10, baseScore - (redFlagsDetected.includes('negativity') ? 25 : 0) + variance())),
     authenticity: Math.min(100, Math.max(10, baseScore + specificityBonus - genericPenalty + variance())),
-    redFlagCheck: Math.max(0, 100 - (redFlagPenalty * 2))
+    redFlagCheck: redFlagScore
   };
   
   // Round scores
@@ -240,19 +264,26 @@ export default function InterviewPage() {
     redFlagsDetected: string[];
   } | null>(null);
   const [questions, setQuestions] = useState<typeof hrQuestions>([]);
+  const [questionsInitialized, setQuestionsInitialized] = useState(false);
+  const [completedSessionData, setCompletedSessionData] = useState<InterviewSession | null>(null);
 
   // Initialize session
   const initSession = useCallback(() => {
     startSession(mode as 'quick' | 'standard' | 'full' | 'stress');
   }, [mode, startSession]);
 
-  // Get random questions based on mode
+  // Get random questions based on mode - only once when interview starts
   useEffect(() => {
-    if (stage === 'interview' && currentSession) {
+    if (stage === 'interview' && currentSession && !questionsInitialized) {
       const shuffled = [...hrQuestions].sort(() => Math.random() - 0.5);
       setQuestions(shuffled.slice(0, modeConfig.questionCount));
+      setQuestionsInitialized(true);
     }
-  }, [stage, currentSession, modeConfig.questionCount]);
+    // Reset when going back to intro
+    if (stage === 'intro') {
+      setQuestionsInitialized(false);
+    }
+  }, [stage, currentSession, modeConfig.questionCount, questionsInitialized]);
 
   const handleStart = () => {
     initSession();
@@ -286,6 +317,10 @@ export default function InterviewPage() {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
     } else {
+      // Save session data before completeSession nullifies currentSession
+      if (currentSession) {
+        setCompletedSessionData({ ...currentSession });
+      }
       completeSession();
       setStage('result');
     }
@@ -296,6 +331,10 @@ export default function InterviewPage() {
       setCurrentQuestionIndex(prev => prev + 1);
       setResponse('');
     } else {
+      // Save session data before completeSession nullifies currentSession
+      if (currentSession) {
+        setCompletedSessionData({ ...currentSession });
+      }
       completeSession();
       setStage('result');
     }
@@ -552,7 +591,7 @@ return (
         )}
 
         {/* Result Stage */}
-        {stage === 'result' && currentSession && (
+        {stage === 'result' && completedSessionData && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -568,21 +607,21 @@ return (
                 <div className="grid grid-cols-3 gap-4">
                   <div className="p-4 bg-purple-50 rounded-lg">
                     <div className="text-3xl font-bold text-purple-600">
-                      {currentSession.responses.length}
+                      {completedSessionData.responses.length}
                     </div>
                     <div className="text-sm text-gray-500">Questions Answered</div>
                   </div>
                   <div className="p-4 bg-indigo-50 rounded-lg">
                     <div className="text-3xl font-bold text-indigo-600">
-                      {currentSession.responses.length > 0 
-                        ? Math.round(currentSession.responses.reduce((acc: number, r: InterviewSession['responses'][0]) => acc + r.overallScore, 0) / currentSession.responses.length)
+                      {completedSessionData.responses.length > 0 
+                        ? Math.round(completedSessionData.responses.reduce((acc: number, r: InterviewSession['responses'][0]) => acc + r.overallScore, 0) / completedSessionData.responses.length)
                         : 0}%
                     </div>
                     <div className="text-sm text-gray-500">Average Score</div>
                   </div>
                   <div className="p-4 bg-green-50 rounded-lg">
                     <div className="text-3xl font-bold text-green-600">
-                      {currentSession.responses.filter((r: InterviewSession['responses'][0]) => r.redFlagsDetected.length === 0).length}
+                      {completedSessionData.responses.filter((r: InterviewSession['responses'][0]) => r.redFlagsDetected.length === 0).length}
                     </div>
                     <div className="text-sm text-gray-500">Clean Answers</div>
                   </div>
