@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Copy } from "lucide-react";
-import { toast } from "sonner";
 import Modal from "@/components/dashboard/Modal";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Copy } from "lucide-react";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface SharePopupProps {
   open: boolean;
@@ -76,7 +76,7 @@ function SharePopup({ open, onClose, shareContent }: SharePopupProps) {
 
   return (
     <Modal open={open} closeOnOutsideClick={false} onClose={onClose}>
-      <div className="w-[28rem] flex flex-col">
+      <div className="w-full max-w-[28rem] flex flex-col">
         <p className="text-lg font-semibold mb-4">Share via:</p>
         <div className="h-auto rounded-xl">
           <Tabs

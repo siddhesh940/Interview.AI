@@ -1,17 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React from "react";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import { Image as LucideImage } from "lucide-react";
-import { Plus } from "lucide-react";
-import { CardTitle } from "@/components/ui/card";
-import Modal from "@/components/dashboard/Modal";
-import { Slider } from "@/components/ui/slider";
-import { Button } from "@/components/ui/button";
 import { avatars } from "@/components/dashboard/interviewer/avatars";
+import Modal from "@/components/dashboard/Modal";
+import { Button } from "@/components/ui/button";
+import { CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Slider } from "@/components/ui/slider";
 import { useInterviewers } from "@/contexts/interviewers.context";
 import { useClerk } from "@clerk/nextjs";
+import { Image as LucideImage, Plus } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const createInterviewerCard = () => {
   const [open, setOpen] = useState(false);
@@ -79,7 +77,7 @@ const createInterviewerCard = () => {
           setOpen(false);
         }}
       >
-        <div className="text-center w-[35rem]">
+        <div className="text-center w-full max-w-[35rem]">
           <CardTitle className="text-2xl text mt-0 mb-4 p-0 font-semibold ">
             Create an interviewer yourself!
           </CardTitle>

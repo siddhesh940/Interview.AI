@@ -5,6 +5,9 @@ import { createContext, ReactNode, useCallback, useContext, useEffect, useState 
 interface SidebarContextType {
   isCollapsed: boolean;
   toggleSidebar: () => void;
+  isMobile: boolean;
+  isMobileOpen: boolean;
+  setMobileOpen: (open: boolean) => void;
 }
 
 const SidebarContext = createContext<SidebarContextType | null>(null);
@@ -12,29 +15,54 @@ const SidebarContext = createContext<SidebarContextType | null>(null);
 export function SidebarProvider({ children }: { children: ReactNode }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  // Load from localStorage after mount
+  // Detect mobile and load from localStorage after mount
   useEffect(() => {
     setMounted(true);
-    const stored = localStorage.getItem("sidebar-collapsed");
-    if (stored === "true") {
-      setIsCollapsed(true);
-    }
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
+        setIsCollapsed(true);
+        setIsMobileOpen(false);
+      } else {
+        setIsMobileOpen(false);
+        const stored = localStorage.getItem("sidebar-collapsed");
+        if (stored === "true") {
+          setIsCollapsed(true);
+        } else {
+          setIsCollapsed(false);
+        }
+      }
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Save to localStorage
+  // Save to localStorage (only for desktop)
   useEffect(() => {
-    if (mounted) {
+    if (mounted && !isMobile) {
       localStorage.setItem("sidebar-collapsed", String(isCollapsed));
     }
-  }, [isCollapsed, mounted]);
+  }, [isCollapsed, mounted, isMobile]);
 
   const toggleSidebar = useCallback(() => {
-    setIsCollapsed((prev) => !prev);
+    if (isMobile) {
+      setIsMobileOpen((prev) => !prev);
+    } else {
+      setIsCollapsed((prev) => !prev);
+    }
+  }, [isMobile]);
+
+  const setMobileOpen = useCallback((open: boolean) => {
+    setIsMobileOpen(open);
   }, []);
 
   return (
-    <SidebarContext.Provider value={{ isCollapsed, toggleSidebar }}>
+    <SidebarContext.Provider value={{ isCollapsed, toggleSidebar, isMobile, isMobileOpen, setMobileOpen }}>
       {children}
     </SidebarContext.Provider>
   );
@@ -48,6 +76,9 @@ export function useSidebar(): SidebarContextType {
     return {
       isCollapsed: false,
       toggleSidebar: () => {},
+      isMobile: false,
+      isMobileOpen: false,
+      setMobileOpen: () => {},
     };
   }
   

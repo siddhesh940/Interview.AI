@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import LoaderWithLogo from "@/components/loaders/loader-with-logo/loaderWithLogo";
 import DetailsPopup from "@/components/dashboard/interview/create-popup/details";
 import QuestionsPopup from "@/components/dashboard/interview/create-popup/questions";
+import LoaderWithLogo from "@/components/loaders/loader-with-logo/loaderWithLogo";
 import { InterviewBase } from "@/types/interview";
+import { useEffect, useState } from "react";
 
 interface Props {
   open: boolean;
@@ -57,7 +57,7 @@ function CreateInterviewModal({ open, setOpen }: Props) {
   return (
     <>
       {loading ? (
-        <div className="w-[38rem] h-[35.3rem]">
+        <div className="w-full max-w-[38rem] h-[35.3rem]">
           <LoaderWithLogo />
         </div>
       ) : !proceed ? (

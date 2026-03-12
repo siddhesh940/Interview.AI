@@ -1,25 +1,25 @@
 "use client";
 
+import DataTable, {
+    TableData,
+} from "@/components/dashboard/interview/dataTable";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useInterviewers } from "@/contexts/interviewers.context";
+import { CandidateStatus } from "@/lib/enum";
+import { convertSecondstoMMSS } from "@/lib/utils";
 import { Interview } from "@/types/interview";
 import { Interviewer } from "@/types/interviewer";
 import { Response } from "@/types/response";
-import React, { useEffect, useState } from "react";
-import { UserCircleIcon, SmileIcon, Info } from "lucide-react";
-import { useInterviewers } from "@/contexts/interviewers.context";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { CandidateStatus } from "@/lib/enum";
-import { convertSecondstoMMSS } from "@/lib/utils";
+import { Info, SmileIcon, UserCircleIcon } from "lucide-react";
 import Image from "next/image";
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipProvider,
-} from "@/components/ui/tooltip";
-import DataTable, {
-  TableData,
-} from "@/components/dashboard/interview/dataTable";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { useEffect, useState } from "react";
 
 type SummaryProps = {
   responses: Response[];
@@ -192,7 +192,7 @@ function SummaryInfo({ responses, interview }: SummaryProps) {
               <DataTable data={tableData} interviewId={interview?.id || ""} />
             </ScrollArea>
           </div>
-          <div className="flex flex-row gap-1 my-2 justify-center">
+          <div className="flex flex-col md:flex-row gap-1 my-2 justify-center">
             <div className="flex flex-col">
               <div className="flex flex-col gap-1 my-2 mt-4 mx-2 p-3 rounded-2xl bg-slate-50 shadow-md max-w-[400px]">
                 <div className="flex flex-row items-center justify-center gap-1 font-semibold mb-1 text-[15px]">
@@ -218,7 +218,7 @@ function SummaryInfo({ responses, interview }: SummaryProps) {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col gap-1 my-2 mt-4 mx-2 p-4 rounded-2xl bg-slate-50 shadow-md max-w-[360px]">
+            <div className="flex flex-col gap-1 my-2 mt-4 mx-2 p-4 rounded-2xl bg-slate-50 shadow-md max-w-full md:max-w-[360px]">
               <div className="flex flex-row gap-2 text-[15px] font-bold mb-3 mx-auto">
                 <SmileIcon />
                 Candidate Sentiment
@@ -260,7 +260,7 @@ function SummaryInfo({ responses, interview }: SummaryProps) {
                     },
                   },
                 ]}
-                width={360}
+                width={280}
                 height={120}
               />
             </div>
@@ -316,7 +316,7 @@ function SummaryInfo({ responses, interview }: SummaryProps) {
                     },
                   },
                 ]}
-                width={360}
+                width={280}
                 height={120}
                 slotProps={{
                   legend: {

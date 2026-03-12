@@ -11,12 +11,12 @@ import { Toaster } from "sonner";
 
 // Separate component to use sidebar context safely
 function MainContent({ children, isAuthPage }: { children: React.ReactNode; isAuthPage: boolean }) {
-  const { isCollapsed } = useSidebar();
+  const { isCollapsed, isMobile } = useSidebar();
   
   return (
     <div 
-      className={`pt-[64px] h-full overflow-y-auto flex-grow transition-all duration-300 ease-in-out ${
-        isAuthPage ? 'ml-0' : isCollapsed ? 'ml-0' : 'ml-72'
+      className={`pt-[56px] md:pt-[64px] h-full overflow-y-auto flex-grow transition-all duration-300 ease-in-out ${
+        isAuthPage || isMobile ? 'ml-0' : isCollapsed ? 'ml-0' : 'ml-72'
       }`}
     >
       {children}

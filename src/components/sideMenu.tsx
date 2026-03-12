@@ -10,7 +10,13 @@ function SideMenu() {
   const pathname = rawPathname || '';
   const router = useRouter();
   const [unreadNotifications, setUnreadNotifications] = useState(0);
-  const { isCollapsed } = useSidebar();
+  const { isCollapsed, isMobile, isMobileOpen, setMobileOpen } = useSidebar();
+
+  // Close mobile sidebar on navigation
+  const handleNav = (path: string) => {
+    router.push(path);
+    if (isMobile) setMobileOpen(false);
+  };
 
   useEffect(() => {
     // Fetch unread notification count
@@ -34,12 +40,22 @@ function SideMenu() {
     return () => clearInterval(interval);
   }, []);
 
+  const sidebarVisible = isMobile ? isMobileOpen : !isCollapsed;
+
   return (
-    <div 
-      className={`z-[10] bg-slate-100 dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 p-6 pb-24 fixed top-[64px] left-0 h-[calc(100vh-64px)] overflow-y-auto transition-all duration-300 ease-in-out ${
-        isCollapsed ? '-translate-x-full w-0 opacity-0' : 'translate-x-0 w-72 opacity-100'
-      }`}
-    >
+    <>
+      {/* Mobile overlay */}
+      {isMobile && isMobileOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-[15] md:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+      <div 
+        className={`z-[20] bg-slate-100 dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 p-6 pb-24 fixed top-[64px] left-0 h-[calc(100vh-64px)] overflow-y-auto transition-all duration-300 ease-in-out w-72 ${
+          sidebarVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
+        }`}
+      >
       <div className="flex flex-col gap-1">
         <div className="flex flex-col justify-between gap-2">
           
@@ -50,7 +66,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/dashboard")}
+            onClick={() => handleNav("/dashboard")}
           >
             <PlayCircle className="font-thin mr-2" />
             <p className="font-medium">Interviews</p>
@@ -63,7 +79,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/dashboard/interviewers")}
+            onClick={() => handleNav("/dashboard/interviewers")}
           >
             <Speech className="font-thin mr-2" />
             <p className="font-medium">Interviewers</p>
@@ -76,7 +92,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/soft-skills")}
+            onClick={() => handleNav("/soft-skills")}
           >
             <Mic className="font-thin mr-2" />
             <p className="font-medium">Soft Skills</p>
@@ -89,7 +105,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/hr-interview-coach")}
+            onClick={() => handleNav("/hr-interview-coach")}
           >
             <UserCheck className="font-thin mr-2" />
             <div className="flex flex-col">
@@ -105,7 +121,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/interview-resources")}
+            onClick={() => handleNav("/interview-resources")}
           >
             <FileText className="font-thin mr-2" />
             <p className="font-medium">Interview Resource Hub</p>
@@ -118,7 +134,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/games")}
+            onClick={() => handleNav("/games")}
           >
             <Gamepad2 className="font-thin mr-2" />
             <p className="font-medium">Games</p>
@@ -131,7 +147,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/aptitude")}
+            onClick={() => handleNav("/aptitude")}
           >
             <Brain className="font-thin mr-2" />
             <p className="font-medium">Aptitude Arena</p>
@@ -144,7 +160,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/dream-company")}
+            onClick={() => handleNav("/dream-company")}
           >
             <Briefcase className="font-thin mr-2" />
             <p className="font-medium">Dream Company Station</p>
@@ -157,7 +173,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/dashboard/placement-drives")}
+            onClick={() => handleNav("/dashboard/placement-drives")}
           >
             <MapPin className="font-thin mr-2" />
             <div className="flex flex-col flex-1">
@@ -181,7 +197,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/resume-builder")}
+            onClick={() => handleNav("/resume-builder")}
           >
             <FileCheck className="font-thin mr-2" />
             <p className="font-medium">Resume Builder</p>
@@ -194,7 +210,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/skill-autofill")}
+            onClick={() => handleNav("/skill-autofill")}
           >
             <Sparkles className="font-thin mr-2" />
             <p className="font-medium">Skill Autofill</p>
@@ -207,7 +223,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/time-machine")}
+            onClick={() => handleNav("/time-machine")}
           >
             <Zap className="font-thin mr-2" />
             <div className="flex flex-col">
@@ -223,7 +239,7 @@ function SideMenu() {
                 ? "bg-indigo-200 dark:bg-indigo-900/50 text-indigo-900 dark:text-indigo-200"
                 : "bg-slate-100 dark:bg-transparent text-slate-900 dark:text-slate-200"
             }`}
-            onClick={() => router.push("/technical-practice")}
+            onClick={() => handleNav("/technical-practice")}
           >
             <Code className="font-thin mr-2" />
             <div className="flex flex-col">
@@ -235,6 +251,7 @@ function SideMenu() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

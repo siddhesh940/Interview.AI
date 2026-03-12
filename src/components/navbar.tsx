@@ -3,23 +3,29 @@
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useSidebar } from "@/contexts/SidebarContext";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import { PanelLeft, PanelLeftClose } from "lucide-react";
+import { Menu, PanelLeft, PanelLeftClose, X } from "lucide-react";
 import Link from "next/link";
 
 function Navbar() {
-  const { isCollapsed, toggleSidebar } = useSidebar();
+  const { isCollapsed, toggleSidebar, isMobile, isMobileOpen } = useSidebar();
 
   return (
-    <div className="fixed inset-x-0 top-0 bg-slate-100 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 z-[10] h-fit py-4 transition-colors duration-200">
-      <div className="flex items-center justify-between h-full gap-2 px-8 mx-auto">
-        <div className="flex flex-row gap-3 justify-center items-center">
+    <div className="fixed inset-x-0 top-0 bg-slate-100 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 z-[20] h-fit py-3 md:py-4 transition-colors duration-200">
+      <div className="flex items-center justify-between h-full gap-2 px-4 md:px-8 mx-auto">
+        <div className="flex flex-row gap-2 md:gap-3 justify-center items-center">
           {/* Sidebar Toggle Button */}
           <button
             className="p-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200"
-            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            aria-label={isMobile ? (isMobileOpen ? "Close menu" : "Open menu") : (isCollapsed ? "Expand sidebar" : "Collapse sidebar")}
             onClick={toggleSidebar}
           >
-            {isCollapsed ? (
+            {isMobile ? (
+              isMobileOpen ? (
+                <X className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              ) : (
+                <Menu className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              )
+            ) : isCollapsed ? (
               <PanelLeft className="w-5 h-5 text-gray-600 dark:text-gray-300" />
             ) : (
               <PanelLeftClose className="w-5 h-5 text-gray-600 dark:text-gray-300" />
@@ -27,13 +33,13 @@ function Navbar() {
           </button>
           
           <Link href="/dashboard" className="flex items-center gap-2">
-            <p className="px-2 py-1 text-2xl font-bold text-black dark:text-white">
+            <p className="px-1 md:px-2 py-1 text-lg md:text-2xl font-bold text-black dark:text-white">
               Interview<span className="text-indigo-600 dark:text-indigo-400">.ai</span>{" "}
               <span className="text-[8px]">Beta</span>
             </p>
           </Link>
-          <p className="my-auto text-xl text-gray-400 dark:text-gray-500">/</p>
-          <div className="my-auto">
+          <p className="my-auto text-xl text-gray-400 dark:text-gray-500 hidden md:block">/</p>
+          <div className="my-auto hidden md:block">
             <OrganizationSwitcher
               afterCreateOrganizationUrl="/dashboard"
               hidePersonal={true}
@@ -47,7 +53,7 @@ function Navbar() {
             />
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           <ThemeToggle />
           <UserButton afterSignOutUrl="/" signInUrl="/sign-in" />
         </div>

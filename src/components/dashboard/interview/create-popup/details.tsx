@@ -194,7 +194,7 @@ return getUniqueInterviewers(source);
 
   return (
     <>
-      <div className="text-center w-[38rem]">
+      <div className="text-center w-full max-w-[38rem]">
         <h1 className="text-xl font-semibold">Create an Interview</h1>
         <div className="flex flex-col justify-center items-start mt-4 ml-10 mr-8">
           <div className="flex flex-row justify-center items-center">

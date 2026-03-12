@@ -40,14 +40,14 @@ return () =>
 
   // Step 2: after permission, show webcam preview
   return (
-    <div className="p-6">
-      <div className="max-w-screen-lg mx-auto border-2 rounded-lg p-6">
-        <div className="flex gap-6">
+    <div className="p-4 md:p-6">
+      <div className="max-w-screen-lg mx-auto border-2 rounded-lg p-4 md:p-6">
+        <div className="flex flex-col md:flex-row gap-6">
           {/* Interviewer */}
           <div className="flex-1">
             <h2 className="text-xl font-bold">Interviewer</h2>
-            <div className="mt-6">
-              <div className="w-40 h-40 rounded-full bg-slate-100 flex items-center justify-center">
+            <div className="mt-4 md:mt-6 flex justify-center md:justify-start">
+              <div className="w-28 h-28 md:w-40 md:h-40 rounded-full bg-slate-100 flex items-center justify-center text-4xl md:text-5xl">
                 👨‍💼
               </div>
             </div>
@@ -56,7 +56,7 @@ return () =>
           {/* Candidate */}
           <div className="flex-1">
             <h2 className="text-xl font-bold">You</h2>
-            <div className="mt-4 h-64 border-8 border-green-300 rounded-lg overflow-hidden">
+            <div className="mt-4 h-48 md:h-64 border-8 border-green-300 rounded-lg overflow-hidden">
               <WebCamFeed stream={videoStream ?? null} />
             </div>
             <div className="mt-4 flex gap-3">

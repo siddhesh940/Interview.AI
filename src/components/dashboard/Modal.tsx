@@ -22,7 +22,7 @@ export default function Modal({
       onClick={closeOnOutsideClick ? onClose : () => {}}
     >
       <div
-        className={`bg-white dark:bg-slate-900 rounded-xl shadow-lg dark:shadow-slate-950/50 p-6 transition-all border border-gray-200 dark:border-slate-700
+        className={`bg-white dark:bg-slate-900 rounded-xl shadow-lg dark:shadow-slate-950/50 p-4 md:p-6 transition-all border border-gray-200 dark:border-slate-700 mx-3 max-h-[90vh] overflow-y-auto
         ${open ? "scale-100 opacity-100" : "scale-125 opacity-0"}
         `}
         onClick={(e) => e.stopPropagation()}

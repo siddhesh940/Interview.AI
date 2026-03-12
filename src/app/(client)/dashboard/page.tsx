@@ -26,10 +26,10 @@ function Interviews() {
   function InterviewsLoader() {
     return (
       <>
-        <div className="flex flex-row gap-4">
-          <div className="h-60 w-56 flex-none animate-pulse rounded-xl bg-gray-200/80 dark:bg-slate-800 border border-gray-200 dark:border-slate-700" />
-          <div className="h-60 w-56 flex-none animate-pulse rounded-xl bg-gray-200/80 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 delay-75" />
-          <div className="h-60 w-56 flex-none animate-pulse rounded-xl bg-gray-200/80 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 delay-150" />
+        <div className="flex flex-row flex-wrap gap-4">
+          <div className="h-60 w-44 sm:w-56 flex-none animate-pulse rounded-xl bg-gray-200/80 dark:bg-slate-800 border border-gray-200 dark:border-slate-700" />
+          <div className="h-60 w-44 sm:w-56 flex-none animate-pulse rounded-xl bg-gray-200/80 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 delay-75" />
+          <div className="h-60 w-44 sm:w-56 flex-none animate-pulse rounded-xl bg-gray-200/80 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 delay-150 hidden sm:block" />
         </div>
       </>
     );

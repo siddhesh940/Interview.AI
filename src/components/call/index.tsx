@@ -387,7 +387,7 @@ return (
               )}
             </CardHeader>
             {!isStarted && !isEnded && (
-              <div className="w-fit min-w-[400px] max-w-[400px] mx-auto mt-2  border border-indigo-200 rounded-md p-2 m-2 bg-slate-50">
+              <div className="w-full max-w-[400px] mx-auto mt-2  border border-indigo-200 rounded-md p-2 m-2 bg-slate-50">
                 <div>
                   {interview?.logo_url && (
                     <div className="p-1 flex justify-center">
@@ -478,8 +478,8 @@ return (
               </div>
             )}
             {isStarted && !isEnded && (
-              <div className="flex flex-row p-2 grow">
-                <div className="border-x-2 border-grey w-[50%] my-auto min-h-[70%]">
+              <div className="flex flex-col md:flex-row p-2 grow">
+                <div className="border-x-2 border-grey w-full md:w-[50%] my-auto min-h-[70%]">
                   <div className="flex flex-col justify-evenly">
                     <div className="text-[22px] w-[80%] md:text-[26px] mt-4 min-h-[200px] mx-auto px-6">
                       {lastInterviewerResponse}
@@ -505,7 +505,7 @@ return (
                 </div>
 
                 {/* ✅ Webcam integrated */}
-                <div className="flex flex-col w-[50%]">
+                <div className="flex flex-col w-full md:w-[50%]">
                   <div
                     ref={lastUserResponseRef}
                     className="text-[22px] w-[80%] md:text-[26px] mt-4 mx-auto h-[120px] px-6 overflow-y-auto"

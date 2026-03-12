@@ -1,41 +1,41 @@
 "use client";
 
+import CallInfo from "@/components/call/callInfo";
+import EditInterview from "@/components/dashboard/interview/editInterview";
+import SharePopup from "@/components/dashboard/interview/sharePopup";
+import SummaryInfo from "@/components/dashboard/interview/summaryInfo";
+import Modal from "@/components/dashboard/Modal";
+import LoaderWithText from "@/components/loaders/loader-with-text/loaderWithText";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import React, { useState, useEffect } from "react";
-import { useOrganization } from "@clerk/nextjs";
-import { useInterviews } from "@/contexts/interviews.context";
-import { Share2, Filter, Pencil, UserIcon, Eye, Palette } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useRouter } from "next/navigation";
-import { ResponseService } from "@/services/responses.service";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useInterviews } from "@/contexts/interviews.context";
+import { CandidateStatus } from "@/lib/enum";
+import { formatTimestampToDateHHMM } from "@/lib/utils";
 import { ClientService } from "@/services/clients.service";
+import { InterviewService } from "@/services/interviews.service";
+import { ResponseService } from "@/services/responses.service";
 import { Interview } from "@/types/interview";
 import { Response } from "@/types/response";
-import { formatTimestampToDateHHMM } from "@/lib/utils";
-import CallInfo from "@/components/call/callInfo";
-import SummaryInfo from "@/components/dashboard/interview/summaryInfo";
-import { InterviewService } from "@/services/interviews.service";
-import EditInterview from "@/components/dashboard/interview/editInterview";
-import Modal from "@/components/dashboard/Modal";
-import { toast } from "sonner";
+import { useOrganization } from "@clerk/nextjs";
+import { Eye, Filter, Palette, Pencil, Share2, UserIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { ChromePicker } from "react-color";
-import SharePopup from "@/components/dashboard/interview/sharePopup";
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipProvider,
-} from "@/components/ui/tooltip";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { CandidateStatus } from "@/lib/enum";
-import LoaderWithText from "@/components/loaders/loader-with-text/loaderWithText";
+import { toast } from "sonner";
 
 interface Props {
   params: {
@@ -262,8 +262,8 @@ function InterviewHome({ params, searchParams }: Props) {
         </div>
       ) : (
         <>
-          <div className="flex flex-row p-3 pt-4 justify-center gap-6 items-center sticky top-2 bg-white">
-            <div className="font-bold text-md">{interview?.name}</div>
+          <div className="flex flex-wrap p-3 pt-4 justify-center gap-3 md:gap-6 items-center sticky top-2 bg-white dark:bg-slate-950 z-[5]">
+            <div className="font-bold text-sm md:text-md">{interview?.name}</div>
 
             <div
               className="w-5 h-5 rounded-full border-2 border-white shadow"
@@ -402,8 +402,8 @@ function InterviewHome({ params, searchParams }: Props) {
               )}
             </label>
           </div>
-          <div className="flex flex-row w-full p-2 h-[85%] gap-1 ">
-            <div className="w-[20%] flex flex-col p-2 divide-y-2 rounded-sm border-2 border-slate-100">
+          <div className="flex flex-col md:flex-row w-full p-2 h-[85%] gap-1 ">
+            <div className="w-full md:w-[20%] flex flex-col p-2 divide-y-2 rounded-sm border-2 border-slate-100 max-h-[200px] md:max-h-none overflow-y-auto">
               <div className="flex w-full justify-center py-2">
                 <Select
                   onValueChange={async (newValue: string) => {
@@ -540,7 +540,7 @@ function InterviewHome({ params, searchParams }: Props) {
               </ScrollArea>
             </div>
             {responses && (
-              <div className="w-[85%] rounded-md ">
+              <div className="w-full md:w-[85%] rounded-md ">
                 {searchParams.call ? (
                   <CallInfo
                     call_id={searchParams.call}
